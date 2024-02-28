@@ -28,3 +28,6 @@ theme:
         name: switch to light mode
       primary: teal
       accent: lime
+
+  copyright:
+    &copy: 2024 <a href="https://github.com/MarceloSaval" target="_blank" rel="noopener">Marcelo Saval</a>
