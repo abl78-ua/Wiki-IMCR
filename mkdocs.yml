@@ -1,4 +1,5 @@
 site_name: Wiki IMCR
+site_url: https://marcelosaval.github.io/Wiki-IMCR/
 theme:
   name: material
   features:
@@ -28,6 +29,23 @@ theme:
         name: switch to light mode
       primary: teal
       accent: lime
+
+  markdown_extensions:
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - admonition
+    - pymdownx.arithmatex:
+        generic: true
+    - footnotes
+    - pymdownx.details
+    - pymdownx.superfences
+    - pymdownx.mark
+    - attr_list
+    - pymdownx.emoji:
+        emoji_index: !!python/name:materialx.emoji.twemoji
+        emoji_generator: !!python/name:materialx.emoji.to_svg
 
   copyright:
     &copy: 2024 <a href="https://github.com/MarceloSaval" target="_blank" rel="noopener">Marcelo Saval</a>
