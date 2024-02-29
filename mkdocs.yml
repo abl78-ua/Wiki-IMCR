@@ -24,7 +24,7 @@ theme:
       accent: purple
 
     - scheme: slate
-      tobble:
+      toggle:
         icon: material/toggle-switch
         name: switch to light mode
       primary: teal
