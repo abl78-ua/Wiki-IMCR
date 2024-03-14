@@ -63,7 +63,7 @@ La retropropagación (backpropagation) y las redes neuronales multicapa son conc
 En resumen, las redes neuronales multicapa son arquitecturas de red que consisten en capas de nodos interconectados, y la retropropagación es un algoritmo utilizado para entrenar eficientemente estas redes, ajustando los pesos para minimizar el error en las predicciones. La combinación de ambas ha demostrado ser efectiva en una amplia variedad de tareas de aprendizaje automático y reconocimiento de patrones.
 
 ## Funciones de activación
-Como se introducia anteriormente una función de activación es una función que calcula la salida de una neurona a partir de los pesos de las entradas. Usualmente se emplean funciones no lineales ya que permiten aprender patrones más complejos y por tanto dar mejores resultados en problemas complejos.
+Como se introdujo anteriormente, una función de activación es una función que calcula la salida de una neurona a partir de los pesos de las entradas. Usualmente se emplean funciones no lineales ya que permiten aprender patrones más complejos y por tanto dar mejores resultados en problemas complejos.
 
 A continuación explicamos algunas funciones de activación comunes y sus aplicaciones:
 
@@ -74,7 +74,7 @@ A continuación explicamos algunas funciones de activación comunes y sus aplica
     <figcaption>Función sigmoide</figcaption>
 </figure>
 
-El gráfico de la función sigmoide tiene forma de "S" y se caracteriza por su suavidad y por producir salidas cercanas a 0 o 1 cuando la entrada está muy lejos de cero, lo que es útil para representar probabilidades en el contexto de aprendizaje automático.
+El gráfico de la función sigmoide tiene forma de "S" y se caracteriza por producir salidas cercanas a 0 o 1 cuando la entrada está muy lejos de cero, lo que es útil para representar probabilidades en el contexto del aprendizaje automático.
 
 En el contexto de las redes neuronales, la función sigmoide se ha utilizado tradicionalmente como función de activación en las capas ocultas, ya que tiene la característica de que su derivada se puede expresar en términos de la propia función sigmoide la cual es útil en el proceso de retropropagación (backpropagation) durante el entrenamiento de redes neuronales, ya que facilita el cálculo de gradientes y ajustes de pesos.
 
@@ -83,7 +83,7 @@ En el contexto de las redes neuronales, la función sigmoide se ha utilizado tra
     <figcaption>Derivada de la sigmoide</figcaption>
 </figure>
 
- En la actualidad se ha sustituido por la función ReLU excepto en redes neuronales recurrentes. La razón por la que se ha sustituido es porque sufre el problema de desvanecimiento de gradiente,  que provoca problemas de convergencia pudiendo detener el proceso de entrenamiento.
+ En la actualidad se ha sustituido por la función ReLU excepto en redes neuronales recurrentes. La razón por la que se ha sustituido es porque sufre el problema de desvanecimiento de gradiente, que provoca problemas de convergencia pudiendo detener el proceso de entrenamiento.
 
 Cuando se aplica a la salida de una neurona, la función sigmoide se evalúa en 0 como 0,5 por lo que  puede interpretarse como la probabilidad de que la neurona esté activada o no pudiendo resolver problemas de clasificación binaria o clasificación multilabel. Si quisiéramos hacer una clasificación de k clases utilizaremos una función softmax.
 
