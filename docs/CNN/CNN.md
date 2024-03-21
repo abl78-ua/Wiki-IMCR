@@ -14,7 +14,7 @@ En la fase de extracción de características, las capas convolucionales y de re
 
 Finalmente, las neuronas de clasificación realizan la clasificación final sobre las características extraídas, utilizando pesos y funciones de activación para calcular la salida de cada neurona. Este proceso de aprendizaje automático permite que la CNN aprenda a reconocer patrones y características en las imágenes de forma automatizada, sin necesidad de definir manualmente los filtros. En resumen, las CNNs son poderosas herramientas para tareas de visión por computadora, demostrando cómo el aprendizaje profundo puede automatizar tareas complejas en el procesamiento de imágenes.
 
-##Referencias 
+##Referencias
 https://es.wikipedia.org/wiki/Red_neuronal_convolucional
 https://wiki-imcr.vercel.app/Presentaciones/CNN
 https://www.ibm.com/es-es/topics/convolutional-neural-networks
