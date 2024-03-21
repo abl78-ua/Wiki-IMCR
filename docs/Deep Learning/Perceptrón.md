@@ -1,4 +1,5 @@
 # Perceptron y función de activación
+# Holaa
 <span style="font-size: 0.8rem; font-style: italic;">Por Victor Padron Garcia y Iván López González</span>
 ## ¿Qué es un perceptrón?
 Un perceptrón es un concepto fundamental en el campo de la inteligencia artificial y el aprendizaje automático. Es un tipo de modelo de red neuronal artificial, específicamente una red neuronal de una sola capa. Fue propuesto por Frank Rosenblatt en 1957.
