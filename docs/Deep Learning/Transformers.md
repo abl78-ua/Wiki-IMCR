@@ -1,7 +1,7 @@
 # Transformers
-<span style="font-size: 0.8rem; font-style: italic;">Por Victor Padron Garcia y Iván López González</span>
+<span style="font-size: 0.8rem; font-style: italic;">Por Victor Padron Garcia</span>
 
-## Que es un transformer
+## ¿Que es un transformer?
 Un Transformer es una arquitectura de red neuronal desarrollada para tareas de procesamiento del lenguaje natural (NLP) y otros problemas secuenciales. Fue presentada inicialmente en el artículo "Attention is All You Need" por Vaswani et al. en 2017. La característica distintiva de los Transformers es el mecanismo de atención, que permite a la red modelar las dependencias a largo plazo entre las palabras en una secuencia.
 
 En un Transformer, la entrada se procesa secuencialmente a través de múltiples capas de codificadores y decodificadores, cada uno de los cuales contiene bloques de atención y redes neuronales feedforward. Durante la atención, el modelo asigna pesos a cada token de entrada basado en su relevancia para otros tokens en la secuencia, permitiendo capturar relaciones a largo plazo y contextuales.
@@ -65,12 +65,12 @@ Estos son solo algunos ejemplos de los numerosos usos prácticos de los transfor
 
 ## Arquitectura de un transformer
 <figure markdown="span">
-    <img src="../images/transformer/ArquitecturaTransformer.png">
+    <img src="../../images/transformer/ArquitecturaTransformer.png">
 <figure>
 
 ## Ejemplo básico de un transformer(se puede ejecutar directamente en collab)
 ```py
-    import tensorflow as tf
+import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 
