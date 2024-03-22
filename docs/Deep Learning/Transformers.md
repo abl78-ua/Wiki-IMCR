@@ -68,7 +68,7 @@ Estos son solo algunos ejemplos de los numerosos usos prácticos de los transfor
     <img src="../images/transformer/ArquitecturaTransformer.png">
 <figure>
 
-## Ejemplo básico de un transformer(se puede ejecutar direcctamente en collab)
+## Ejemplo básico de un transformer(se puede ejecutar directamente en collab)
 ```py
     import tensorflow as tf
 from tensorflow import keras
