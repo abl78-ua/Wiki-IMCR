@@ -66,7 +66,7 @@ Estos son solo algunos ejemplos de los numerosos usos prácticos de los transfor
 ## Arquitectura de un transformer
 <figure markdown="span">
     <img src="../../images/transformer/ArquitecturaTransformer.png">
-<figure>
+</figure>
 
 ## Ejemplo básico de un transformer(se puede ejecutar directamente en collab)
 ```py
