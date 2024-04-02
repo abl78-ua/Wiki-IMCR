@@ -7,3 +7,7 @@ Como ya sabemos, el machine learning funciona dándole al programa ejemplos para
 
 Si los datos que le aportamos a nuestro programa son pocos esta no será capaz de generalizar el conocimiento, esto es el underfitting. Y si le otorgamos varios datos, pero todos iguales entre sí, tampoco será capaz de generalizar el conocimiento y esto es el overfitting. A continuación mostraremos un ejemplo gráfico, y procederemos a explicar con más detalle overfitting y underfitting.
 
+<figure markdown="span">
+    <img src="../../images/overfitting/overfitting-underfitting-machine-learning.png">
+</figure>
+
