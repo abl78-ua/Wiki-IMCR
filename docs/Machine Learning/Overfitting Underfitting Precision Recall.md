@@ -63,9 +63,13 @@ Imaginemos que, de 10000 casos, solo 100 son positivos, el resto de los 900 son 
 Como podemos comprobar, los resultados se dividen de la siguiente manera:
 
 -True Negative: predicción y caso negativo.
+
 -True Positive: predicción y caso positivo.
+
 -False Negative: predicción negativa y caso positivo.
+
 -False Positive: predicción positiva y caso negativo.
+
 
 Tras esto solo nos queda definir los resultados.
 La precisión es 60 de 200, un 30%.
@@ -91,6 +95,15 @@ Y el recall mide el porcentaje de correos reales que se clasificaron correctamen
 Recall=(VP)/(VP+FN)=0.73
 
 Ahora vamos a mostrar el mismo ejemplo aumentando el umbral. 
+<figure markdown="span">
+    <img src="../../images/overfitting/ejemplo2">
+</figure>
+En este aso obtenemos una precisión de 0.88 y un recall de 0.64.
+Por último, vamos a mostrar qué ocurre si disminuimos el umbral.
+<figure markdown="span">
+    <img src="../../images/overfitting/ejemplo3">
+</figure>
+Y en este caso la precisión sería de 0.75 y el recall de 0.82. [11]
 
 
 
