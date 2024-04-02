@@ -9,7 +9,7 @@ Si los datos que le aportamos a nuestro programa son pocos esta no será capaz d
 
 <figure markdown="span">
     <img src="../../images/overfitting/overfitting-underfitting-machine-learning.png">
-</figure>
+</figure>[5][6]
 
 ###Overfitting
 El overfitting es un suceso que ocurre cuando se ajusta con exactitud un modelo estadístico. Lejos de beneficiar al análisis de los datos,esto perjudica al entrenamiento del modelo, al no permitirle clasificar con rigor los datos y llegar a aprender información irrelevante que perjudica al resultado. 
@@ -29,16 +29,33 @@ Este tipo de problemas se puede solucionar intensificando el nivel de entrenamie
 Para evaluar completamente la efectividad de un modelo, debes examinar la precisión y el recall. Normalmente, una mejora de la precisión suele reducir el recall, y viceversa. Para entender estos conceptos, vamos a explicar más detalladamente que son la precisión y el recall.
 <figure markdown="span">
     <img src="../../images/overfitting/dos.svg.png">
-</figure>
+</figure>[9]
 
 
-##Precision
+###Precision
 El concepto fue propuesto inicialmente por Salton, quién era un especialista en la recuperación de información y el proceso de lenguaje natural. La precisión es el ratio de valores relevantes frente al número de valores recuperados. Así pues, cuanto más se aleje el valor obtenido de nulo mayor será la cantidad de información recuperada que resulte relevante. En caso de que sea 1 toda la información recuperada sería relevante y si fuera 0 ninguno de los datos recuperados nos serviría. 
 Su definición es la siguiente:
 Precisión = True Positive / Actual Results or True Positive / True Positive + False Positive
 <figure markdown="span">
     <img src="../../images/overfitting/3">
 </figure>
+
+###Recall
+El ratio que representa este concepto es la proporción de documentos recuperados frente a la cantidad de documentos relevantes existentes, siendo independientes a estos últimos.
+Si el resultado es 1 quiere decir que se ha encontrado todo documento relevante que estaba en los documentos existentes, en caso de 0 significa que los documentos no tienen ninguna relevancia.
+
+Su definición es la siguiente:
+Recall = True Positive / Predicted Results or True Positive / True Positive + False Negative
+<figure markdown="span">
+    <img src="../../images/overfitting/4">
+</figure>
+[7][8]
+
+###Ejemplo
+
+##F1-Score
+
+##Relación
 
 
 
