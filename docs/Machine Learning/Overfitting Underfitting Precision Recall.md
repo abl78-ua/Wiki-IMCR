@@ -57,15 +57,15 @@ Los dos conceptos pueden resultar útiles en los casos en los que haya datos des
 Vamos a mostrar un ejemplo para facilitar el entendimiento. 
 Imaginemos que, de 10000 casos, solo 100 son positivos, el resto de los 900 son negativos, y queremos predecir cuáles son positivos. Para esto elegimos, por ejemplo, 200 para poder englobar la mayoría de los 100 casos positivos. A esos 200 les aplicamos las fórmulas ya mencionadas y obtenemos los siguientes resultados.
 <figure markdown="span">
-    <img src="../../images/overfitting/5">
+    <img src="../../images/overfitting/tabla_pred">
 </figure>
 
 Como podemos comprobar, los resultados se dividen de la siguiente manera:
 
-*True Negative: predicción y caso negativo.
-*True Positive: predicción y caso positivo.
-*False Negative: predicción negativa y caso positivo.
-*False Positive: predicción positiva y caso negativo.
+-True Negative: predicción y caso negativo.
+-True Positive: predicción y caso positivo.
+-False Negative: predicción negativa y caso positivo.
+-False Positive: predicción positiva y caso negativo.
 
 Tras esto solo nos queda definir los resultados.
 La precisión es 60 de 200, un 30%.
