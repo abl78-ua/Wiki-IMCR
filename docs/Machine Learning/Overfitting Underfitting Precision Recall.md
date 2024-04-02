@@ -25,26 +25,58 @@ Este tipo de problemas se puede solucionar intensificando el nivel de entrenamie
 [3]
 [4]
 
-###Precision y Recall
+##Precision y Recall
 Para evaluar completamente la efectividad de un modelo, debes examinar la precisión y el recall. Normalmente, una mejora de la precisión suele reducir el recall, y viceversa. Para entender estos conceptos, vamos a explicar más detalladamente que son la precisión y el recall.
 <figure markdown="span">
     <img src="../../images/overfitting/dos.svg.png">
 </figure>
 
+
+##Precision
+El concepto fue propuesto inicialmente por Salton, quién era un especialista en la recuperación de información y el proceso de lenguaje natural. La precisión es el ratio de valores relevantes frente al número de valores recuperados. Así pues, cuanto más se aleje el valor obtenido de nulo mayor será la cantidad de información recuperada que resulte relevante. En caso de que sea 1 toda la información recuperada sería relevante y si fuera 0 ninguno de los datos recuperados nos serviría. 
+Su definición es la siguiente:
+Precisión = True Positive / Actual Results or True Positive / True Positive + False Positive
+<figure markdown="span">
+    <img src="../../images/overfitting/3">
+</figure>
+
+
+
+
+
+
+
+
+
+
+
 ##Referencias
 [1] https://www.ibm.com/es-es/topics/overfitting#:~:text=El%20%22overfitting%22%20o%20sobreajuste%20es,a%20sus%20datos%20de%20entrenamiento. 
+
 [2] https://es.wikipedia.org/wiki/Sobreajuste 
+
 [3] https://gamco.es/glosario/underfitting/#:~:text=Underfitting%20es%20un%20t%C3%A9rmino%20utilizado,se%20ajusta%20adecuadamente%20a%20ellos. 
+
 [4]https://protecciondatos-lopd.com/empresas/underfitting/ 
+
 [5]https://www.aprendemachinelearning.com/que-es-overfitting-y-underfitting-y-como-solucionarlo/
+
 [6]https://link.springer.com/article/10.1007/s10270-008-0106-z
+
 [7]https://es.wikipedia.org/wiki/Precisi%C3%B3n_y_exhaustividad 
-[8]https://es.wikipedia.org/wiki/Gerard_Salton 
+
+[8]https://es.wikipedia.org/wiki/Gerard_Salton
+
 [9]https://en.wikipedia.org/wiki/Precision_and_recall 
+
 [10]https://medium.com/@gogasca_/precisi%C3%B3n-y-recuperaci%C3%B3n-precision-recall-dc3c92178d5b
+
 [11]https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall?hl=es-419
+
 [12]https://www.v7labs.com/blog/f1-score-guide#:~:text=The%20F1%20score%20is%20calculated,simple%20arithmetic%20or%20geometric%20means%3F
+
 [13]https://www.cienciasinseso.com/f1_score/ 
+
 [14]https://en.wikipedia.org/wiki/F-score 
 
 
