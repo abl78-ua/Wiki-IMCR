@@ -2,7 +2,7 @@
 
 <span style="font-size: 0.8rem; font-style: italic;">Por Roberto Campos Espejo y Javier</span>
 
-##Introducción
+##Overfitting y Underfitting
 Como ya sabemos, el machine learning funciona dándole al programa ejemplos para que aprenda de ellos. Por lo tanto es muy importante asegurarse de que los datos aportados al programa son correctos, y es que un mal uso de los datos puede provocar que obtengamos malos resultados, como por ejemplo si hacemos overfitting o underfitting de los datos. Para conseguir un buen funcionamiento es necesario que nuestro programa consiga un equilibrio entre overfitting y underfitting y para esto debemos conseguir que nuestro programa sea capaz de generalizar, por ejemplo, si estamos haciendo un algoritmo que identifique perros, debemos ofrecer suficiente información como para que el programa sea capaz de identificar un perro, incluso aunque sea de una raza que no se le ha aportado en su entrenamiento, y poder discernir qué un gato no es un perro, aunque comparta características similares como las cuatro patas.
 
 Si los datos que le aportamos a nuestro programa son pocos esta no será capaz de generalizar el conocimiento, esto es el underfitting. Y si le otorgamos varios datos, pero todos iguales entre sí, tampoco será capaz de generalizar el conocimiento y esto es el overfitting. A continuación mostraremos un ejemplo gráfico, y procederemos a explicar con más detalle overfitting y underfitting.
@@ -11,51 +11,41 @@ Si los datos que le aportamos a nuestro programa son pocos esta no será capaz d
     <img src="../../images/overfitting/overfitting-underfitting-machine-learning.png">
 </figure>
 
-##Overfitting
+###Overfitting
 El overfitting es un suceso que ocurre cuando se ajusta con exactitud un modelo estadístico. Lejos de beneficiar al análisis de los datos,esto perjudica al entrenamiento del modelo, al no permitirle clasificar con rigor los datos y llegar a aprender información irrelevante que perjudica al resultado. 
 
 El overfitting (sobreajuste, en español) en el aprendizaje automático sucede cuando se entrena en exceso un algoritmo de aprendizaje. El algoritmo se entrena pasándole una serie de datos junto con el resultado esperado y así el algoritmo va aprendiendo y mejorando sus resultados. El problema aparece cuando el algoritmo se entrena en exceso y queda ajustado a una características muy específicas. Esto ocasiona que al usar datos diferentes puede mostrar un resultado erróneo en situaciones más genéricas. Para que un modelo sea correcto no es necesario que se ajuste a la perfección, sólo que tenga un índice de error aceptable para la resolución del algoritmo. 
 [1]
 [2]
 
-##Underfitting
+###Underfitting
 Underfitting (subajuste, en español) es un término que se utiliza en el aprendizaje automático para definir un modelo incapaz de capturar de forma precisa la complejidad de los datos de entrenamiento, lo que conlleva a tener un modelo demasiado simple e ineficiente, incapaz de hacer predicciones precisas ni aprender patrones importantes en los datos.
 Este suceso puede ocurrir debido al uso de una secuencia de datos ineficiente, falta de entrenamiento o un mal proceso del entrenamiento, entre otros. 
 Este tipo de problemas se puede solucionar intensificando el nivel de entrenamiento o usando una mayor cantidad de datos, entre otros. 
 [3]
 [4]
 
-
-
-
+###Precision y Recall
+Para evaluar completamente la efectividad de un modelo, debes examinar la precisión y el recall. Normalmente, una mejora de la precisión suele reducir el recall, y viceversa. Para entender estos conceptos, vamos a explicar más detalladamente que son la precisión y el recall.
+<figure markdown="span">
+    <img src="../../images/overfitting/dos.svg.png">
+</figure>
 
 ##Referencias
 [1] https://www.ibm.com/es-es/topics/overfitting#:~:text=El%20%22overfitting%22%20o%20sobreajuste%20es,a%20sus%20datos%20de%20entrenamiento. 
-[2] 
-https://es.wikipedia.org/wiki/Sobreajuste 
+[2] https://es.wikipedia.org/wiki/Sobreajuste 
 [3] https://gamco.es/glosario/underfitting/#:~:text=Underfitting%20es%20un%20t%C3%A9rmino%20utilizado,se%20ajusta%20adecuadamente%20a%20ellos. 
-[4]
-https://protecciondatos-lopd.com/empresas/underfitting/ 
-[5]
-https://www.aprendemachinelearning.com/que-es-overfitting-y-underfitting-y-como-solucionarlo/
-[6]
-https://link.springer.com/article/10.1007/s10270-008-0106-z
-[7]
-https://es.wikipedia.org/wiki/Precisi%C3%B3n_y_exhaustividad 
-[8]
-https://es.wikipedia.org/wiki/Gerard_Salton 
-[9]
-https://en.wikipedia.org/wiki/Precision_and_recall 
-[10]
-https://medium.com/@gogasca_/precisi%C3%B3n-y-recuperaci%C3%B3n-precision-recall-dc3c92178d5b
-[11]
-https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall?hl=es-419
-[12]
-https://www.v7labs.com/blog/f1-score-guide#:~:text=The%20F1%20score%20is%20calculated,simple%20arithmetic%20or%20geometric%20means%3F
-[13]
-https://www.cienciasinseso.com/f1_score/ 
-[14]
-https://en.wikipedia.org/wiki/F-score 
+[4]https://protecciondatos-lopd.com/empresas/underfitting/ 
+[5]https://www.aprendemachinelearning.com/que-es-overfitting-y-underfitting-y-como-solucionarlo/
+[6]https://link.springer.com/article/10.1007/s10270-008-0106-z
+[7]https://es.wikipedia.org/wiki/Precisi%C3%B3n_y_exhaustividad 
+[8]https://es.wikipedia.org/wiki/Gerard_Salton 
+[9]https://en.wikipedia.org/wiki/Precision_and_recall 
+[10]https://medium.com/@gogasca_/precisi%C3%B3n-y-recuperaci%C3%B3n-precision-recall-dc3c92178d5b
+[11]https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall?hl=es-419
+[12]https://www.v7labs.com/blog/f1-score-guide#:~:text=The%20F1%20score%20is%20calculated,simple%20arithmetic%20or%20geometric%20means%3F
+[13]https://www.cienciasinseso.com/f1_score/ 
+[14]https://en.wikipedia.org/wiki/F-score 
 
 
 
