@@ -52,6 +52,51 @@ Recall = True Positive / Predicted Results or True Positive / True Positive + Fa
 [7][8]
 
 ###Ejemplo
+Los dos conceptos pueden resultar útiles en los casos en los que haya datos desequilibrados.
+
+Vamos a mostrar un ejemplo para facilitar el entendimiento. 
+Imaginemos que, de 10000 casos, solo 100 son positivos, el resto de los 900 son negativos, y queremos predecir cuáles son positivos. Para esto elegimos, por ejemplo, 200 para poder englobar la mayoría de los 100 casos positivos. A esos 200 les aplicamos las fórmulas ya mencionadas y obtenemos los siguientes resultados.
+<figure markdown="span">
+    <img src="../../images/overfitting/5">
+</figure>
+
+Como podemos comprobar, los resultados se dividen de la siguiente manera:
+
+*True Negative: predicción y caso negativo.
+*True Positive: predicción y caso positivo.
+*False Negative: predicción negativa y caso positivo.
+*False Positive: predicción positiva y caso negativo.
+
+Tras esto solo nos queda definir los resultados.
+La precisión es 60 de 200, un 30%.
+El recall es 60 de 100, un 60%. [10]
+
+
+Por último, vamos a hacer otro ejemplo, uno donde se ilustre mejor la tensión que hay entre la precisión y el recall, pudiendo observar más fácilmente como una disminuye si la otra mejora y viceversa.
+
+La siguiente imagen muestra 30 predicciones realizadas por un modelo de clasificación de correo electrónico. A la derecha del umbral se clasifica el spam, a la izquierda lo que no es spam. 
+<figure markdown="span">
+    <img src="../../images/overfitting/ejemplo1">
+</figure>
+Vamos a calcular la precision y el recall como hemos hecho antes.
+<figure markdown="span">
+    <img src="../../images/overfitting/ejta1">
+</figure>
+Como ya hemos explicado, la precisión mide el porcentaje de correos electrónicos marcados como spam que se clasificaron correctamente, es decir, el porcentaje de puntos a la derecha del umbral que aparecen en verde en la imágen anterior.
+
+Precisión= (VP)/(VP+FP)=0,8
+
+Y el recall mide el porcentaje de correos reales que se clasificaron correctamente, es decir, el porcentaje de puntos a la izquierda del umbral que aparecen en verde.
+
+Recall=(VP)/(VP+FN)=0.73
+
+Ahora vamos a mostrar el mismo ejemplo aumentando el umbral. 
+
+
+
+
+
+
 
 ##F1-Score
 
