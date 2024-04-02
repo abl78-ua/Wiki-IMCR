@@ -112,8 +112,43 @@ Y en este caso la precisión sería de 0.75 y el recall de 0.82. [11]
 
 
 ##F1-Score
+Por último, hablaremos de F1 score. 
+F1 score es una métrica de evaluación de machine learning que mide la precisión del modelo, combinando la precisión y el recall del modelo.
+
+Esta se calcula como la media armónica de los puntajes de precisión y recuperación, como se muestra a continuación. Varía de 0 a 100% donde a más alto el puntaje más alto de F1 denota un clasificador de mejor calidad. Se usa la media armónica en lugar de la aritmética ya que esta penaliza más fuertemente los valores extremadamente bajos. Por lo tanto, un puntaje más alto de F1 indica que el clasificador tiene un mejor equilibrio entre precisión y recuperación, lo que generalmente se interpreta como una mejor calidad en la capacidad del clasificador para identificar correctamente las clases de interés.
+<figure markdown="span">
+    <img src="../../images/overfitting/f1">
+</figure>
+[12]
+
+F1-score da una idea general del desempeño de la prueba en función de su sensibilidad y su valor predictivo positivo. Según el resultado, tal y como hemos explicado anteriormente, cuanto más alto sea el resultado mejor capacidad tendrá.
+F1-score normalmente presenta un balance equilibrado entre los parámetros, pero en ocasiones, puede interesarnos priorizar uno sobre otro. En ese caso, utilizamos Fβ, que usa a beta de forma que el recall se considera beta veces tan importante como la precisión, quedando la siguiente fórmula:
+<figure markdown="span">
+    <img src="../../images/overfitting/f2">
+</figure>
+En casos de falso positivo o falso negativo la fórmula quedaría así:
+<figure markdown="span">
+    <img src="../../images/overfitting/f3">
+</figure>
+Valores comunes para beta son:
+- 2: Pesa el reacall más que la precisión
+- 0,5: Pesa menos el recall que la precisión.
+Esta medida se basa en la medida de eficacia de Van Rijsbergen:
+<figure markdown="span">
+    <img src="../../images/overfitting/f4">
+</figure>
+Su relación es Fβ = 1 - E dónde:
+<figure markdown="span">
+    <img src="../../images/overfitting/f5">
+</figure>
+[13]
+[14]
+
 
 ##Relación
+La alta precisión en un conjunto combinada con una baja precisión en el conjunto de prueba, es un indicio de overfitting.
+De manera similar, el recall puede verse afectado por el overfitting . Si el modelo tiene un sobreajuste puede perderse al clasificar algunas instancias positivas, creando falsos negativos, disminuyendo así el recall del conjunto de prueba.
+En el caso de underfitting, al tratarse de un modelo demasiado simple puede perderse de clasificar correctamente tanto instancias positivas como negativas, resultando en una baja precisión y recall.  Al no capturar los patrones subyacentes en los datos, el modelo con underfitting puede crear resultados inconsistentes y erróneos, afectando negativamente tanto a la precisión como al recall.
 
 
 
