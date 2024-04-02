@@ -101,7 +101,7 @@ Ahora vamos a mostrar el mismo ejemplo aumentando el umbral.
 En este aso obtenemos una precisión de 0.88 y un recall de 0.64.
 Por último, vamos a mostrar qué ocurre si disminuimos el umbral.
 <figure markdown="span">
-    <img src="../../images/overfitting/ejemplo3">
+    <img src="../../images/overfitting/ejemplo4">
 </figure>
 Y en este caso la precisión sería de 0.75 y el recall de 0.82. [11]
 
