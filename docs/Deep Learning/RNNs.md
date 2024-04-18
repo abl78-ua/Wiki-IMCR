@@ -32,7 +32,7 @@ Las LSTMs almacenan información fuera de la red neuronal en estructuras llamada
 
 Existen también variaciones más complejas de las RNNs, como las Deep Recurrent Neural Networks (DRNNs), que son uniones de varias RNNs ordinarias. Estas redes existirían como un mismo conjunto de capas($l$) donde el estado oculto ($H^{(l)}$) de una red se usaría como input para la siguiente capa($H^{(l+1)}$). 
 
-###Bidirectional Recurrent Neural Networks(BRNNs)
+### Bidirectional Recurrent Neural Networks(BRNNs)
 
 ---
 
@@ -81,7 +81,7 @@ Unicamente recae en el mecanimos de *Self-Attention* para mejorar el rendimiento
 
 ---
 
-Adapta el modelo de seq2seq con atención para que en lugar de obtener un vector fijo de características, se obtenga una sucesión de punteros a las secuencias de entrada. Esto es ideal para problemas donde la salida debe ser discretos de la entrada.
+Adapta el modelo de seq2seq con atención para que en lugar de obtener un vector fijo de características, se obtenga una sucesión de punteros a las secuencias de entrada. Esto es ideal para **problemas donde la salida debe ser discretos de la entrada**.
 
 ## Bibliografía
 
