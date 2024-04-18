@@ -20,7 +20,7 @@ No obstante, las RNNs no están exentas de problemas. Uno de los mayores retos s
 
 Para combatir este problema, se desarrollaron las Long Short-Term Memory Units (LSTMs). 
 
-###Long Short-Term Memory Units(LSTMs)
+### Long Short-Term Memory Units(LSTMs)
 
 ---
 
