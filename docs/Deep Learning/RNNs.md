@@ -1,4 +1,4 @@
-#Recurrent Neural Networks (RNNs)
+# Recurrent Neural Networks (RNNs)
 
 ---
 
@@ -12,7 +12,7 @@ A un nivel más alto usamos las RNNs para modelar y generar texto, reconocer voz
 
 Un componente clave en este proceso es el algoritmo de Backpropagation Through Time (BPTT), una adaptación de los algoritmos de retropropagación que permite a las RNNs "propagar" correctamente el error a través de la red. Sin embargo, este método puede volverse inestable si se recurre a él demasiadas veces. Para solucionar este problema, se suele **truncar la función**, ignorando los elementos pasados de un cierto límite para evitar la inestabilidad.
 
-###Problema Vanishing y exploding gradients
+### Problema Vanishing y exploding gradients
 
 ---
 
@@ -26,7 +26,7 @@ Para combatir este problema, se desarrollaron las Long Short-Term Memory Units (
 
 Las LSTMs almacenan información fuera de la red neuronal en estructuras llamadas *gated cells*. Las operaciones disponibles entre la red neuronal y un LSTM son LEER, ESCRIBIR y OLVIDAR, lo que permite una gestión más eficiente de la información a lo largo del tiempo.
 
-###Deep Recurrent Neural Networks(DRNNs)
+### Deep Recurrent Neural Networks(DRNNs)
 
 ---
 
@@ -38,7 +38,7 @@ Existen también variaciones más complejas de las RNNs, como las Deep Recurrent
 
 Las Bidirectional Recurrent Neural Networks (BRNNs), que permiten rellenar huecos de información utilizando información posterior.
 
-###Encoder-Decoder Architecture & Sequence to Sequence(seq2seq)
+### Encoder-Decoder Architecture & Sequence to Sequence(seq2seq)
 
 ---
 
@@ -47,7 +47,7 @@ La E-DA es una arquitectura de red neuronal que consiste en una *encoder* red y 
 Se centra en asignar una secuencia de entrada de longitud $n$ fija a una secuencia de entrada de longitud $m$ fija.
 Una manera de realizar esta arquitectura es organizando los modelos *encoder* *decoder* de tal manera que haya entre su comunicación un Vector de Codificación(*Encoder Vector*). Este vector se encargaría de recibir el último estado de la red *encoder* y comunicárselos a la red *decoder*. Esta arquitectura presenta un cuello de botella en el *Encoder Vector* cuando las entradas tenían demasiados componentes, los abordajes a este problema en el siguiente apartado:
 
-###Attention Mechanism & Transformer
+### Attention Mechanism & Transformer
 
 ---
 
@@ -77,13 +77,13 @@ Teniendo ya todo esto, si añadimos paralelización obtenemos una especie de Tra
 
 Unicamente recae en el mecanimos de *Self-Attention* para mejorar el rendimiento. Usando módulos con sub-capas de *Self-Attention* (*Multi-headed Attention*) y una *Feed Forward Neural Network* puede ejecutar diferentes partes en paralelo y luego concatenarlas.
 
-###Pointer Networks (Ptr.Nets)
+### Pointer Networks (Ptr.Nets)
 
 ---
 
 Adapta el modelo de seq2seq con atención para que en lugar de obtener un vector fijo de características, se obtenga una sucesión de punteros a las secuencias de entrada. Esto es ideal para problemas donde la salida debe ser discretos de la entrada.
 
-##Bibliografía
+## Bibliografía
 
 Este post es un resumen del contenido del siguiente paper:
 
