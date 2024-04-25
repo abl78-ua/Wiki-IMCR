@@ -4,11 +4,8 @@ Las Redes Neuronales Recurrentes, comúnmente conocidas como RNNs, son una herra
 
 A un nivel más alto usamos las RNNs para modelar y generar texto, reconocer voz, generar descripciones de imágenes y etiquetar videos. Esto se debe a su particular estructura, que difiere de las redes FeedForward por su capacidad para inyectar información de vuelta en sí misma, generando ciclos de información que permiten **un aprendizaje más profundo y complejo**.
 
-%<figure markdown="span">
-%    <img src="../images/Recurrent_Neural_Networks_(RNNs)/recurrente_esquema.png">
-%</figure>
-
  ![Esquema RNN](../images/Recurrent_Neural_Networks_(RNNs)/recurrente_esquema.png)
+ 
 Un componente clave en este proceso es el algoritmo de Backpropagation Through Time (BPTT), una adaptación de los algoritmos de retropropagación que permite a las RNNs "propagar" correctamente el error a través de la red. Sin embargo, este método puede volverse inestable si se recurre a él demasiadas veces. Para solucionar este problema, se suele **truncar la función**, ignorando los elementos pasados de un cierto límite para evitar la inestabilidad.
 
 ### Problema Vanishing y exploding gradients
