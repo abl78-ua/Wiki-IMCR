@@ -6,6 +6,8 @@ El **aprendizaje por refuerzo (RL)** es un paradigma de aprendizaje automático 
 ### Definición y Conceptos Básicos
 El RL se basa en la interacción entre un  **agente**  y su  **entorno**. El agente realiza  **acciones**  y el entorno responde con  **cambios de estado**  y  **recompensas**.  El objetivo del agente es maximizar la suma de las recompensas, lo que a menudo implica un equilibrio entre la exploración de acciones desconocidas y la explotación del conocimiento actual.
 
+![Esquema general del aprendizaje por refuerzo.](https://github.com/MarceloSaval/Wiki-IMCR/blob/main/images/imgReinforcementLearning/esquema.png)
+
 ### Diferencias entre RL y Otros Tipos de Aprendizaje Automático
 
 -   **Aprendizaje Supervisado**: Se basa en un conjunto de datos con entradas y salidas etiquetadas. El modelo aprende a predecir la salida a partir de la entrada.
@@ -14,6 +16,7 @@ El RL se basa en la interacción entre un  **agente**  y su  **entorno**. El age
     
 -   **Aprendizaje por Refuerzo**: No utiliza un conjunto de datos etiquetados.  En cambio, el agente interactúa con su entorno y aprende de las consecuencias de sus acciones.
 
+![Diferencias entre tipos de aprendizajes.](https://github.com/MarceloSaval/Wiki-IMCR/blob/main/images/imgReinforcementLearning/diferencias.png)
 
 # Componentes Fundamentales del RL
 
