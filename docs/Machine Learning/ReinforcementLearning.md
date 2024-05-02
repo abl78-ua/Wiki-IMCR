@@ -1,5 +1,6 @@
-﻿# Aprendizaje por Refuerzo.
-### Introducción al Aprendizaje por Refuerzo
+# **Aprendizaje por Refuerzo**
+
+# Introducción al Aprendizaje por Refuerzo
 El **aprendizaje por refuerzo (RL)** es un paradigma de aprendizaje automático que enseña a los agentes cómo tomar decisiones óptimas a través de la interacción con su entorno. A diferencia de otros métodos de aprendizaje, el RL no se basa en datos previamente etiquetados, sino que utiliza un sistema de recompensas y penalizaciones para fomentar ciertos comportamientos.
 
 ### Definición y Conceptos Básicos
@@ -15,23 +16,24 @@ El RL se basa en la interacción entre un  **agente**  y su  **entorno**. El age
 
 
 # Componentes Fundamentales del RL
-### **1. Agente**
+
+### **Agente**
 
 El  **agente**  es el protagonista en el aprendizaje por refuerzo, equipado con sensores para percibir el estado del entorno y actuadores para realizar acciones. Su objetivo es aprender una política que le permita acumular la mayor cantidad de recompensas posibles a lo largo del tiempo. El agente puede ser simple, como un programa de software que juega al ajedrez, o complejo, como un robot autónomo que navega por terrenos desconocidos.
 
-### **2. Entorno**
+### **Entorno**
 
 El  **entorno**  representa todo lo que rodea al agente y con lo que este puede interactuar. Es dinámico y puede cambiar con cada acción que el agente realiza. En algunos casos, el entorno también incluye otros agentes con los que se puede competir o colaborar. Por ejemplo, en un juego de estrategia, el entorno incluiría no solo el tablero de juego sino también los movimientos de los oponentes.
 
-### **3. Estado**
+### **Estado**
 
 El  **estado**  es una instantánea del entorno en un momento dado. Cada estado contiene información que el agente utiliza para tomar decisiones. En entornos complejos, el estado puede ser una combinación de varias variables, como la posición de todos los jugadores en un campo de fútbol, junto con la posición del balón.
 
-### **4. Acciones**
+### **Acciones**
 
 Las  **acciones**  son las intervenciones que el agente puede realizar para influir en el entorno. Pueden ser discretas, como mover una pieza en un juego de mesa, o continuas, como ajustar la velocidad de un vehículo. La selección de acciones es crucial, ya que determina la trayectoria del agente hacia el éxito o el fracaso.
 
-### **5. Recompensas**
+### **Recompensas**
 
 Las  **recompensas**  son la retroalimentación que el agente recibe del entorno como resultado de sus acciones. Son fundamentales para el aprendizaje, ya que guían al agente hacia comportamientos beneficiosos. Las recompensas pueden ser inmediatas, como el puntaje obtenido después de una jugada en un juego, o diferidas, acumulándose a lo largo del tiempo para reflejar el éxito a largo plazo.
 
@@ -58,7 +60,6 @@ La  **función de recompensa**  asigna una recompensa (o penalización) a cada a
 
 
 # Algoritmos de Aprendizaje por Refuerzo
-
 
 ### Q-Learning
 
@@ -110,10 +111,7 @@ El DRL enfrenta varios desafíos, como la necesidad de grandes cantidades de dat
 
 El futuro del DRL es prometedor, con investigaciones en curso que buscan mejorar la eficiencia, la generalización y la transferencia de aprendizaje. El impacto potencial en la sociedad y la industria es significativo, con la posibilidad de transformar numerosos campos.
 
-
 > El DRL es un área de investigación activa y emocionante en IA, con el potencial de resolver problemas complejos y mejorar la toma de decisiones autónomas.
-
-
 
 
 # Aplicaciones Avanzadas del RL
@@ -173,10 +171,10 @@ La generalización implica la capacidad de aplicar conocimientos aprendidos a nu
 La toma de decisiones autónomas por parte de sistemas de IA plantea interrogantes éticos relacionados con la transparencia, la privacidad y la responsabilidad.  Es esencial que las aplicaciones de IA estén alineadas con valores humanos fundamentales para evitar la reproducción de prejuicios y la discriminación.
 
 
-
 # Futuro del Aprendizaje por Refuerzo
 
 El futuro del aprendizaje por refuerzo (RL) se presenta prometedor y está en constante evolución.  La investigación actual se centra en desarrollar algoritmos más avanzados y en expandir las aplicaciones del RL a áreas como la atención médica, la energía y la educación.  Los avances en la computación y el acceso a grandes volúmenes de datos están permitiendo un rápido progreso en esta área. Se espera que el RL continúe revolucionando el campo del aprendizaje automático, ofreciendo nuevas y emocionantes posibilidades de aplicación.
+
 
 # Conclusión
 
