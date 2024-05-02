@@ -8,7 +8,7 @@ El RL se basa en la interacción entre un  **agente**  y su  **entorno**. El age
 
 ![Esquema general del aprendizaje por refuerzo.](/main/images/imgReinforcementLearning/esquema.png)
 
-### Diferencias entre RL y Otros Tipos de Aprendizaje Automático
+###Diferencias entre RL y Otros Tipos de Aprendizaje Automático
 
 -   **Aprendizaje Supervisado**: Se basa en un conjunto de datos con entradas y salidas etiquetadas. El modelo aprende a predecir la salida a partir de la entrada.
     
@@ -20,7 +20,7 @@ El RL se basa en la interacción entre un  **agente**  y su  **entorno**. El age
 
 # Componentes Fundamentales del RL
 
-### **Agente**
+###Agente
 
 El  **agente**  es el protagonista en el aprendizaje por refuerzo, equipado con sensores para percibir el estado del entorno y actuadores para realizar acciones. Su objetivo es aprender una política que le permita acumular la mayor cantidad de recompensas posibles a lo largo del tiempo. El agente puede ser simple, como un programa de software que juega al ajedrez, o complejo, como un robot autónomo que navega por terrenos desconocidos.
 
