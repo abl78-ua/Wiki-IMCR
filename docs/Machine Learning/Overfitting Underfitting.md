@@ -33,7 +33,7 @@ Existen varias técnicas para detectar la presencia de overfitting y underfittin
 
   <figure markdown="span">
     <img src="../../images/overfitting/img1.webp">
-</figure>[5][6]
+</figure>[7]
 
 -   **Error en el conjunto de entrenamiento:** Un error bajo en el conjunto de entrenamiento no significa necesariamente un buen rendimiento. Si el error en el conjunto de validación o en el conjunto de prueba es significativamente mayor, es probable que haya overfitting.
 -   **Error alto en los datos de entrenamiento:** Si el error del modelo en los datos de entrenamiento es alto, es un indicio de que el modelo no está aprendiendo lo suficiente de los datos, por lo tanto es una señal de underfitting.
@@ -46,7 +46,34 @@ Existen varias técnicas para detectar la presencia de overfitting y underfittin
 Es importante destacar que, como ya hemos visto, no existe una única técnica para detectar y corregir el overffiting o el underfitting. El enfoque adecuado dependerá del conjunto de datos, el modelo y la tarea en cuestión. Por lo tanto, se puede resumir en que la deteccion de overfitting y underfitting requiere una combinación de técnicas de análisis de gráficos, métricas de rendimiento, validación y características. 
 
 ##Prevención del Overfitting y Underfittting
+Existen diversas estrategias para prevenir el overfitting y underfitting.
 
+**Selección de datos**
+-   **Recopilación de datos de alta calidad:** Asegúrarse de que los datos de entrenamiento sean precisos, consistentes y representativos del problema que se quiere resolver.
+-   **Aumento de datos:** Incrementar artificialmente el tamaño del conjunto de datos mediante técnicas como la rotación, el cambio de escala y la adición de ruido, lo que puede ayudar a reducir el overfitting.
+-   **Limpieza de datos**: Eliminar valores atípicos, errores y ruido en los datos, ya que estos pueden afectar negativamente al rendimiento del modelo.
+-   
+**Elección del modelo**
+-   **Selección de un modelo adecuado**: Elige un modelo con la complejidad adecuada para la tarea en cuestión. Un modelo demasiado complejo puede ser propenso al overfitting, mientras que uno demasiado simple puede sufrir underfitting.
+-   **Validación cruzada:** Utiliza la validación cruzada para evaluar diferentes modelos y seleccionar el que mejor se generaliza a datos no vistos.
+
+**Regularización**
+-  **Regularización L1 y L2:** Aplicar técnicas de regularización L1 o L2 para penalizar la complejidad del modelo y evitar el overfitting.
+-  **Dropout:** Implementa dropout en redes neuronales para deshabilitar aleatoriamente neuronas durante el entrenamiento, lo que obliga al modelo a aprender dependencias más robustas entre las características.
+-  **Early Stopping:** Detén el entrenamiento del modelo antes de que alcance un punto de sobreajuste. Esto se puede hacer monitorizando el error en un conjunto de validación y deteniendo el entrenamiento cuando el error comienza a aumentar.
+
+  **Optimización**
+  -   **Ajusto de hiperparámetros:** Ajustar cuidadosamente los hiperparámetros del modelo, como la tasa de aprendizaje y el número de capas ocultas en redes neuronales, para encontrar un equilibrio entre la complejidad del modelo y su capacidad de generalización.
+  -   **Selección dde la función de pérdida:** Elegir una función de pérdida adecuada para la tarea, como la entropía cruzada para problemas de clasificación o el error cuadrático medio para tareas de regresión.
+
+**Interpretación del modelo:**
+-   **Análisis de características:** Analizar la importancia de las diferentes características para el modelo. Esto puede ayudarte a identificar características irrelevantes o redundantes que podrían estar contribuyendo al overfitting.
+-   **Visualización del modelo:** Utilizar técnicas de visualización para comprender mejor cómo funciona el modelo y detectar posibles problemas como el overfitting.
+
+En resumen, la prevención del overfitting y underfitting requiere un enfoque que combine la selección cuidadosa de datos, la elección adecuada del modelo, técnicas de regularización, optimización cuidadosa y una interpretación profunda del modelo. No existe una solución única para todos, y la mejor estrategia dependerá del conjunto de datos específico, el modelo y la tarea en cuestión.
+
+
+  
 
 
 
@@ -69,6 +96,8 @@ Es importante destacar que, como ya hemos visto, no existe una única técnica p
 [5]https://www.aprendemachinelearning.com/que-es-overfitting-y-underfitting-y-como-solucionarlo/
 
 [6]https://link.springer.com/article/10.1007/s10270-008-0106-z
+
+[7]https://medium.com/@datascienceeurope/do-you-know-overfitting-and-underfitting-f27f87ac2f37 
 
 
 
