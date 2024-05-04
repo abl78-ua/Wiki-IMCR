@@ -25,7 +25,7 @@ Este tipo de problemas se puede solucionar intensificando el nivel de entrenamie
 [3]
 [4]
 
-##Detección del overfitting y underfitting
+##Detección del Overfitting y Underfitting
 Existen varias técnicas para detectar la presencia de overfitting y underfitting.
 -   **Curva de error de entrenamiento:** Muestra cómo el error del modelo disminuye a medida que se entrena con los datos de entrenamiento. Si la curva sigue disminuyendo incluso después de alcanzar un punto óptimo, es indicio de overfitting.
 -   **Curvas de aprendizaje planas:** Las curvas de aprendizaje que muestran un error constante o una disminución lenta sugieren que el modelo no está mejorando con el entrenamiento, por lo tanto es una señal de underfitting.
@@ -34,7 +34,19 @@ Existen varias técnicas para detectar la presencia de overfitting y underfittin
   <figure markdown="span">
     <img src="../../images/overfitting/img1.webp">
 </figure>[5][6]
-  
+
+-   **Error en el conjunto de entrenamiento:** Un error bajo en el conjunto de entrenamiento no significa necesariamente un buen rendimiento. Si el error en el conjunto de validación o en el conjunto de prueba es significativamente mayor, es probable que haya overfitting.
+-   **Error alto en los datos de entrenamiento:** Si el error del modelo en los datos de entrenamiento es alto, es un indicio de que el modelo no está aprendiendo lo suficiente de los datos, por lo tanto es una señal de underfitting.
+-   **Rendimiento similar en diferentes conjuntos de datos:** Si el modelo tiene un rendimiento similar en los conjuntos de entrenamiento, validación y prueba, es probable que esté sufriendo underfitting y no haya aprendido las características distintivas de cada conjunto.
+-   **Número de características:** Un modelo con demasiadas características puede ser propenso al overfitting. Se pueden utilizar técnicas de selección de características para reducir el número de características y mejorar la generalización.
+-   **Multicolinealidad:** Si hay alta correlación entre las características, puede haber problemas de multicolinealidad que conducen a un mal rendimiento del modelo.
+-   **Baja varianza:** Un modelo con baja varianza predice valores similares para todos los puntos de datos, lo que indica que no ha capturado las relaciones complejas en los datos.
+
+
+Es importante destacar que, como ya hemos visto, no existe una única técnica para detectar y corregir el overffiting o el underfitting. El enfoque adecuado dependerá del conjunto de datos, el modelo y la tarea en cuestión. Por lo tanto, se puede resumir en que la deteccion de overfitting y underfitting requiere una combinación de técnicas de análisis de gráficos, métricas de rendimiento, validación y características. 
+
+##Prevención del Overfitting y Underfittting
+
 
 
 
