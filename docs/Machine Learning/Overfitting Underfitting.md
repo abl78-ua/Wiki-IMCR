@@ -27,9 +27,9 @@ Este tipo de problemas se puede solucionar intensificando el nivel de entrenamie
 
 ##Detección del overfitting y underfitting
 Existen varias técnicas para detectar la presencia de overfitting y underfitting.
-- **Curva de error de entrenamiento:** Muestra cómo el error del modelo disminuye a medida que se entrena con los datos de entrenamiento. Si la curva sigue disminuyendo incluso después de alcanzar un punto óptimo, es indicio de overfitting.
-- **Curvas de aprendizaje planas:** Las curvas de aprendizaje que muestran un error constante o una disminución lenta sugieren que el modelo no está mejorando con el entrenamiento, por lo tanto es una señal de underfitting.
-- **Curva de error de validación:** Similar a la curva de error de entrenamiento, pero utilizando datos de validación. Si la curva de error de validación comienza a aumentar después de alcanzar un mínimo, mientras que la curva de error de entrenamiento sigue disminuyendo, es una señal de overfitting.
+-   **Curva de error de entrenamiento:** Muestra cómo el error del modelo disminuye a medida que se entrena con los datos de entrenamiento. Si la curva sigue disminuyendo incluso después de alcanzar un punto óptimo, es indicio de overfitting.
+-   **Curvas de aprendizaje planas:** Las curvas de aprendizaje que muestran un error constante o una disminución lenta sugieren que el modelo no está mejorando con el entrenamiento, por lo tanto es una señal de underfitting.
+-   **Curva de error de validación:** Similar a la curva de error de entrenamiento, pero utilizando datos de validación. Si la curva de error de validación comienza a aumentar después de alcanzar un mínimo, mientras que la curva de error de entrenamiento sigue disminuyendo, es una señal de overfitting.
 
   <figure markdown="span">
     <img src="../../images/overfitting/img1.webp">
