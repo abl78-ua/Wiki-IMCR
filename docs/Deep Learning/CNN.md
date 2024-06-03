@@ -11,6 +11,7 @@ La arquitectura de una CNN consta de una capa de entrada, una o varias capas ocu
 
 ##Tipos de capas
 En una CNN podemos encontrarnos con 5 tipos de capas:
+
 - **Capa de entrada (Input Layer)**: Esta capa recibe la imagen original y la pasa a través de la red. Puede incluir operaciones de preprocesamiento, como normalización de píxeles.
 
 - **Capas convolucionales (Convolutional Layers)**: Estas capas aplican filtros convolucionales a la imagen para extraer características locales. Cada filtro detecta patrones específicos, como bordes o texturas.
