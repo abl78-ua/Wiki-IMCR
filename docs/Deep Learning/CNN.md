@@ -9,6 +9,10 @@ Las redes neuronales convucionales constan de múltiples capas interconectadas, 
 ##Arquitectura
 La arquitectura de una CNN consta de una capa de entrada, una o varias capas ocultas y una capa de salida. Estas capas realizan operaciones como convolución, activación (ReLU) (la cual es una función no lineal que se aplica después de la convolución, manteniendo los valores positivos y estableciendo los valores negativos en cero permitiendo un entrenamiento más rápido y eficaz de la red) y agrupación para procesar los datos de entrada y extraer características relevantes, esto simplifica la salida de las capas convolucionales mediante la reducción no lineal de la tasa de muestreo disminuyendo el número de parámetros que la red debe aprender y ayuda a prevenir el sobreajuste.
 
+<figure markdown="span">
+    <img alt="CNN" src="../../images/CNN/CNN.png">
+</figure>
+
 ##Tipos de capas
 ###-   **Capa de entrada (Input Layer)**: Esta capa recibe la imagen original y la pasa a través de la red. Puede incluir operaciones de preprocesamiento, como normalización de píxeles.
 
@@ -31,3 +35,4 @@ https://wiki-imcr.vercel.app/Presentaciones/CNN
 https://www.ibm.com/es-es/topics/convolutional-neural-networks
 https://es.mathworks.com/discovery/convolutional-neural-network.html
 Arquitecturas de redes neuronales populares - Promptengineer
+Imagen CNN https://www.researchgate.net/figure/Figura-2-Arquitectura-CNN-implementada_fig2_359262472
