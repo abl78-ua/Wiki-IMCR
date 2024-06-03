@@ -9,6 +9,11 @@ Las redes neuronales convucionales constan de múltiples capas interconectadas, 
 ##Arquitectura
 La arquitectura de una CNN consta de una capa de entrada, una o varias capas ocultas y una capa de salida. Estas capas realizan operaciones como convolución, activación (ReLU) (la cual es una función no lineal que se aplica después de la convolución, manteniendo los valores positivos y estableciendo los valores negativos en cero permitiendo un entrenamiento más rápido y eficaz de la red) y agrupación para procesar los datos de entrada y extraer características relevantes, esto simplifica la salida de las capas convolucionales mediante la reducción no lineal de la tasa de muestreo disminuyendo el número de parámetros que la red debe aprender y ayuda a prevenir el sobreajuste.
 
+Como podemos ver en la siguiente imagen, logramos convertir una imagen de entrada en un array de 21 elementos ya que contamos con 21 clases.
+<figure markdown="span">
+    <img alt="CNN" src="../../images/CNN/CNN.png">
+</figure>
+
 ##Tipos de capas
 En una CNN normalmente nos encontramos con 5 tipos de capas:
 
@@ -21,10 +26,6 @@ En una CNN normalmente nos encontramos con 5 tipos de capas:
 - **Capas completamente conectadas (Fully Connected Layers)**: Estas capas procesan las características extraídas y las utilizan para realizar la clasificación final. La última capa completamente conectada produce las probabilidades de clase.
 
 - **Capa de salida (Output Layer)**: La capa de salida emite las probabilidades de cada clase (por ejemplo, “gato”, “perro”, “coche”, etc.).
-
-<figure markdown="span">
-    <img alt="CNN" src="../../images/CNN/CNN.png">
-</figure>
 
 ##Extracción de características
 En esta fase, las capas convolucionales y de reducción de muestreo se alternan para disminuir la dimensionalidad de los datos y detectar características complejas. Las neuronas convolucionales realizan operaciones sobre los datos de imagen utilizando núcleos de convolución para filtrar la imagen y resaltar ciertas características. Por otro lado, las neuronas de reducción de muestreo reducen la resolución de los datos, lo que permite una mayor tolerancia a perturbaciones en los datos de entrada.
