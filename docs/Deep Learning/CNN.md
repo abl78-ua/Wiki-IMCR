@@ -39,11 +39,12 @@ Desde el inicio de las CNNs, se han desarrollado varias arquitecturas de redes n
 - VGG (Visual Geometry Group)Net.Creada en el año 2014, propuso arquitecturas con profundidades variables (VGG16 y VGG19) y demostró que aumentar la profundidad mejora el rendimiento. Utiliza capas convolucionales con filtros 3x3 y agrupación máxima (max-pooling) 2x2.
 - Inception (GoogLeNet). Creada en el año 2014, propuso módulos de convolución “Inception” que combinan filtros de diferentes tamaños para extraer características a múltiples escalas. Utiliza convoluciones 1x1, 3x3, 5x5 y agrupación máxima en paralelo.
 - ResNet (Residual Network). Creada en el año 2015, introdujo bloques residuales que permiten entrenar redes extremadamente profundas (hasta 152 capas) sin problemas de degradación del rendimiento. Utiliza conexiones residuales que saltan una o más capas para evitar la degradación del gradiente.
-- Xception. Creada en el año 2015, introdujo el concepto de convoluciones separables en profundidad, que permiten entrenar redes extremadamente profundas sin problemas de degradación del rendimiento. Su logro radica en mejorar la eficiencia computacional y la capacidad de aprendizaje. Reemplaza los módulos Inception con convoluciones separables en profundidad.
-Las convoluciones separables en profundidad combinan dos tipos de convoluciones:
-Convoluciones en profundidad (depthwise convolutions): Aplican un filtro separado a cada canal de entrada.
-Convoluciones punto a punto (pointwise convolutions): Realizan una convolución 1x1 para combinar características.
-Esta combinación reduce significativamente el número de parámetros y mejora la eficiencia.
+- Xception. Creada en el año 2015, introdujo el concepto de convoluciones separables en profundidad, que permiten entrenar redes extremadamente profundas sin problemas de degradación del rendimiento. Su logro radica en mejorar la eficiencia computacional y la capacidad de aprendizaje.
+Reemplaza los módulos Inception con convoluciones separables en profundidad.
+    - Las convoluciones separables en profundidad combinan dos tipos de convoluciones:
+        - Convoluciones en profundidad (depthwise convolutions): Aplican un filtro separado a cada canal de entrada.
+        - Convoluciones punto a punto (pointwise convolutions): Realizan una convolución 1x1 para combinar características.
+    - Esta combinación reduce significativamente el número de parámetros y mejora la eficiencia.
 - EfficientNet. Creada en el año 2019, propuso una arquitectura escalable que optimiza el equilibrio entre profundidad, ancho y resolución de entrada. Utiliza coeficientes de escalado para ajustar automáticamente la profundidad, el ancho y la resolución.
 
 
