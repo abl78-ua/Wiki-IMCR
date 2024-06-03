@@ -11,15 +11,15 @@ La arquitectura de una CNN consta de una capa de entrada, una o varias capas ocu
 
 ##Tipos de capas
 En una CNN podemos encontrarnos con 5 tipos de capas:
-    - **Capa de entrada (Input Layer)**: Esta capa recibe la imagen original y la pasa a través de la red. Puede incluir operaciones de preprocesamiento, como normalización de píxeles.
+- **Capa de entrada (Input Layer)**: Esta capa recibe la imagen original y la pasa a través de la red. Puede incluir operaciones de preprocesamiento, como normalización de píxeles.
 
-    - **Capas convolucionales (Convolutional Layers)**: Estas capas aplican filtros convolucionales a la imagen para extraer características locales. Cada filtro detecta patrones específicos, como bordes o texturas.
+- **Capas convolucionales (Convolutional Layers)**: Estas capas aplican filtros convolucionales a la imagen para extraer características locales. Cada filtro detecta patrones específicos, como bordes o texturas.
 
-    - **Capas de agrupación (Pooling Layers)**: Después de las capas convolucionales, se aplican capas de agrupación para reducir la resolución espacial y extraer características más generales.
+- **Capas de agrupación (Pooling Layers)**: Después de las capas convolucionales, se aplican capas de agrupación para reducir la resolución espacial y extraer características más generales.
 
-    - **Capas completamente conectadas (Fully Connected Layers)**: Estas capas procesan las características extraídas y las utilizan para realizar la clasificación final. La última capa completamente conectada produce las probabilidades de clase.
+- **Capas completamente conectadas (Fully Connected Layers)**: Estas capas procesan las características extraídas y las utilizan para realizar la clasificación final. La última capa completamente conectada produce las probabilidades de clase.
 
-    - **Capa de salida (Output Layer)**: La capa de salida emite las probabilidades de cada clase (por ejemplo, “gato”, “perro”, “coche”, etc.).
+- **Capa de salida (Output Layer)**: La capa de salida emite las probabilidades de cada clase (por ejemplo, “gato”, “perro”, “coche”, etc.).
 
 <figure markdown="span">
     <img alt="CNN" src="../../images/CNN/CNN.png">
