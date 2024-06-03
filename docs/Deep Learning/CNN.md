@@ -9,7 +9,7 @@ Las redes neuronales convucionales constan de múltiples capas interconectadas, 
 ##Arquitectura
 La arquitectura de una CNN consta de una capa de entrada, una o varias capas ocultas y una capa de salida. Estas capas realizan operaciones como convolución, activación (ReLU) (la cual es una función no lineal que se aplica después de la convolución, manteniendo los valores positivos y estableciendo los valores negativos en cero permitiendo un entrenamiento más rápido y eficaz de la red) y agrupación para procesar los datos de entrada y extraer características relevantes, esto simplifica la salida de las capas convolucionales mediante la reducción no lineal de la tasa de muestreo disminuyendo el número de parámetros que la red debe aprender y ayuda a prevenir el sobreajuste.
 
-Como podemos ver en la siguiente imagen, logramos convertir una imagen de entrada en un array de 21 elementos ya que contamos con 21 clases.
+Como podemos ver en la siguiente imagen, logramos convertir una imagen de entrada en un array de 21 elementos ya que contamos con 21 clases. En cada elemento del array de salida tendremos un valor con decimales de 0 a 1 que dirá la probabilidad de que esa clase sea lo que hay en la imagen real, donde, si sumamos todos los valores del array sumará 1 en total. Si en un elemento del array (por ejemplo la clase perro) tenemos un 0.1 significará que las probabilidades de que tengamos un perro en la imagen es de un 10%.
 <figure markdown="span">
     <img alt="CNN" src="../../images/CNN/CNN.png">
 </figure>
