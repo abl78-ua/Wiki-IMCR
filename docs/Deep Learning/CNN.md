@@ -32,6 +32,21 @@ En esta fase, las capas convolucionales y de reducción de muestreo se alternan 
 ##Clasificación final
 Finalmente, las neuronas de clasificación realizan la clasificación final sobre las características extraídas, utilizando pesos y funciones de activación para calcular la salida de cada neurona. Este proceso de aprendizaje automático permite que la CNN aprenda a reconocer patrones y características en las imágenes de forma automatizada, sin necesidad de definir manualmente los filtros. En resumen, las CNNs son poderosas herramientas para tareas de visión por computadora, demostrando cómo el aprendizaje profundo puede automatizar tareas complejas en el procesamiento de imágenes.
 
+##Ejemplos de CNNs famosas
+Desde el inicio de las CNNs, se han desarrollado varias arquitecturas de redes neuronales convolucionales (CNN) que han demostrado un rendimiento excepcional en tareas de visión por computador.
+
+- AlexNet. Creada en el año 2012, fue la primera CNN en ganar el desafío ImageNet Large Scale Visual Recognition Competition (ILSVRC) con una precisión del 63.3% en la clasificación de imágenes. Utiliza una pila de tres capas convolucionales 3x3, que es similar a una sola capa convolucional 7x7 pero con más no linealidades.
+- VGG (Visual Geometry Group)Net.Creada en el año 2014, propuso arquitecturas con profundidades variables (VGG16 y VGG19) y demostró que aumentar la profundidad mejora el rendimiento. Utiliza capas convolucionales con filtros 3x3 y agrupación máxima (max-pooling) 2x2.
+- Inception (GoogLeNet). Creada en el año 2014, propuso módulos de convolución “Inception” que combinan filtros de diferentes tamaños para extraer características a múltiples escalas. Utiliza convoluciones 1x1, 3x3, 5x5 y agrupación máxima en paralelo.
+- ResNet (Residual Network). Creada en el año 2015, introdujo bloques residuales que permiten entrenar redes extremadamente profundas (hasta 152 capas) sin problemas de degradación del rendimiento. Utiliza conexiones residuales que saltan una o más capas para evitar la degradación del gradiente.
+- Xception. Creada en el año 2015, introdujo el concepto de convoluciones separables en profundidad, que permiten entrenar redes extremadamente profundas sin problemas de degradación del rendimiento. Su logro radica en mejorar la eficiencia computacional y la capacidad de aprendizaje. Reemplaza los módulos Inception con convoluciones separables en profundidad.
+Las convoluciones separables en profundidad combinan dos tipos de convoluciones:
+Convoluciones en profundidad (depthwise convolutions): Aplican un filtro separado a cada canal de entrada.
+Convoluciones punto a punto (pointwise convolutions): Realizan una convolución 1x1 para combinar características.
+Esta combinación reduce significativamente el número de parámetros y mejora la eficiencia.
+- EfficientNet. Creada en el año 2019, propuso una arquitectura escalable que optimiza el equilibrio entre profundidad, ancho y resolución de entrada. Utiliza coeficientes de escalado para ajustar automáticamente la profundidad, el ancho y la resolución.
+
+
 ##Referencias
 
 https://es.wikipedia.org/wiki/Red_neuronal_convolucional
@@ -45,3 +60,5 @@ https://es.mathworks.com/discovery/convolutional-neural-network.html
 Arquitecturas de redes neuronales populares - Promptengineer
 
 Imagen CNN https://www.researchgate.net/figure/Figura-2-Arquitectura-CNN-implementada_fig2_359262472
+
+https://theaisummer.com/cnn-architectures/
