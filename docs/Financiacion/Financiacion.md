@@ -2,7 +2,7 @@
 
 Por _Raúl Chinchilla Albertus_
 
-<img src="../../images/Financiacion/bombilla.jpeg" alt="AirTag" style="width:10%; vertical-align:middle;">
+<img src="../../images/Financiacion/bombilla.jpeg" alt="AirTag" style="width:300px; vertical-align:middle;">
 
 
 ## 1. Introducción
@@ -21,7 +21,7 @@ A esto se suma la importancia de contar con una identidad visual cuidada, una pr
 
 Aunque a veces pueda parecer un detalle menor, confiar en uno mismo, mantenerse firme frente a las críticas negativas y no rendirse ante las dificultades son actitudes que marcan la diferencia. Quienes han logrado sacar adelante sus proyectos coinciden en que la perseverancia y la seguridad en sus ideas han sido claves en su camino. No se trata de ignorar los obstáculos, sino de aprender a enfrentarlos con determinación y seguir avanzando incluso cuando las cosas se ponen cuesta arriba.
 
-<img src="../../images/Financiacion/financiaciones.webp" alt="AirTag" style="width:10%; vertical-align:middle;">
+<img src="../../images/Financiacion/financiaciones.webp" alt="AirTag" style="width:300px; vertical-align:middle;">
 
 
 ## 3. Financiación en emprendimiento
