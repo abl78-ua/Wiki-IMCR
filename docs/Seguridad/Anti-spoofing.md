@@ -25,7 +25,9 @@ Para entrenar estos sistemas se usan datasets especializados, que recopilan imá
 
 Aquí os dejo algunos ejemplos y una tabla donde se comparan por número de sujetos, año de lanzamiento, si son de vídeos (V) o imágenes (I), y el tipo de anotaciones que incluyen:
 
-<img src="../../images/seguridad/infoDatasets.png" alt="Información Datasets" style="width:400px; vertical-align:middle;">
+<p style="text-align:center;">
+  <img src="../../images/seguridad/infoDatasets.png" alt="Información Datasets" style="max-width:100%; height:auto;">
+</p>
 
 A día de hoy, uno de los mejores y más recientes es el **CelebA-Spoof**, ya que incluye distintos tipos de ataques y un montón de anotaciones útiles para entrenar modelos más precisos.
 ## Usos y Aplicación
@@ -43,8 +45,9 @@ En cualquier lugar donde se use una cámara para validar la identidad de una per
 
 Para implementar un sistema de detección anti-spoofing se suelen usar redes convolucionales (CNN) y frameworks como PyTorch o TensorFlow. En el proyecto de [hairymax/Face-AntiSpoofing](https://github.com/hairymax/Face-AntiSpoofing) por ejemplo, se utiliza un modelo basado en RGB para detectar intentos de spoofing. Aquí os dejo una muestra de resultados de detección:
 
-
-<img src="../../images/seguridad/anotaciones.png" alt="anotaciones" style="width:400px; vertical-align:middle;">
+<p style="text-align:center;">
+  <img src="../../images/seguridad/anotaciones.png" alt="Anotaciones" style="max-width:100%; height:auto;">
+</p>
 
 También se pueden ver ejemplos y notebooks prácticos en esta [demo interactiva](https://nbviewer.org/gist/hairymax/021a8cd550a3c0fa14c8e6ae815265c9).
 
