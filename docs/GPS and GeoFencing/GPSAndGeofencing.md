@@ -33,10 +33,10 @@ No solamente existe el GPS, distintas regiones también han desarrollado variant
 - [`Beidou`]: Creado por China
 
 
-<img src="../images/GPSAndGeofencing/NAVSTAR_logo.png" alt="GPS Satellite" style="width:15%;height:auto;">
-<img src="../images/GPSAndGeofencing/Glonass_logo.png" alt="GPS Satellite" style="width:15%;height:auto;">
-<img src="../images/GPSAndGeofencing/Galileo_logo.png" alt="GPS Satellite" style="width:15%;height:auto;">
-<img src="../images/GPSAndGeofencing/Beidou_logo.png" alt="GPS Satellite" style="width:15%;height:auto;">
+<img src="../../images/GPSAndGeofencing/NAVSTAR_logo.png" alt="GPS Satellite" style="width:15%;height:auto;">
+<img src="../../images/GPSAndGeofencing/Glonass_logo.png" alt="GPS Satellite" style="width:15%;height:auto;">
+<img src="../../images/GPSAndGeofencing/Galileo_logo.png" alt="GPS Satellite" style="width:15%;height:auto;">
+<img src="../../images/GPSAndGeofencing/Beidou_logo.png" alt="GPS Satellite" style="width:15%;height:auto;">
 
 
 ## 4 Funcionamiento del GPS
@@ -47,15 +47,15 @@ El sistema GPS se compone de tres partes, que veremos a continuación
 Son los encargados de recibir las conexiones de los receptores. Se organizan en grupos llamados constelaciones y se encargan de emitir señales de radio que los receptores usan para determinar su ubicación.
 
 
-<img src="../images/GPSAndGeofencing/Navstar_gps.jpg" alt="GPS Satellite" style="width:15%;height:auto;">
+<img src="../../images/GPSAndGeofencing/Navstar_gps.jpg" alt="GPS Satellite" style="width:15%;height:auto;">
 
 
 ### 4.2 Estaciones Terrestres
 Son los puntos de monitorización de los satélites. Localizan de manera precisa la ubicación de los satélites usando radar, y predicen la posición en las horas próximas, haciendo correcciones en caso de ser necesario.
 
 
-<img src="../images/GPSAndGeofencing/GPS_monitor_station.jpg" alt="GPS Satellite" style="width:25%;height:auto;">
-<img src="../images/GPSAndGeofencing/gps_monitor.jpg" alt="GPS Satellite" style="width:25%;height:auto;">
+<img src="../../images/GPSAndGeofencing/GPS_monitor_station.jpg" alt="GPS Satellite" style="width:25%;height:auto;">
+<img src="../../images/GPSAndGeofencing/gps_monitor.jpg" alt="GPS Satellite" style="width:25%;height:auto;">
 
 
 ### 4.3 Receptores
@@ -67,14 +67,14 @@ Son los encargados de procesar las señales GPS y determinar su propia ubicació
 - Receptores civiles: la precisión oscila entre 3 y 5 metros.
 
 
-<img src="../images/GPSAndGeofencing/Station_GPS_receiver.jpg" alt="GPS Satellite" style="width:15%;height:auto;">
+<img src="../../images/GPSAndGeofencing/Station_GPS_receiver.jpg" alt="GPS Satellite" style="width:15%;height:auto;">
 
 
 ### 4.4 [`Trilateración`]
 La localización por GPS se lleva a cabo a partir de **trilateración**. La trilateración es un método matemático que permite la localización de objetos en un plano bidimensional utilizando normalmente 3 puntos de referencia, mediante teoría de ángulos.
 
 
-<img src="../images/GPSAndGeofencing/Trilateration.png" alt="GPS Satellite" style="width:25%;height:auto;">
+<img src="../../images/GPSAndGeofencing/Trilateration.png" alt="GPS Satellite" style="width:25%;height:auto;">
 
 
 ### 4.5 [`GPS diferencial`]
@@ -91,7 +91,7 @@ Consiste en utilizar estaciones de referencia en localizaciones conocidas para c
 Para ello, la estación hace uso del GPS para localizarse a sí misma y aplica correcciones a la posición recibida, para que coincida con la posición real. Los valores de corrección aplicados por la estación son usados por los receptores GPS para obtener una ubicación más precisa.
 
 
-<img src="../images/GPSAndGeofencing/dgps_station.jpg" alt="GPS Satellite" style="width:20%;height:auto;">
+<img src="../../images/GPSAndGeofencing/dgps_station.jpg" alt="GPS Satellite" style="width:20%;height:auto;">
 
 
 ## 5 GeoFencing
@@ -107,7 +107,7 @@ Existen tres tipos de geofencing:
 ## 6 Uso en dispositivos móviles
 Vamos a ver como implementar geofencing en flutter:
 <br>
-<img src = "../images/GPSAndGeofencing/flutter.png" style="width=50%;height=auto">
+<img src = "../../images/GPSAndGeofencing/flutter.png" style="width=50%;height=auto">
 
 
 , para añadiremos el paquete [`geofence_foreground_service`] al archivo pubspec.yaml(archivo de dependencias de dart):
