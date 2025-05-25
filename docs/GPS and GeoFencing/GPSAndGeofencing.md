@@ -10,13 +10,13 @@ El GPS o Sistema de Posicionamiento Global es el sistema que se utiliza a día d
 Antes del GPS existieron diferentes sistemas de localización:
 
 
-- **Sistema de navegación terrestre [`Omega`] (1960)**: Fue el primer sistema de navegación mundial basado en pares de estaciones terrestres.
+- **Sistema de navegación terrestre Omega (1960)**: Fue el primer sistema de navegación mundial basado en pares de estaciones terrestres.
 
 
-- **Sistema [`TRANSIT`] (1964 - 1967)**: Puesta en uso de la tecnología del sistema Omega por la armada estadounidense. Primer sistema basado en una constelación de 6 satélites en órbita baja.
+- **Sistema TRANSIT (1964 - 1967)**: Puesta en uso de la tecnología del sistema Omega por la armada estadounidense. Primer sistema basado en una constelación de 6 satélites en órbita baja.
 
 
-En 1967, se desarrolló el satélite [`Timation`], que demostró que era posible colocar relojes precisos en el espacio, y que haría posible el desarrollo del GPS.
+En 1967, se desarrolló el satélite Timation, que demostró que era posible colocar relojes precisos en el espacio, y que haría posible el desarrollo del GPS.
 
 
 El desarrollo del GPS como lo conocemos en la actualidad comienza en 1973, con esfuerzos conjuntos de la armada y la fuerza aérea de EEUU, con la creación de un programa llamado "Navigation Technology Program", que más tarde sería renombrado a NAVSTAR GPS, dando lugar al GPS que conocemos en la actualidad.
@@ -27,10 +27,10 @@ No sería hasta 1993 que la constelación actual estaría completa, y hasta 1995
 No solamente existe el GPS, distintas regiones también han desarrollado variantes. Estas son todas las variantes de GPS actualmente en uso y sus creadores:
 
 
-- [`GPS`]: Creado por Estados Unidos
-- [`GLONASS`]: Creado por la Unión Soviética
-- [`Galileo`]: Creado por la Unión Europea
-- [`Beidou`]: Creado por China
+- GPS: Creado por Estados Unidos
+- GLONASS: Creado por la Unión Soviética
+- Galileo: Creado por la Unión Europea
+- Beidou: Creado por China
 
 
 <img src="../../images/GPSAndGeofencing/NAVSTAR_logo.png" alt="GPS Satellite" style="width:15%;height:auto;">
@@ -70,14 +70,14 @@ Son los encargados de procesar las señales GPS y determinar su propia ubicació
 <img src="../../images/GPSAndGeofencing/Station_GPS_receiver.jpg" alt="GPS Satellite" style="width:15%;height:auto;">
 
 
-### 4.4 [`Trilateración`]
+### 4.4 Trilateración
 La localización por GPS se lleva a cabo a partir de **trilateración**. La trilateración es un método matemático que permite la localización de objetos en un plano bidimensional utilizando normalmente 3 puntos de referencia, mediante teoría de ángulos.
 
 
 <img src="../../images/GPSAndGeofencing/Trilateration.png" alt="GPS Satellite" style="width:25%;height:auto;">
 
 
-### 4.5 [`GPS diferencial`]
+### 4.5 GPS diferencial
 A pesar de que la trilateración solamente requiere de 3 satélites, el GPS realmente requiere 4, ya que no nos encontramos en un plano bidimensional, y se debe conocer la profundidad para determinar la posición correctamente.
 
 
@@ -110,14 +110,14 @@ Vamos a ver como implementar geofencing en flutter:
 <img src = "../../images/GPSAndGeofencing/flutter.png" style="width=50%;height=auto">
 
 
-, para añadiremos el paquete [`geofence_foreground_service`] al archivo pubspec.yaml(archivo de dependencias de dart):
+, para añadiremos el paquete geofence_foreground_service al archivo pubspec.yaml(archivo de dependencias de dart):
 ```yaml
 dependencies:
  geofence_foreground_service: ^1.1.5
 ```
 
 
-**IMPORTANTE: geofence_foreground_service requiere de habilitar MultiDex, que puede ser hecho [`aqui`](https://docs.flutter.dev/deployment/android#enable-multidex-support)**
+**IMPORTANTE: geofence_foreground_service requiere de habilitar MultiDex, que puede ser hecho [aqui](https://docs.flutter.dev/deployment/android#enable-multidex-support)**
 
 
 
@@ -289,28 +289,14 @@ class _MyAppState extends State<MyApp> {
 ## Referencias
 
 
-- Sistema de navegación terrestre [`Omega`] – Blog Aviónica Joglar  
-- Sistema [`TRANSIT`] – Wikipedia  
-- Satélite [`Timation`] – Wikipedia  
-- [`GPS`] – Wikipedia  
-- [`GLONASS`] – Wikipedia  
-- [`Galileo`] – Wikipedia  
-- [`Beidou`] – Wikipedia  
-- [`Trilateración`] – Wikipedia  
-- [`GPS diferencial`] – Wikipedia  
-- Paquete [`geofence_foreground_service`] – pub.dev
-
-
-[`Omega`]: https://avionicajoglar.blogspot.com/2017/10/el-sistema-de-navegacion-omega.html
-[`TRANSIT`]: https://es.wikipedia.org/wiki/Transit_(sat%C3%A9lite)
-[`Timation`]: https://es.wikipedia.org/wiki/Timation
-[`GPS`]: https://es.wikipedia.org/wiki/GPS
-[`GLONASS`]: https://es.wikipedia.org/wiki/GLONASS
-[`Galileo`]: https://es.wikipedia.org/wiki/Galileo_(navegaci%C3%B3n_por_sat%C3%A9lite)
-[`Beidou`]: https://es.wikipedia.org/wiki/Beidou
-[`Trilateración`]: https://es.wikipedia.org/wiki/Trilateraci%C3%B3n
-[`GPS diferencial`]: https://es.wikipedia.org/wiki/GPS_diferencial
-[`geofence_foreground_service`]: https://pub.dev/packages/geofence_foreground_service
-
-
+- Sistema de navegación terrestre [Omega](https://avionicajoglar.blogspot.com/2017/10/el-sistema-de-navegacion-omega.html) – Blog Aviónica Joglar  
+- Sistema [TRANSIT](https://es.wikipedia.org/wiki/Transit_(sat%C3%A9lite)) – Wikipedia  
+- Satélite [Timation](https://es.wikipedia.org/wiki/Timation) – Wikipedia  
+- [GPS](https://es.wikipedia.org/wiki/GPS) – Wikipedia  
+- [GLONASS](https://es.wikipedia.org/wiki/GLONASS) – Wikipedia  
+- [Galileo](https://es.wikipedia.org/wiki/Galileo_(navegaci%C3%B3n_por_sat%C3%A9lite)) – Wikipedia  
+- [Beidou](https://es.wikipedia.org/wiki/Beidou) – Wikipedia  
+- [Trilateración](https://es.wikipedia.org/wiki/Trilateraci%C3%B3n) – Wikipedia  
+- [GPS diferencial](https://es.wikipedia.org/wiki/GPS_diferencial) – Wikipedia  
+- Paquete [geofence_foreground_service](https://pub.dev/packages/geofence_foreground_service) – pub.dev
 
