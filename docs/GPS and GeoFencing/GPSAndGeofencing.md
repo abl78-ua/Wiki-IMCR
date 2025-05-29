@@ -143,7 +143,8 @@ Ahora añadimos permisos de ubicación:
 ```
 
 
-Y ya podemos comenzar. Comenzamos definiendo el callback que se llamará cuando se de un evento en el área del geofencing (entrada, salida, ...) en el archivo `main.dart`:
+Y ya podemos comenzar. Es importante anotar que el siguiente código forma parte del código de ejemplo de la propia librería.
+Comenzamos definiendo el callback que se llamará cuando se de un evento en el área del geofencing (entrada, salida, ...) en el archivo `main.dart`:
 ```dart
 import 'package:geofence_foreground_service/exports.dart';
 import 'package:geofence_foreground_service/geofence_foreground_service.dart';
