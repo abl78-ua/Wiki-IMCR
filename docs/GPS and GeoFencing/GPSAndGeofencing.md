@@ -110,7 +110,7 @@ Vamos a ver como implementar geofencing en flutter:
 <img src = "../../images/GPSAndGeofencing/flutter.png" style="width=50%;height=auto">
 
 
-, para añadiremos el paquete geofence_foreground_service al archivo pubspec.yaml(archivo de dependencias de dart):
+Para poder implementar geofencing añadiremos el paquete geofence_foreground_service al archivo pubspec.yaml(archivo de dependencias de dart):
 ```yaml
 dependencies:
  geofence_foreground_service: ^1.1.5
