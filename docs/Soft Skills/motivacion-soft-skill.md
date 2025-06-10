@@ -59,8 +59,8 @@ Las formas de refuerzo positivo principales son las siguientes:
 
 Aquí es relevante hablar sobre el concepto de locus de control. Pongamos un ejemplo: imagina que has aprobado un examen difícil, y se te presentan dos formas de explicarlo:
 
-\1) "He aprobado porque me lo he currado de verdad. He asistido a todas las clases y he estudiado con varios días de antelación."
-\2) "He aprobado porque tuve suerte. Han salido las preguntas que estudié."
+1: "He aprobado porque me lo he currado de verdad. He asistido a todas las clases y he estudiado con varios días de antelación."
+2: "He aprobado porque tuve suerte. Han salido las preguntas que estudié."
 
 Las circunstancias han sido exactamente las mismas en ambos casos: has asistido a todas o a la mayoría de clases, has estudiado durante varios días y es cierto que han salido las preguntas que mejor te sabías. Sin embargo, son dos interpretaciones muy diferentes. Puedes ser una persona que perciba los resultados obtenidos como efecto de sus propias acciones (locus de control interno), o una persona que perciba que los resultados obtenidos ocurren por factores externos como la suerte (locus de control externo), o un punto intermedio entre ambos extremos.
 
