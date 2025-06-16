@@ -130,7 +130,7 @@ A pesar de su potencial, diseñar y mantener un sistema IoT plantea desafíos co
 
 - **Seguridad y privacidad:** Cada dispositivo conectado puede ser un punto de entrada para ataques cibernéticos.
     
-- **Costes y escalabilidad:** Aunque se puedan desplegar prototipos con poco presupuesto, escalar a cientos o miles de dispositivos implica inversiones en infraestructura y mantenimiento. También se podría desarrollar una placa impresa personalizada para facilitar la conexión.
+- **Costes y escalabilidad:** Aunque se puedan desplegar prototipos con poco presupuesto, escalar a cientos o miles de dispositivos implica inversiones en infraestructura y mantenimiento. También se podría desarrollar una placa impresa personalizada para agilizar la conexión de componentes y la personalización del sistema.
     
 - **Mantenimiento en ambientes hostiles:** En exteriores o fábricas, los dispositivos deben resistir polvo, humedad y variaciones de temperatura.
     
