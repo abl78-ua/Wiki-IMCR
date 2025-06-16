@@ -1,3 +1,7 @@
+# Desarrollo de sistema IoT
+
+Por _Juan Olivo Mallol_
+
 En la actualidad, el Internet de las Cosas (IoT) se ha convertido en una de las tecnologías más utilizadas. 
 A continuación voy a explicar como debemos llevar a cabo el diseño de un sistema IoT, teniendo en cuenta todos sus aspectos, para hacer la mejor elección posible de cada uno de sus componentes de hardware, software y de arquitectura. 
 
