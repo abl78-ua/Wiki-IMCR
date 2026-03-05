@@ -18,14 +18,14 @@ theme:
   palette:
     - scheme: default
       toggle:
-        icon: material/toggle-switch-off-outline
+        icon: material/brightness-7
         name: Switch to dark mode
       primary: teal
       accent: purple
 
     - scheme: slate
       toggle:
-        icon: material/toggle-switch
+        icon: material/moon-waning-crescent
         name: switch to light mode
       primary: teal
       accent: lime
