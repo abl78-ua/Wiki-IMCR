@@ -17,36 +17,37 @@ theme:
 
   palette:
     - scheme: default
+      primary: teal
+      accent: purple
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-      primary: teal
-      accent: purple
+        
 
     - scheme: slate
+      primary: teal
+      accent: lime
       toggle:
         icon: material/brightness-4
         name: switch to light mode
-      primary: teal
-      accent: lime
+        
 
-  markdown_extensions:
-    - pymdownx.highlight:
-        anchor_linenums: true
-    - pymdownx.inlinehilite
-    - pymdownx.snippets
-    - admonition
-    - pymdownx.arithmatex:
-        generic: true
-    - footnotes
-    - pymdownx.details
-    - pymdownx.superfences
-    - pymdownx.mark
-    - attr_list
-    - md_in_html
-    - pymdownx.emoji:
-        emoji_index: !!python/name:materialx.emoji.twemoji
-        emoji_generator: !!python/name:materialx.emoji.to_svg
-
-  copyright:
-    &copy: 2024 <a href="https://github.com/MarceloSaval" target="_blank" rel="noopener">Marcelo Saval</a>
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+    
+copyright: &copy 2026 <a href="https://github.com/MarceloSaval" target="_blank" rel="noopener">Marcelo Saval</a>
