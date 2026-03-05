@@ -12,8 +12,9 @@ theme:
     - content.tabs.lin
     - content.code.annotation
     - content.code.copy
-
-  language: en
+    - content.footnote.tooltips
+    
+  language: es
 
   palette:
     - scheme: default
@@ -49,5 +50,9 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
-    
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+        
 copyright: &copy 2026 <a href="https://github.com/MarceloSaval" target="_blank" rel="noopener">Marcelo Saval</a>
