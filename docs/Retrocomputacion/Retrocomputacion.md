@@ -4,151 +4,27 @@ title: Game Boy Advance
 
 # Retrocomputación en Game Boy Advance
 
-GBA
+!!! note "Enfoque de la redacción"
+	Este artículo se centra en el análisis técnico y hace uso de herramientas con fines educativos. No para infringir la propiedad intelectual ni la distribución de *software* no permitda.
 
-$$
-\cos x=\sum_{k=0}^{\infty}\frac{(-1)^k}{(2k)!}x^{2k}\quad\forall i \notin A
-$$
+La GBA es una consola portátil fabricada, vendida por Nintendo y lanzada en 2001 durante la sexta generación de videoconsolas. Respecto a su antecesora, fue un cambio muy notorio al introducir paleta de colores, mayor resolución, nuevas entradas (botones L y R) y registros de 32 bits (en GB son 8 bits). Todos los títulos de GB son compatibles en GBA y se distribuían en formato de cartucho físico. [^ref:GBAwiki]
 
-=== "C"
+[^ref:GBAwiki]: Artículo de Wikipedia, [Game Boy Advance](https://en.wikipedia.org/wiki/Game_Boy_Advance) (5/3/2026)
 
-    ``` c
-    #include <stdio.h>
+[^ref:RetromanDirectoGBYT]: Emisión grabada de Francisco Gallego en Youtube, [Programando videojuegos en ensamblador para Game Boy. Introducción a GBTelera](https://www.youtube.com/watch?v=q552n1F3j9s) (5/3/2026)
 
-    int main(void) {
-      printf("Hello world!\n");
-      return 0;
-    }
-    ```
+[^ref:CopettiGBA]: Artículo traducido de Rodrigo Copetti en su blog, [Arquitectura Game Boy Advance](https://www.copetti.org/es/writings/consoles/game-boy-advance/) (5/3/2026)
 
-=== "C++"
+[^ref:CopettiNDS]: Artículo de Rodrigo Copetti en su blog, [*Nintendo DS Architecture*](https://www.copetti.org/writings/consoles/nintendo-ds/) (5/3/2026)
 
-    ``` c++
-    #include <iostream>
+[^ref:ARM7]: Documentación de ARM, [*ARM7TDMI (Rev 3) Core Processor (Product Overview)*](https://documentation-service.arm.com/static/5eb15edd9931941038e01527) (5/3/2026)
 
-    int main(void) {
-      std::cout << "Hello world!" << std::endl;
-      return 0;
-    }
-    ```
+[^ref:DevkitProGBA]: Enciclopedia en línea para tutoriales por el equipo de devkitpro (*Getting started*)[https://devkitpro.org/wiki/Getting_Started]
 
-!!! info "Info"
-	Info
+[^ref:GBStudio]: Portal de bienvenida, [Quit](https://www.gbstudio.dev/) 
 
-!!! error "Error"
-	Hola
-	
-!!! bug "Bug"
-	Hola
+*[GBA]: consola Game Boy Advance
 
-!!! warn "Bug"
-	Hola
+*[GB]: consola Game Boy
 
-??? info "¿Sabías que... ?"
-	Hola
-
-???+ info "Hola"
-	Hola
-
-!!! note "Nota"
-	Hola
-	
-!!! abstract "Resumen"
-	Hola
-
-!!! tip "Consejo"
-	Hola
-	
-!!! success "Todo bien"
-	Hola
-	
-!!! question "???"
-	Hola
-	
-!!! failure "Fallo"
-	Hola
-
-!!! danger "Peligro"
-	Hola
-
-!!! example "Ejemplo"
-	Hola
-
-!!! quote "Cita"
-	Hola
-
-Hola[^ref:GBAwiki]
-
-``` c++
-// Complete example of valid c++23 """code"""
-
-#include <cassert>
-#include <cstddef>
-#include <cstdint>
-#include <new>
-#include <print>
-#include <string>
-
-static int x<:10:>;
-const static long long y{ 0xFFF };
-
-struct B
-<%
-private:
-  struct Voldemort
-  {
-    int a, b;
-  };
-
-public:
-  constexpr Voldemort
-  getIce ()
-  {
-    return Voldemort{ .a = 130, .b = 69 };
-  };
-  int
-  setValue (const bool &)
-  {
-    return 130;
-  };
-  int
-  setValue (const std::string &) noexcept
-  {
-    return 69;
-  };
-  int
-  operator& () const
-  {
-    return 69;
-  };
-%>;
-
-int
-main (int argc, char **argv)
-<%
-  B pt;
-  std::print (
-      "A normal way for writing in modernest' c++ standard, {} == {}\n",
-      (pt.*static_cast<int (B::*) (const bool &)> (&B::setValue)) (+"hello"),
-      pt.setValue ("CHAO"));
-
-  auto a = pt.getIce ();
-  try
-    {
-      if (a.a
-          == static_cast<int> (reinterpret_cast<std::intptr_t> (
-              std::launder (reinterpret_cast<int (*)<:10:>> (&0 <:x:>)))))
-        throw &pt;
-    }
-  catch (...)
-    {
-    };
-
-  return (pt, +<::> <% return a.b; %>());
-%>
-
-```
-
-
-[^ref:GBAwiki]: Wikipedia, [Game Boy Advance](https://en.wikipedia.org/wiki/Game_Boy_Advance) (Consultado el 5/3/2026)
-*[GBA]: Game Boy Advance
+*[NDS]: consola Nintendo DS
