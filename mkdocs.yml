@@ -59,3 +59,6 @@ extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
         
 copyright: &copy 2026 <a href="https://github.com/MarceloSaval" target="_blank" rel="noopener">Marcelo Saval</a>
+
+watch:
+  - docs
