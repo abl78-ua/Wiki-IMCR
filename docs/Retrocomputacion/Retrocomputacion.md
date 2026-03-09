@@ -7,6 +7,8 @@ title: Game Boy Advance
 !!! note "Enfoque de la redacción"
 	Este artículo se centra en el análisis técnico y hace uso de herramientas con fines educativos. No para infringir la propiedad intelectual ni la distribución de *software* no permitda.
 
+![Primera revisión del modelo de GBA.](../images/Retrocomputacion/Nintendo-Game-Boy-Advance-Purple-FL_wiki.jpg)
+
 La GBA es una consola portátil fabricada, vendida por Nintendo y lanzada en 2001 durante la sexta generación de videoconsolas. Respecto a su antecesora, fue un cambio muy notorio al introducir paleta de colores, mayor resolución, nuevas entradas (botones L y R) y registros de 32 bits (en GB son 8 bits). Todos los títulos de GB son compatibles en GBA y se distribuían en formato de cartucho físico. [^ref:GBAwiki]
 
 ## Arquitectura *hardware*
@@ -21,7 +23,17 @@ El diagrama proporcionado ilustra la arquitectura interna de GBA [^ref:CopettiND
 
 La razón por la que motiva la inclusión del primer procesador no es otra que la retrocompatibilidad [^ref:CopettiGBA]. Patrón que repetiría en futuras generaciones de consolas por parte de la empresa japonesa tales como NDS [^ref:CopettiNDS] o 3DS [^ref:GVG3DS]. Aunque para el caso de esta última videoconsola el fabricante oculta información sobre ello [^ref:NNoGBAn3DS].
 
-En la GBA o bien un procesador está activo u otro pero no a la vez según el cartucho cargado [^ref:CopettiGBA]. Al contrario que en futuras consolas, donde existe una interaoperabilidad activa entre dos procesadores de distinta generación dentro del dispotivo como por ejemplo en la NDS [^ref:CopettiNDS].
+En la GBA solo un procesador está activo pero no a la vez según el cartucho cargado [^ref:CopettiGBA]. Al contrario que en futuras consolas, donde existe una interaoperabilidad activa entre dos procesadores de distinta generación dentro del dispotivo como por ejemplo en la NDS (ARM9 y ARM7) [^ref:CopettiNDS].
+
+### Características de ARM7TDMI
+
+La irrupción que supuso ARM en su época sigue estando todavía más en la actualidad. Con presencia en ordenadores, móviles, videoconsolas y otros dispositivos [^ref:ARMisEVERYWHERE]. Concretamente, el procesador ARM de GBA se rige por una filosofía **RISC** [^ref:ARM7]:
+
+- Instrucciones de tamaño fijo. Más registros.
+
+- Ejecución condicional. Esto es que toda instrucción reserva información de si debe ejecuarse o no además de evitar riesgos de control.
+
+- Multiplicación de 32 y 64 bits.
 
 ## Programación y *software* a bajo nivel
 
@@ -37,7 +49,11 @@ En la GBA o bien un procesador está activo u otro pero no a la vez según el ca
 
 *[CPU]: Microprocesador, procesador, unidad central de procesamiento.
 
-*[NDS]: consola Nintendo DS
+*[NDS]: consola Nintendo DS, sucesora de GBA
+
+*[3DS]: consola Nintendo 3DS, sucesora de NDS
+
+*[RISC]: Computador de Conjunto Reducido de Instrucciones (Reduced Instruction Set Computer).
 
 [^ref:GBAwiki]: Artículo de Wikipedia sobre GBA, [Game Boy Advance](https://en.wikipedia.org/wiki/Game_Boy_Advance) (5/3/2026)
 
@@ -49,7 +65,9 @@ En la GBA o bien un procesador está activo u otro pero no a la vez según el ca
 
 [^ref:CopettiNDS]: Artículo de Rodrigo Copetti en su blog, [*Nintendo DS Architecture*](https://www.copetti.org/writings/consoles/nintendo-ds/) (5/3/2026)
 
-[^ref:GVG3DS]: Vídeo de John Cartwright en YouTube, [*3DS Can Play Game Boy Advance Games Without Emulation*](https://www.youtube.com/watch?v=_A4gHxhUcGs) (9/2/2026)
+[^ref:GVG3DS]: Vídeo de John Cartwright en YouTube, [*3DS Can Play Game Boy Advance Games Without Emulation*](https://www.youtube.com/watch?v=_A4gHxhUcGs) (9/3/2026)
+
+[^ref:ARMisEVERYWHERE]: Artículo de xataca, [Comienza la nueva era de los Mac ARM de Apple: qué podemos esperar de los futuros iMac y MacBook](https://www.xataka.com/ordenadores/comienza-nueva-era-mac-arm-apple-que-podemos-esperar-futuros-imac-macbook) (9/3/2026); Artículo de arm, [*99% of all Smartphones Powered by ARM*](https://www.arm.com/markets/consumer-technologies/smartphones) (9/3/2026)
 
 [^ref:PanDocs]: Documentación técnica en línea de Pan Docs, [*Foreword - Pan Docs*](https://gbdev.io/pandocs/About.html) (7/3/2026); Alternativa de la documentación de Pan Docs en formato PDF, [*Game Boy: Complete Technical Reference*](https://gekkio.fi/files/gb-docs/gbctr.pdf) (7/3/2026)
 
