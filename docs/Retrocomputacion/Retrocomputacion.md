@@ -39,11 +39,21 @@ La irrupción que supuso ARM en su época sigue estando todavía más en la actu
 
 - No implementa caché.
 
-- Funcionamineto con 3 voltios
+- Funcionamineto con 3 voltios.
 
 #### Cauce
 
+Para maximizar el rendimiento y reducir tiempos muertos, implementa una canalización (*pipeline*) de tres etapas. Esto significa que el ciclo de instrucción se divide en tres etapas distintas que operan simultáneamente sobre tres instrucciones diferentes [^ref:ARM7]:
 
+![Etapas del cauce de ARM7TDMI.](../images/Retrocomputacion/pipeline_arm.png)
+
+De esta forma, mientras la instrucción $A$ se ejecuta, $B$ se está decodificando y $C$ se está buscando. Aumentando el número de instrucciones ejecutadas por tiempo (*Throughput*).
+
+El uso de un cauce superpuesto introduce problemas clásicos de la arquitectura de computadores [^ref:ACIC] que el ARM7TDMI resuelve de formas específicas:
+
+- **Riesgos por dependencias de datos**: Ocurre si una instrucción necesita el resultado de otra anterior que aún no ha terminado. A diferencia de otras arquitecturas de la época que delegaban este problema al programador o al compilador, ARM lo gestiona por *hardware* por inserción de burbujas.
+
+- **Riesgos de control**: Cuando hay bifurcaciones en el código. La arquitectura ARM resuelve mediante la **anulación condicional**, es decir, las instrucciones erróneas que ya estaban en el cauce se anulan automáticamente y se convierten en operaciones de relleno (*NOPs*), perdiendo ciclos de reloj.
 
 ## Programación y *software* a bajo nivel
 
@@ -78,6 +88,8 @@ La irrupción que supuso ARM en su época sigue estando todavía más en la actu
 [^ref:GVG3DS]: Vídeo de John Cartwright en YouTube, [*3DS Can Play Game Boy Advance Games Without Emulation*](https://www.youtube.com/watch?v=_A4gHxhUcGs) (9/3/2026)
 
 [^ref:ARMisEVERYWHERE]: Artículo de xataca, [Comienza la nueva era de los Mac ARM de Apple: qué podemos esperar de los futuros iMac y MacBook](https://www.xataka.com/ordenadores/comienza-nueva-era-mac-arm-apple-que-podemos-esperar-futuros-imac-macbook) (9/3/2026); Artículo de arm, [*99% of all Smartphones Powered by ARM*](https://www.arm.com/markets/consumer-technologies/smartphones) (9/3/2026)
+
+[^ref:ACIC]: Transparencias en línea sobre el tratamiento de los riesgos de adelantamiento por profesorado de la Universidad Carlos III de Madrid, [Tema 6. Introducción a la segmentación avanzada: Riesgos](https://ocw.uc3m.es/pluginfile.php/3271/mod_page/content/19/riesgos.pdf]) (9/3/2026); Transparencias de la asignaturas Ingeniería de los Computadores y Arquitectura de los Computadores del grado de Ingeniería Informática ofertado en la Universidad de Alicante (9/3/2026)
 
 [^ref:PanDocs]: Documentación técnica en línea de Pan Docs, [*Foreword - Pan Docs*](https://gbdev.io/pandocs/About.html) (7/3/2026); Alternativa de la documentación de Pan Docs en formato PDF, [*Game Boy: Complete Technical Reference*](https://gekkio.fi/files/gb-docs/gbctr.pdf) (7/3/2026)
 
