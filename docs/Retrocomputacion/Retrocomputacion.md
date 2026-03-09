@@ -17,7 +17,7 @@ La GBA es una consola portátil fabricada, vendida por Nintendo y lanzada en 200
 
 El diagrama proporcionado ilustra la arquitectura interna de GBA [^ref:CopettiNDS]. Compuesto por un componente denominado CPU AGB que aglomera componentes importantes para el sistema. Dicha CPU se compone principalmente de dos procesadores:
 
-- Un procesador heredado **Sharp SM83** de 8 bits para títulos de Game Boy (DMG) [^ref:RetromanDirectoGBYT] y Game Boy Color (CGB). 
+- Un procesador heredado **Sharp SM83** de 8 bits para títulos de Game Boy (DMG) y Game Boy Color (CGB). 
 
 - Un procesador nuevo **ARM7TDMI** de 32 bits para títulos de GBA.
 
@@ -29,11 +29,21 @@ En la GBA solo un procesador está activo pero no a la vez según el cartucho ca
 
 La irrupción que supuso ARM en su época sigue estando todavía más en la actualidad. Con presencia en ordenadores, móviles, videoconsolas y otros dispositivos [^ref:ARMisEVERYWHERE]. Concretamente, el procesador ARM de GBA se rige por una filosofía **RISC** [^ref:ARM7]:
 
-- Instrucciones de tamaño fijo. Más registros.
+- Instrucciones de tamaño fijo.
+
+- 16 registros de propósito general de 32 bits frente a los 8 de 8 bits en su antecesora [^ref:RetromanDirectoGBYT].
 
 - Ejecución condicional. Esto es que toda instrucción reserva información de si debe ejecuarse o no además de evitar riesgos de control.
 
-- Multiplicación de 32 y 64 bits.
+- Multiplicación de 32 y 64 bits. Para este último caso, el resultado se reparte en dos registros.
+
+- No implementa caché.
+
+- Funcionamineto con 3 voltios
+
+#### Cauce
+
+
 
 ## Programación y *software* a bajo nivel
 
