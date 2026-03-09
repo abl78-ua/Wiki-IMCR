@@ -11,13 +11,33 @@ La GBA es una consola portátil fabricada, vendida por Nintendo y lanzada en 200
 
 ## Arquitectura *hardware*
 
+![Diagrama de arquitectura interna del *hardware* de GBA.](../images/Retrocomputacion/esquema_gba_copetti.png)
+
+El diagrama proporcionado ilustra la arquitectura interna de GBA [^ref:CopettiNDS]. Compuesto por un componente denominado CPU AGB que aglomera componentes importantes para el sistema. Dicha CPU se compone principalmente de dos procesadores:
+
+- Un procesador heredado **Sharp SM83** de 8 bits para títulos de Game Boy (DMG) [^ref:RetromanDirectoGBYT] y Game Boy Color (CGB). 
+
+- Un procesador nuevo **ARM7TDMI** de 32 bits para títulos de GBA.
+
+La razón por la que motiva la inclusión del primer procesador no es otra que la retrocompatibilidad [^ref:CopettiGBA]. Patrón que repetiría en futuras generaciones de consolas por parte de la empresa japonesa tales como NDS [^ref:CopettiNDS] o 3DS [^ref:GVG3DS]. Aunque para el caso de esta última videoconsola el fabricante oculta información sobre ello [^ref:NNoGBAn3DS].
+
+En la GBA o bien un procesador está activo u otro pero no a la vez según el cartucho cargado [^ref:CopettiGBA]. Al contrario que en futuras consolas, donde existe una interaoperabilidad activa entre dos procesadores de distinta generación dentro del dispotivo como por ejemplo en la NDS [^ref:CopettiNDS].
+
 ## Programación y *software* a bajo nivel
 
-## Herramientas de desarrollo
+## Herramientas de desarrollo (práctico)
 
 ## Contexto legal, seguridad DRM e ingeniería inversa
 
 # Referencias
+
+*[GBA]: consola Game Boy Advance
+
+*[GB]: consola Game Boy
+
+*[CPU]: Microprocesador, procesador, unidad central de procesamiento.
+
+*[NDS]: consola Nintendo DS
 
 [^ref:GBAwiki]: Artículo de Wikipedia sobre GBA, [Game Boy Advance](https://en.wikipedia.org/wiki/Game_Boy_Advance) (5/3/2026)
 
@@ -25,7 +45,11 @@ La GBA es una consola portátil fabricada, vendida por Nintendo y lanzada en 200
 
 [^ref:CopettiGBA]: Artículo traducido de Rodrigo Copetti en su blog, [Arquitectura Game Boy Advance](https://www.copetti.org/es/writings/consoles/game-boy-advance/) (5/3/2026)
 
+[^ref:NNoGBAn3DS]: Pregunta frecuente respondida, [¿Se puede jugar a juegos de Game Boy Advance en Nintendo 3DS?](https://www.nintendo.com/es-es/Ayuda/Consolas-anteriores/-Se-puede-jugar-a-juegos-de-Game-Boy-Advance-en-Nintendo-3DS-242227.html) (9/3/2026)
+
 [^ref:CopettiNDS]: Artículo de Rodrigo Copetti en su blog, [*Nintendo DS Architecture*](https://www.copetti.org/writings/consoles/nintendo-ds/) (5/3/2026)
+
+[^ref:GVG3DS]: Vídeo de John Cartwright en YouTube, [*3DS Can Play Game Boy Advance Games Without Emulation*](https://www.youtube.com/watch?v=_A4gHxhUcGs) (9/2/2026)
 
 [^ref:PanDocs]: Documentación técnica en línea de Pan Docs, [*Foreword - Pan Docs*](https://gbdev.io/pandocs/About.html) (7/3/2026); Alternativa de la documentación de Pan Docs en formato PDF, [*Game Boy: Complete Technical Reference*](https://gekkio.fi/files/gb-docs/gbctr.pdf) (7/3/2026)
 
@@ -66,9 +90,3 @@ La GBA es una consola portátil fabricada, vendida por Nintendo y lanzada en 200
 [^ref:Emucase3]: Artículo de The Verge sobre sobre el caso Yuzu, [*Nintendo Switch emulator Yuzu will utterly fold and pay $2.4M to settle its lawsuit*](https://www.theverge.com/2024/3/4/24090357/nintendo-yuzu-emulator-lawsuit-settlement) (7/3/2026)
 
 [^ref:Emucase4]: Artículo de McNeelyLaw sobre la legalidad de la emulación, [*https://www.mcneelylaw.com/understanding-the-legal-landscape-of-video-game-emulation/*](https://www.mcneelylaw.com/understanding-the-legal-landscape-of-video-game-emulation/) (7/3/2026)
-
-*[GBA]: consola Game Boy Advance
-
-*[GB]: consola Game Boy
-
-*[NDS]: consola Nintendo DS
