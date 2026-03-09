@@ -55,6 +55,26 @@ El uso de un cauce superpuesto introduce problemas clásicos de la arquitectura 
 
 - **Riesgos de control**: Cuando hay bifurcaciones en el código. La arquitectura ARM resuelve mediante la **anulación condicional**, es decir, las instrucciones erróneas que ya estaban en el cauce se anulan automáticamente y se convierten en operaciones de relleno (*NOPs*), perdiendo ciclos de reloj.
 
+Por ejemplo, en lugar de realizar un salto condicional que penalizaría el cauce:
+
+``` armasm
+    CMP R0, R1      ; Compara el registro R0 y R1
+    BNE omitir      ; Si NO son iguales, salta a 'omitir' (ROMPE EL CAUCE)
+    ADD R2, R2, R3  ; Suma R3 a R2
+omitir:
+    ...
+```
+
+En ARM se prefiere utilizar sufijos condicionales en las propias instrucciones de operación: 
+
+
+``` armasm
+    CMP R0, R1       ; Compara el registro R0 y R1
+    ADDEQ R2, R2, R3 ; Suma R3 a R2 SOLO SI fueron iguales. (MANTIENE EL CAUCE)
+```
+
+Esta característica convierte al ARM7TDMI en un procesador extremadamente eficiente y hace que la programación a bajo nivel en GBA requiera un enfoque distinto al de otras arquitecturas como x86 o MIPS [^ref:Tonc]
+
 ## Programación y *software* a bajo nivel
 
 ## Herramientas de desarrollo (práctico)
