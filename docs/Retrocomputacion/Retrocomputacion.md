@@ -35,11 +35,17 @@ La irrupción que supuso ARM en su época sigue estando todavía más en la actu
 
 - Ejecución condicional. Esto es que toda instrucción reserva información de si debe ejecuarse o no además de evitar riesgos de control.
 
-- Multiplicación de 32 y 64 bits. Para este último caso, el resultado se reparte en dos registros.
+- Multiplicación de 32 y 64 bits. Para este último caso, el resultado se reparte en dos registros (Sigla M de TDMI).
 
 - No implementa caché.
 
 - Funcionamineto con 3 voltios.
+
+- Se ejecuta a 16,78 MHz [^ref:Tonc].
+
+- Conjunto de instrucciones **Thumb** (Sigla T de TDMI).
+
+- Facilidad para proporcionar opciones para depurar, concretamente: puerto JTAG y EmbeddedICE (Siglas D y I de TDMI).
 
 #### Cauce
 
@@ -49,31 +55,54 @@ Para maximizar el rendimiento y reducir tiempos muertos, implementa una canaliza
 
 De esta forma, mientras la instrucción $A$ se ejecuta, $B$ se está decodificando y $C$ se está buscando. Aumentando el número de instrucciones ejecutadas por tiempo (*Throughput*).
 
-El uso de un cauce superpuesto introduce problemas clásicos de la arquitectura de computadores [^ref:ACIC] que el ARM7TDMI resuelve de formas específicas:
+El uso de un cauce superpuesto introduce problemas clásicos de la arquitectura de computadores [^ref:ACIC] que el procesador ARM7TDMI resuelve de formas específicas:
 
-- **Riesgos por dependencias de datos**: Ocurre si una instrucción necesita el resultado de otra anterior que aún no ha terminado. A diferencia de otras arquitecturas de la época que delegaban este problema al programador o al compilador, ARM lo gestiona por *hardware* por inserción de burbujas.
+- **Riesgos por dependencias de datos**: Ocurre si una instrucción necesita el resultado de otra anterior que aún no ha terminado. A diferencia de otras arquitecturas de la época que delegaban este problema al programador o al compilador, ARM lo gestiona por *hardware* por inserción de **burbujas**.
 
-- **Riesgos de control**: Cuando hay bifurcaciones en el código. La arquitectura ARM resuelve mediante la **anulación condicional**, es decir, las instrucciones erróneas que ya estaban en el cauce se anulan automáticamente y se convierten en operaciones de relleno (*NOPs*), perdiendo ciclos de reloj.
+- **Riesgos de control**: Cuando hay bifurcaciones en el código. La arquitectura ARM resuelve mediante la **anulación condicional**, es decir, las instrucciones erróneas que ya estaban en el cauce se anulan automáticamente y se convierten en **operaciones de relleno** (NOP), perdiendo ciclos de reloj.
 
-Por ejemplo, en lugar de realizar un salto condicional que penalizaría el cauce:
+Esta característica convierte al ARM7TDMI en un procesador extremadamente eficiente y hace que la programación a bajo nivel en GBA requiera un enfoque distinto al de otras arquitecturas como x86 o MIPS [^ref:Tonc].
 
-``` armasm
-    CMP R0, R1      ; Compara el registro R0 y R1
-    BNE omitir      ; Si NO son iguales, salta a 'omitir' (ROMPE EL CAUCE)
-    ADD R2, R2, R3  ; Suma R3 a R2
-omitir:
-    ...
+#### Conjunto de instrucciones
+
+Dentro de este procesador existen dos modalidades de operación que habilitan un conjunto de instrucciones y registros diferentes. No obstante, es posible intercambiar el modo funcionamiento durante la ejecución de un programa [^ref:Tonc] [^ref:ARM7] [^ref:CopettiGBA].
+
+=== "ARM"
+
+	- Codificadas en 32 bits.
+	
+	- Conjunto completo de instrucciones ARM.
+	
+	- Ofrece ejecución condicional.
+	
+	- Eficiencia base.
+	
+	- 16 registros para uso general.
+
+=== "Thumb"
+
+    - Codificadas en 16 bits.
+	
+	- Son subconjunto (*subset*) de ARM.
+	
+	- No tiene la capacidad de ejecución condicional.
+	
+	- Más eficientes.
+
+	- 8 registros para uso general.
+
+#### Mapas de memoria
+
 ```
-
-En ARM se prefiere utilizar sufijos condicionales en las propias instrucciones de operación: 
-
-
-``` armasm
-    CMP R0, R1       ; Compara el registro R0 y R1
-    ADDEQ R2, R2, R3 ; Suma R3 a R2 SOLO SI fueron iguales. (MANTIENE EL CAUCE)
+00000000-00003FFF   BIOS (16 KBytes)
+00004000-01FFFFFF   Not used
+02000000-0203FFFF   WRAM - Work RAM en la placa base (256 KBytes)
+02040000-02FFFFFF   Not used
+03000000-03007FFF   WRAM - Work RAM en el cartucho (32 KBytes)
+03008000-03FFFFFF   Not used
+04000000-040003FE   I/O Registers
+04000400-04FFFFFF   Not used
 ```
-
-Esta característica convierte al ARM7TDMI en un procesador extremadamente eficiente y hace que la programación a bajo nivel en GBA requiera un enfoque distinto al de otras arquitecturas como x86 o MIPS [^ref:Tonc]
 
 ## Programación y *software* a bajo nivel
 
