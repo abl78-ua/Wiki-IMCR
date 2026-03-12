@@ -120,7 +120,15 @@ La memoria de la GBA se distribuye de la siguiente manera [^ref:Tonc] [^ref:gbat
 
 ## Programación y *software* a bajo nivel
 
+La principal dificultad a la hora de trabajar a bajo nivel es que la tarea en cuestión presenta entre poca o nula documentación oficial que especifique el comportamiento en detalle del programa. Es por esta razón poco transparente por la que mucho del *software* es forzosamente descontinuado u obsoleto [^ref:GNUobslent].
+
+### Visor 
+
+(Aquí irá cómo utilizar el cutter, godbolt, utilizar el depurador gdb, imhex u okteta, editores de terminal, decompiladores (solo mencionar))
+
 ## Herramientas de desarrollo (práctico)
+
+(Qué sdks hay, devkitpro-supuesto instalado, compilar una rom, emulador, depuración remota (¿para qué puede ser útil?, tuto rápido de uso), visor de memoria)
 
 ## Contexto legal, seguridad DRM e ingeniería inversa
 
@@ -130,13 +138,35 @@ La memoria de la GBA se distribuye de la siguiente manera [^ref:Tonc] [^ref:gbat
 
 *[GB]: consola Game Boy
 
-*[CPU]: Microprocesador, procesador, unidad central de procesamiento.
+*[CPU]: Microprocesador, procesador, unidad central de procesamiento
 
 *[NDS]: consola Nintendo DS, sucesora de GBA
 
 *[3DS]: consola Nintendo 3DS, sucesora de NDS
 
-*[RISC]: Computador de Conjunto Reducido de Instrucciones (Reduced Instruction Set Computer).
+*[RISC]: Computador de Conjunto Reducido de Instrucciones, Reduced Instruction Set Computer
+
+*[GDB]: Depurador de GNU, GNU's Debugger
+ 
+*[NOP]: Instrucción a bajo nivel de relleno, que no hace nada, Not Operation
+
+*[JTAG]: Puerto para depuración y pruebas, Joint Test Action Group
+
+*[RAM]: Memoria de acceso aleatorio, Random Access Memory
+
+*[ROM]: Memoria de solo lectura, Read-Only Memory
+
+*[x86]: Aquitectura de computador CISC Intel más extendida en los ordenadores personales, Intel 8086
+
+*[MIPS]: Aquitectura de computador RISC MIPS usada en embebidos, videoconsolas retro
+
+*[BIOS]: Sistema básico de entrada y salida, Basic Input Output System
+
+*[IWRAM]: Memoria interna para trabajo de acceso aleatorio, Internal Work RAM
+
+*[EWRAM]: Memoria externa para trabajo de acceso aleatorio, External Work RAM
+
+*[SRAM]: Memoria estática de acceso aleatorio, Static Random Access Memory
 
 [^ref:GBAwiki]: Artículo de Wikipedia sobre GBA, [Game Boy Advance](https://en.wikipedia.org/wiki/Game_Boy_Advance) (5/3/2026)
 
@@ -150,7 +180,7 @@ La memoria de la GBA se distribuye de la siguiente manera [^ref:Tonc] [^ref:gbat
 
 [^ref:GVG3DS]: Vídeo de John Cartwright en YouTube, [*3DS Can Play Game Boy Advance Games Without Emulation*](https://www.youtube.com/watch?v=_A4gHxhUcGs) (9/3/2026)
 
-[^ref:ARMisEVERYWHERE]: Artículo de xataca, [Comienza la nueva era de los Mac ARM de Apple: qué podemos esperar de los futuros iMac y MacBook](https://www.xataka.com/ordenadores/comienza-nueva-era-mac-arm-apple-que-podemos-esperar-futuros-imac-macbook) (9/3/2026); Artículo de arm, [*99% of all Smartphones Powered by ARM*](https://www.arm.com/markets/consumer-technologies/smartphones) (9/3/2026)
+[^ref:ARMisEVERYWHERE]: Artículo de xataca, [Comienza la nueva era de los Mac ARM de Apple: qué podemos esperar de los futuros iMac y MacBook](https://www.xataka.com/ordenadores/comienza-nueva-era-mac-arm-apple-que-podemos-esperar-futuros-imac-macbook) (9/3/2026); Artículo de ARM, [*99% of all Smartphones Powered by ARM*](https://www.arm.com/markets/consumer-technologies/smartphones) (9/3/2026)
 
 [^ref:ACIC]: Transparencias en línea sobre el tratamiento de los riesgos de adelantamiento por profesorado de la Universidad Carlos III de Madrid, [Tema 6. Introducción a la segmentación avanzada: Riesgos](https://ocw.uc3m.es/pluginfile.php/3271/mod_page/content/19/riesgos.pdf]) (9/3/2026); Transparencias de la asignaturas Ingeniería de los Computadores y Arquitectura de los Computadores del grado de Ingeniería Informática ofertado en la Universidad de Alicante (9/3/2026)
 
@@ -167,6 +197,8 @@ La memoria de la GBA se distribuye de la siguiente manera [^ref:Tonc] [^ref:gbat
 [^ref:DevkitProGBA]: Enciclopedia en línea para tutoriales por el equipo de devkitPro, [*Getting started*](https://devkitpro.org/wiki/Getting_Started) (5/3/2026); Repositorio git del equipo devkitPro en github, [libgba](https://github.com/devkitPro/libgba) (6/3/2026); Repositorio git del equipo devkitPro en github con herramientas para el desarrollo en GBA, [gba-tools](https://github.com/devkitPro/gba-tools) (6/3/2026); Repositorio git del equipo devkitPro en github con de ejemplos de ROMs GBA, [gba-examples](https://github.com/devkitPro/gba-examples) (6/3/2026)
 
 [^ref:GDBman]: Manual de uso en PDF alojado en el repositorio git en sourcewave, [*Debugging with GDB*](https://sourceware.org/gdb/current/onlinedocs/gdb.pdf) (7/3/2026)
+
+[^ref:GNUobslent]: Artículo de GNU sobre la obsolencencia, [Obsolescencia en el software privativo](https://www.gnu.org/proprietary/proprietary-obsolescence.html#content) (12/3/2026)
 
 [^ref:RE]: Transparencias en línea sobre la ingiería inversa por Joxean Koret, [Una Brevísima Introducción a la Ingeniería Inversa](https://joxeankoret.com/download/iniciacion-reversing-tknika-zorrozaurre-2024.pdf) (7/3/2026)
 
