@@ -91,17 +91,31 @@ Dentro de este procesador existen dos modalidades de operación que habilitan un
 
 	- 8 registros para uso general.
 
-#### Mapas de memoria
+### Mapas de memoria
+
+La memoria de la GBA se distribuye de la siguiente manera [^ref:Tonc] [^ref:gbatek] :
 
 ```
 00000000-00003FFF   BIOS (16 KBytes)
-00004000-01FFFFFF   Not used
-02000000-0203FFFF   WRAM - Work RAM en la placa base (256 KBytes)
-02040000-02FFFFFF   Not used
-03000000-03007FFF   WRAM - Work RAM en el cartucho (32 KBytes)
-03008000-03FFFFFF   Not used
-04000000-040003FE   I/O Registers
-04000400-04FFFFFF   Not used
+00004000-01FFFFFF   Sin uso
+02000000-0203FFFF   EWRAM | Work RAM en el cartucho (256 KBytes)
+02040000-02FFFFFF   Sin uso
+03000000-03007FFF   IWRAM | Work RAM en la placa  (32 KBytes)
+03008000-03FFFFFF   Sin uso
+04000000-040003FE   IO RAM | Registros de I/O
+04000400-04FFFFFF   Sin uso
+05000000-050003FF   PAL RAM | Memoria para paletas (2 paletas para 256 entradas con colores de 15 bits) (1 Kbyte)
+05000400-05FFFFFF   Sin uso
+06000000-06017FFF   VRAM | Video RAM (96 KBytes)
+06018000-06FFFFFF   Sin uso
+07000000-070003FF   OAM | OBJ Attributes (Control de sprites) (1 Kbyte)
+07000400-07FFFFFF   Sin uso
+08000000-09FFFFFF   PAK ROM | Game Pak ROM/FlashROM (max 32MB) - Wait State 0
+0A000000-0BFFFFFF   PAK ROM | Game Pak ROM/FlashROM (max 32MB) - Wait State 1
+0C000000-0DFFFFFF   PAK ROM | Game Pak ROM/FlashROM (max 32MB) - Wait State 2
+0E000000-0E00FFFF   Card RAM | Game Pak SRAM (max 64 KBytes) - 8bit Bus width
+0E010000-0FFFFFFF   Sin uso
+10000000-FFFFFFFF   Sin uso (4 bits más significativos sin uso)
 ```
 
 ## Programación y *software* a bajo nivel
