@@ -118,9 +118,18 @@ La memoria de la GBA se distribuye de la siguiente manera [^ref:Tonc] [^ref:gbat
 10000000-FFFFFFFF   Sin uso (4 bits más significativos sin uso)
 ```
 
-## Programación y *software* a bajo nivel
+## Programación y *software* a bajo nivel. Ingeniería inversa.
 
 La principal dificultad a la hora de trabajar a bajo nivel es que la tarea en cuestión presenta entre poca o nula documentación oficial que especifique el comportamiento en detalle del programa. Es por esta razón poco transparente por la que mucho del *software* es forzosamente descontinuado u obsoleto [^ref:GNUobslent].
+
+La **ingeniería inversa** es el estudio de un servicio final para determinar el diseño del servicio, la interacción entre módulos que lo componen o comportamientos plausibles en general. Los componentes electrónicos y programas informáticos son los que más suelen someterse a este tipo de procedimientos [^ref:REwiki]. Aplicar ingeniería inversa requiere un profundo conocimiento sobre el objeto. Ejemplo clásico: SAMBA-SMB [^ref:SAMBA].
+
+Algunos puntos clave sobre este campo [^ref:RE]:
+
+- Conocimientos a bajo nivel (leer binarios, conocer arquitecturas)
+
+- Proceso muy utilizado en la seguridad e integridad de programas (buscar fallos, violaciones del segmento, filtraciones de memoria...). Por ejemplo: Implementación de mecanismos DRM con Denuvo en videojuegos [^ref:DENUVO].
+
 
 ### Visor 
 
@@ -146,7 +155,7 @@ La principal dificultad a la hora de trabajar a bajo nivel es que la tarea en cu
 
 *[RISC]: Computador de Conjunto Reducido de Instrucciones, Reduced Instruction Set Computer
 
-*[GDB]: Depurador de GNU, GNU's Debugger
+*[GDB]: Depurador de GNU, GNU Debugger
  
 *[NOP]: Instrucción a bajo nivel de relleno, que no hace nada, Not Operation
 
@@ -167,6 +176,10 @@ La principal dificultad a la hora de trabajar a bajo nivel es que la tarea en cu
 *[EWRAM]: Memoria externa para trabajo de acceso aleatorio, External Work RAM
 
 *[SRAM]: Memoria estática de acceso aleatorio, Static Random Access Memory
+
+*[SAMBA]: Implementación libre del propietario protocolo y programa SMB
+
+*[SMB]: Sistema propietario de facto para la compartición de carpetas en Windows 
 
 [^ref:GBAwiki]: Artículo de Wikipedia sobre GBA, [Game Boy Advance](https://en.wikipedia.org/wiki/Game_Boy_Advance) (5/3/2026)
 
@@ -200,7 +213,13 @@ La principal dificultad a la hora de trabajar a bajo nivel es que la tarea en cu
 
 [^ref:GNUobslent]: Artículo de GNU sobre la obsolencencia, [Obsolescencia en el software privativo](https://www.gnu.org/proprietary/proprietary-obsolescence.html#content) (12/3/2026)
 
+[^ref:REwiki]: Artículo de la Wikipedia sobre Ingeniería inversa, [Ingeniería inversa](https://es.wikipedia.org/wiki/Ingenier%C3%ADa_inversa) (12/3/2026)
+
+[^ref:SAMBA]: Página de bienvenida de SAMBA, [Opening Windows to a Wider World](https://www.samba.org/) (12/3/2026)
+
 [^ref:RE]: Transparencias en línea sobre la ingiería inversa por Joxean Koret, [Una Brevísima Introducción a la Ingeniería Inversa](https://joxeankoret.com/download/iniciacion-reversing-tknika-zorrozaurre-2024.pdf) (7/3/2026)
+
+[^ref:DENUVO]: Vídeo de BaityBait en YouTube, [DENUVO: El sistema ANTIPIRATERÍA MÁS POLÉMICO](https://www.youtube.com/watch?v=xnz84dO6-Wg) (12/3/2026)
 
 [^ref:rizin]: Respositorio git del equipo rizinorg en github, [*Cutter*](https://github.com/rizinorg/cutter) (7/3/2026)
 
