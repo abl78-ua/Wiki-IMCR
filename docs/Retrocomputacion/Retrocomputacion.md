@@ -17,7 +17,6 @@ Por *Ivan Parkhomchyk Patapchyk*
 /// caption 
 Primera revisión del modelo de GBA.
 ///
-
 La GBA es una consola portátil fabricada, vendida por Nintendo y lanzada en 2001 durante la sexta generación de videoconsolas. Respecto a su antecesora, fue un cambio muy notorio al introducir paleta de colores, mayor resolución, nuevas entradas (botones L y R) y registros de 32 bits (en GB son 8 bits). Todos los títulos de GB son compatibles en GBA y se distribuían en formato de cartucho físico. [^ref:GBAwiki]
 
 ## Arquitectura *hardware*
@@ -133,6 +132,20 @@ La memoria de la GBA se distribuye de la siguiente manera [^ref:Tonc] [^ref:gbat
 10000000-FFFFFFFF   Sin uso (4 bits más significativos sin uso)
 ```
 
+### Gráficos
+
+#### Mosaicos y *sprites*
+
+#### Vídeo 3D
+
+### Audio (No disponible)
+
+### Cartuchos
+
+#### Accesorios (quitar si ocupa mucho tiempo)
+
+### Sistemas antipiratería (quitar si ocupa mucho tiempo)
+
 ## Progamación a bajo nivel. Ingeniería inversa.
 
 La principal dificultad a la hora de trabajar a bajo nivel es que la tarea en cuestión presenta entre poca o nula documentación oficial que especifique el comportamiento en detalle del programa. Es por esta razón poco transparente por la que mucho del *software* es forzosamente descontinuado u obsoleto [^ref:GNUobslent].
@@ -155,19 +168,33 @@ Algunos puntos clave sobre este campo [^ref:RE]:
 
 - La estrategia de **caja negra** es vital para reconstruir comportamientos de programas [^ref:CajaNegra].
 
-En este artículo, nos familiarizaremos con el *tooling* básico que conscierne al desarrollo en GBA. Es muy importante, que este tipo de prácticas se lleven a cabo en entornos controlados (docker no vale para esto) así como desechables en caso de ser infectados.
+En este artículo, nos familiarizaremos con el *tooling* básico que conscierne al desarrollo en GBA. Es muy importante, que este tipo de prácticas se lleven a cabo en entornos controlados (~docker~) así como desechables en caso de ser infectados.
 
+### Editor de código
 
+### Visor de hexadecimal
 
-### Visor 
+### Desensamblador, decompilador
 
-(Aquí irá cómo utilizar el cutter, godbolt, utilizar el depurador gdb, imhex u okteta, editores de terminal, decompiladores (solo mencionar))
+### Compilador
+
+### Depurador
+
+### Virtualización y emulación
 
 ## Herramientas de desarrollo (práctico)
 
 (Qué sdks hay, devkitpro-supuesto instalado, compilar una rom, emulador, depuración remota (¿para qué puede ser útil?, tuto rápido de uso), visor de memoria)
 
+### Práctica 0: Preparación inicial, compilación de hola mundo.
+
+### Práctica 1: Depuración remota conectada al emulador.
+
+### Práctica 2: Averiguar de qué instrucción se trata.
+
 ## Contexto legal, seguridad DRM e ingeniería inversa
+
+(Mencionar casos de emulación) (mencionar límites) (caso Playstation, Sega, Yuzu)
 
 # Referencias
 
@@ -247,7 +274,7 @@ En este artículo, nos familiarizaremos con el *tooling* básico que conscierne 
 
 [^ref:RE]: Transparencias en línea sobre la ingiería inversa por Joxean Koret, [Una Brevísima Introducción a la Ingeniería Inversa](https://joxeankoret.com/download/iniciacion-reversing-tknika-zorrozaurre-2024.pdf) (7/3/2026)
 
-[^ref:DENUVO]: Vídeo de BaityBait en YouTube, [DENUVO: El sistema ANTIPIRATERÍA MÁS POLÉMICO](https://www.youtube.com/watch?v=xnz84dO6-Wg) (12/3/2026)
+[^ref:DENUVO]: Vídeo de BaityBait en YouTube, [DENUVO: El sistema ANTIPIRATERÍA MÁS POLÉMICO](https://www.youtube.com/watch?v=xnz84dO6-Wg) (12/3/2026); Artículo de GameRynxo sobre Denuvo, [Qué es Denuvo: El Guardián Digital de los Videojuegos Explicado a Fondo](https://game.rynxo.com/como-funciona/que-es-denuvo/) (13/3/2026)
 
 [^ref:CajaNegra]: Artículo de la Wikipedia sobre Pruebas funcionales, [Pruebas funcionales](https://es.wikipedia.org/wiki/Pruebas_funcionales) (12/3/2026); Transparencias de la asignatura Planificación y Pruebas de Sistemas *Software* del grado de Ingeniería Informática ofertado en la Universidad de Alicante (12/3/2026); Artículo de Juan José Santos Chavez sobre pruebas de caja negra, [¿Qué son las pruebas de caja negra? Todo lo que debes saber](https://www.deltaprotect.com/blog/pruebas-de-caja-negra) (12/3/2026)
 
