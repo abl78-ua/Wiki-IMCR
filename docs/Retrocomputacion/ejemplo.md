@@ -1,8 +1,8 @@
 ---
-title: Game Boy Advance
+title: Probando mkdocs
 ---
 
-# Retrocomputación en Game Boy Advance
+# ALERTA ESTO ES UNA ***`prueba`***
 
 GBA
 

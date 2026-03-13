@@ -4,16 +4,28 @@ title: Game Boy Advance
 
 # Retrocomputación en Game Boy Advance
 
+Por *Ivan Parkhomchyk Patapchyk*
+
+!!! danger "Artículo incompleto"
+    Este artículo está en proceso de redacción. Pueden existir secciones incompletas, pocas referencias que sustenten lo que se documenta, faltas gramaticales y ortográficas o ausencia de ejemplos.
+
+
 !!! note "Enfoque de la redacción"
 	Este artículo se centra en el análisis técnico y hace uso de herramientas con fines educativos. No para infringir la propiedad intelectual ni la distribución de *software* no permitda.
 
-![Primera revisión del modelo de GBA.](../images/Retrocomputacion/Nintendo-Game-Boy-Advance-Purple-FL_wiki.jpg)
+![Imagen de la primera revisión de la GBA. Acabado de color morado, con los botones de la cruceta, START y SELECT a la izquierda, A y B a la derecha. Gatillos R y L en la parte superior de la misma. Consola con la plantalla apagada.](../images/Retrocomputacion/Nintendo-Game-Boy-Advance-Purple-FL_wiki.jpg){ width="300px" } 
+/// caption 
+Primera revisión del modelo de GBA.
+///
 
 La GBA es una consola portátil fabricada, vendida por Nintendo y lanzada en 2001 durante la sexta generación de videoconsolas. Respecto a su antecesora, fue un cambio muy notorio al introducir paleta de colores, mayor resolución, nuevas entradas (botones L y R) y registros de 32 bits (en GB son 8 bits). Todos los títulos de GB son compatibles en GBA y se distribuían en formato de cartucho físico. [^ref:GBAwiki]
 
 ## Arquitectura *hardware*
 
-![Diagrama de arquitectura interna del *hardware* de GBA.](../images/Retrocomputacion/esquema_gba_copetti.png)
+![Diagrama de arquitectura interna del *hardware* de GBA.](../images/Retrocomputacion/esquema_gba_copetti.png){ width="100%" }
+/// caption
+Diagrama de arquitectura interna del *hardware* de GBA.
+///
 
 El diagrama proporcionado ilustra la arquitectura interna de GBA [^ref:CopettiNDS]. Compuesto por un componente denominado CPU AGB que aglomera componentes importantes para el sistema. Dicha CPU se compone principalmente de dos procesadores:
 
@@ -51,7 +63,10 @@ La irrupción que supuso ARM en su época sigue estando todavía más en la actu
 
 Para maximizar el rendimiento y reducir tiempos muertos, implementa una canalización (*pipeline*) de tres etapas. Esto significa que el ciclo de instrucción se divide en tres etapas distintas que operan simultáneamente sobre tres instrucciones diferentes [^ref:ARM7]:
 
-![Etapas del cauce de ARM7TDMI.](../images/Retrocomputacion/pipeline_arm.png)
+![Imagen con las etapas del cauce de ARM7TDMI.](../images/Retrocomputacion/pipeline_arm.png){ width="700px" }
+/// caption
+Etapas del cauce de ARM7TDMI: (1) *Fetch* Búsqueda de la instrucción, (2) *Decode* Decodificación de los contenidos de los registros y (3) *Execute* Ejecución de la instrucción (lectura desde el banco de registros, realizar operaciones aritmético lógicas y escritura de vuelta en los registros).
+///
 
 De esta forma, mientras la instrucción $A$ se ejecuta, $B$ se está decodificando y $C$ se está buscando. Aumentando el número de instrucciones ejecutadas por tiempo (*Throughput*).
 
@@ -136,7 +151,7 @@ Algunos puntos clave sobre este campo [^ref:RE]:
 
 - Otros usos: detección de plagio o uso de librerías con licencias inadecuadas, búsqueda de *malware*, reconstrucción de código fuente desde el binario [^ref:RE].
 
-- No obstante, hay *software* que prohíbe la ingeniería inversa dados sus términos y condiciones de uso y/o licencia de uso. Esta debe prevalecer para evitar violar la propiedad inetelectual y la carta de "cese y desista".
+- No obstante, hay *software* que prohíbe la ingeniería inversa dados sus términos y condiciones de uso y/o licencia de uso. Esta debe prevalecer para evitar violar la propiedad inetelectual y la carta de "cese y desista" [^ref:Emucase3].
 
 - La estrategia de **caja negra** es vital para reconstruir comportamientos de programas [^ref:CajaNegra].
 
