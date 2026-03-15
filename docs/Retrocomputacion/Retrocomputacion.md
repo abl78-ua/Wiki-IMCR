@@ -16,6 +16,7 @@ Por *Ivan Parkhomchyk Patapchyk*
 /// caption 
 Primera revisión del modelo de GBA.
 ///
+
 La GBA es una consola portátil fabricada, vendida por Nintendo y lanzada en 2001 durante la sexta generación de videoconsolas. Respecto a su antecesora, fue un cambio muy notorio al introducir paleta de colores, mayor resolución, nuevas entradas (botones L y R) y registros de 32 bits (en GB son 8 bits). Todos los títulos de GB son compatibles en GBA y se distribuían en formato de cartucho físico. [^ref:GBAwiki]
 
 ## Arquitectura *hardware*
@@ -205,9 +206,14 @@ Ventana de Firefox ejecutando *offline* (esto es posible gracias a *Service Work
 
 Para una lista detallada de otros programas que cuadren en esta categoría pueden encontrarse en internet. [^ref:moarhex]
 
-### Desensamblador, decompilador
-
 ### Compilador
+
+El compilador no es más ni menos que un programa que toma código fuente de entrada y lo transforma en otra salida (pudiendo producir binarios, otros fuentes...). [^ref:compiler]
+
+!!! note "En práctica de después utilizaremos el que viene con el kit de desarrollo"
+    Utilizaremos una versión customizada de `gcc` de devkitpro para compilar las ROMs de GBA.
+
+### Desensamblador, decompilador
 
 ### Depurador
 
@@ -334,6 +340,8 @@ Para una lista detallada de otros programas que cuadren en esta categoría puede
 [^ref:okteta]: Portal de bienvenida de okteta, [KDE Okteta](https://apps.kde.org/es/okteta/) (13/3/2026)
 
 [^ref:hexed]: Herramienta en línea para la edición en hexadecimal, [hexed.it](https://hexed.it/) (13/3/2026)
+
+[^ref:compiler]: *Paper* sobre compiladores por Amit Kasar y Mayuri Dangare en researchgate, [*Compiler And Its Phases*](https://www.researchgate.net/publication/354948523_Compiler_And_Its_Phases) (15/3/2026)
 
 [^ref:edb]: Página de paquetería y herramientas de Kali Linux [Edb-debugger](https://www.kali.org/tools/edb-debugger/) (13/3/2026)
 
