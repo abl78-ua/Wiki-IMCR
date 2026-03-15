@@ -9,7 +9,6 @@ Por *Ivan Parkhomchyk Patapchyk*
 !!! danger "Artículo incompleto"
     Este artículo está en proceso de redacción. Pueden existir secciones incompletas, pocas referencias que sustenten lo que se documenta, faltas gramaticales y ortográficas o ausencia de ejemplos.
 
-
 !!! note "Enfoque de la redacción"
 	Este artículo se centra en el análisis técnico y hace uso de herramientas con fines educativos. No para infringir la propiedad intelectual ni la distribución de *software* no permitda.
 
@@ -198,11 +197,13 @@ Los programas citados en esta clase de *software* se centran principalmente faci
 Ventana de Firefox ejecutando *offline* (esto es posible gracias a *Service Workers* [^ref:websw] y WebAssembly [^ref:webasm]) ImHex en su formato web para examinar un compilado `.class` de Java.
 ///
 
-- **ImHex** es una navaja suiza multiplaforma de código abierto para este tipo de cuestiones. Puede extenderse su funcionalidad con extensiones, temas, decompiladores... [^ref:imhex].
+- **ImHex** es una navaja suiza multiplaforma de código abierto para este tipo de cuestiones. Puede extenderse su funcionalidad con extensiones, temas, decompiladores... [^ref:imhex] [^ref:moarhex]
 
-- **okteta** es una utilidad más sencilla que se centra en la lectura y edición de binarios. Es libre y trae complementos para convertir datos entre tipos y otros. [^ref:okteta].
+- **okteta** es una utilidad más sencilla que se centra en la lectura y edición de binarios. Es libre y trae complementos para convertir datos entre tipos y otros. [^ref:okteta] [^ref:moarhex]
 
-Para una lista detallada de otros programas de este estilo pueden encontrarse [aquí (repositorio git awesome-hex-editors en github)](https://github.com/merces/awesome-hex-editors).
+- **hexed.it** se vende como un servicio en línea gratuito (*freeware*) [^ref:moarhex] que sirve para lo mismo pero con funcionalidades restringidas. [^ref:hexed] 
+
+Para una lista detallada de otros programas que cuadren en esta categoría pueden encontrarse en internet. [^ref:moarhex]
 
 ### Desensamblador, decompilador
 
@@ -325,6 +326,8 @@ Para una lista detallada de otros programas de este estilo pueden encontrarse [a
 [^ref:websw]: Artículo de MDN sobre *Service Workers* en el navegador web, [*Service Worker API*](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) (15/3/2026)
 
 [^ref:webasm]: Artículo de MDN sobre WebAssembly en el navegador web, [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) (15/3/2026)
+
+[^ref:moarhex]: Repositorio git con listados de programas para edición de hexadecimal en github, [awesome-hex-editors](https://github.com/merces/awesome-hex-editors) (15/3/2025) 
 
 [^ref:imhex]: Portal de bienvenida de ImHex, [*A modern, featureful Hex Editor for Reverse Engineers and Developers*](https://imhex.werwolv.net/) (13/3/2026); Repositorio git oficial de WerWolv en github, (ImHex)[https://github.com/WerWolv/ImHex] (15/3/2026) 
 
