@@ -187,7 +187,7 @@ Ventana de Emacs editando este artículo.
 
 - La familia de editores **JetBrains** tienen licencias de código abiertas comunitarias (con retricciones) y de pago. Solo funcionan bajo un entorno gráfico completo. Son pesados en cuanto al rendimiento. [^ref:jetbrains]
 
-- Otras opciones son: Codium, Notepad++, Kdevelop, VS Code, Antigravity, Cursor...
+Otras opciones son: Codium, Notepad++, Kdevelop, VS Code, Antigravity, Cursor...
 
 ### Visor de hexadecimal
 
@@ -198,7 +198,11 @@ Los programas citados en esta clase de *software* se centran principalmente faci
 Ventana de Firefox ejecutando *offline* (esto es posible gracias a *Service Workers* [^ref:websw] y WebAssembly [^ref:webasm]) ImHex en su formato web para examinar un compilado `.class` de Java.
 ///
 
+- **ImHex** es una navaja suiza multiplaforma de código abierto para este tipo de cuestiones. Puede extenderse su funcionalidad con extensiones, temas, decompiladores... [^ref:imhex].
 
+- **okteta** es una utilidad más sencilla que se centra en la lectura y edición de binarios. Es libre y trae complementos para convertir datos entre tipos y otros. [^ref:okteta].
+
+Para una lista detallada de otros programas de este estilo pueden encontrarse [aquí (repositorio git awesome-hex-editors en github)](https://github.com/merces/awesome-hex-editors).
 
 ### Desensamblador, decompilador
 
@@ -322,7 +326,7 @@ Ventana de Firefox ejecutando *offline* (esto es posible gracias a *Service Work
 
 [^ref:webasm]: Artículo de MDN sobre WebAssembly en el navegador web, [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) (15/3/2026)
 
-[^ref:imhex]: Portal de bienvenida de ImHex, [*A modern, featureful Hex Editor for Reverse Engineers and Developers*](https://imhex.werwolv.net/) (13/3/2026)
+[^ref:imhex]: Portal de bienvenida de ImHex, [*A modern, featureful Hex Editor for Reverse Engineers and Developers*](https://imhex.werwolv.net/) (13/3/2026); Repositorio git oficial de WerWolv en github, (ImHex)[https://github.com/WerWolv/ImHex] (15/3/2026) 
 
 [^ref:okteta]: Portal de bienvenida de okteta, [KDE Okteta](https://apps.kde.org/es/okteta/) (13/3/2026)
 
