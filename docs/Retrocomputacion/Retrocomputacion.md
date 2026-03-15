@@ -168,11 +168,27 @@ Algunos puntos clave sobre este campo [^ref:RE]:
 
 - La estrategia de **caja negra** es vital para reconstruir comportamientos de programas [^ref:CajaNegra].
 
-En este artículo, nos familiarizaremos con el *tooling* básico que conscierne al desarrollo en GBA. Es muy importante, que este tipo de prácticas se lleven a cabo en entornos controlados (~docker~) así como desechables en caso de ser infectados.
+En este artículo, nos familiarizaremos con el *tooling* básico que conscierne al desarrollo en GBA. Es muy importante, que este tipo de prácticas se lleven a cabo en entornos controlados así como desechables en caso de ser infectados. Cabe mayor cautela con *software* malintencionado pues no se le exhíbe mágicamente no escapar del entorno aislado (caso VirtualBox [^ref:vboxcve]) 
+
+Habitualmente para la ingeniería inversa de *software* se gastan las siguientes utilidades.
 
 ### Editor de código
 
+Esta aplicación informática agiliza la edición de código fuente de programas. En la actualidad, muchos permiten la extensión de sus funcionalidades por medio de paquetería externa o *plugins*. Algunos de los cuales:
+
+
+
+- **Emacs** (y sus variantes) integran un numerosa cantidad funcionalidades y permiten una alta personalización a gusto del usuario por medio extensiones escritas en Elisp (dialecto de LISP). Tiene más años que el propio kernel de Linux y es un editor interoperable entre un modo gráfico de texto (utilizando GTK) y un modo de solo terminal (útil para SSH). Además es *software* libre.[^ref:emacs]
+
+- **(Neo) vi(m)** (y sus variantes) son editores que solo funcionan en texto de terminal. La implementación original (vi) viene integrada por defecto en cualquier intalación de Unix. Hay muchas utilidades entorno a sus variantes en la actualidad por la comunidad. Este es *software* libre y de código abierto. [^ref:vi]
+
+- La familia de editores **JetBrains** tienen licencias de código abiertas comunitarias (con retricciones) y de pago. Solo funcionan bajo un entorno gráfico completo. Son pesados en cuanto al rendimiento.[^ref:jetbrains]
+
+- Otras opciones son: Codium, Notepad++, Kdevelop, VS Code, Antigravity, Cursor...
+
 ### Visor de hexadecimal
+
+
 
 ### Desensamblador, decompilador
 
@@ -236,6 +252,8 @@ En este artículo, nos familiarizaremos con el *tooling* básico que conscierne 
 
 *[SMB]: Sistema propietario de facto para la compartición de carpetas en Windows 
 
+*[GTK]: GIMP Toolkit, conjunto de herramientas para desarrollar interfaces de usuario gráficas muy recurrente en el entorno de escritorio GNOME y XFCE.
+
 [^ref:GBAwiki]: Artículo de Wikipedia sobre GBA, [Game Boy Advance](https://en.wikipedia.org/wiki/Game_Boy_Advance) (5/3/2026)
 
 [^ref:RetromanDirectoGBYT]: Emisión grabada de Francisco Gallego en YouTube, [Programando videojuegos en ensamblador para Game Boy. Introducción a GBTelera](https://www.youtube.com/watch?v=q552n1F3j9s) (5/3/2026); Repositorio git de Francisco Gallego en github, [GBTelera](https://github.com/lronaldo/gbtelera) (6/3/2026)
@@ -277,6 +295,8 @@ En este artículo, nos familiarizaremos con el *tooling* básico que conscierne 
 [^ref:DENUVO]: Vídeo de BaityBait en YouTube, [DENUVO: El sistema ANTIPIRATERÍA MÁS POLÉMICO](https://www.youtube.com/watch?v=xnz84dO6-Wg) (12/3/2026); Artículo de GameRynxo sobre Denuvo, [Qué es Denuvo: El Guardián Digital de los Videojuegos Explicado a Fondo](https://game.rynxo.com/como-funciona/que-es-denuvo/) (13/3/2026)
 
 [^ref:CajaNegra]: Artículo de la Wikipedia sobre Pruebas funcionales, [Pruebas funcionales](https://es.wikipedia.org/wiki/Pruebas_funcionales) (12/3/2026); Transparencias de la asignatura Planificación y Pruebas de Sistemas *Software* del grado de Ingeniería Informática ofertado en la Universidad de Alicante (12/3/2026); Artículo de Juan José Santos Chavez sobre pruebas de caja negra, [¿Qué son las pruebas de caja negra? Todo lo que debes saber](https://www.deltaprotect.com/blog/pruebas-de-caja-negra) (12/3/2026)
+
+[^ref:vboxcve]: Artículo explícito de vulnerabilidades CVE sobre VirtualBox, [CVE-2025-30712](https://nvd.nist.gov/vuln/detail/CVE-2025-30712) (15/3/2026)
 
 [^ref:rizin]: Respositorio git del equipo rizinorg en github, [*Cutter*](https://github.com/rizinorg/cutter) (7/3/2026)
 
