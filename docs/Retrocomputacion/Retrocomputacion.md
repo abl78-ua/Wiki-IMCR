@@ -1,5 +1,5 @@
 ---
-title: Game Boy Advance
+title: Game Boy Advance + Introducción a la Ingeniería Inversa
 ---
 
 # Retrocomputación en Game Boy Advance
@@ -329,7 +329,7 @@ Para una lista detallada de otros programas que cuadren en esta categoría puede
 
 [^ref:moarhex]: Repositorio git con listados de programas para edición de hexadecimal en github, [awesome-hex-editors](https://github.com/merces/awesome-hex-editors) (15/3/2025) 
 
-[^ref:imhex]: Portal de bienvenida de ImHex, [*A modern, featureful Hex Editor for Reverse Engineers and Developers*](https://imhex.werwolv.net/) (13/3/2026); Repositorio git oficial de WerWolv en github, (ImHex)[https://github.com/WerWolv/ImHex] (15/3/2026) 
+[^ref:imhex]: Portal de bienvenida de ImHex, [*A modern, featureful Hex Editor for Reverse Engineers and Developers*](https://imhex.werwolv.net/) (13/3/2026); Repositorio git oficial de WerWolv en github, [ImHex](https://github.com/WerWolv/ImHex) (15/3/2026) 
 
 [^ref:okteta]: Portal de bienvenida de okteta, [KDE Okteta](https://apps.kde.org/es/okteta/) (13/3/2026)
 
