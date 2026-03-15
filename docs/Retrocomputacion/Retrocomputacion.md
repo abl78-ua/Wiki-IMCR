@@ -168,7 +168,7 @@ Algunos puntos clave sobre este campo [^ref:RE]:
 
 - La estrategia de **caja negra** es vital para reconstruir comportamientos de programas [^ref:CajaNegra].
 
-En este artículo, nos familiarizaremos con el *tooling* básico que conscierne al desarrollo en GBA. Es muy importante, que este tipo de prácticas se lleven a cabo en entornos controlados así como desechables en caso de ser infectados. Cabe mayor cautela con *software* malintencionado pues no se le exhíbe mágicamente no escapar del entorno aislado (caso VirtualBox [^ref:vboxcve]) 
+En este artículo, nos familiarizaremos con el *tooling* básico que conscierne al desarrollo en GBA. Es muy importante, que este tipo de prácticas se lleven a cabo en entornos controlados así como desechables en caso de ser infectados. Cabe mayor cautela con *software* malintencionado pues no se le exhíbe mágicamente no escapar del entorno aislado (caso de escape del aislamiento de VirtualBox [^ref:vboxcve]) 
 
 Habitualmente para la ingeniería inversa de *software* se gastan las algunas de las siguientes utilidades. Aunque muchos de los programas integran más funcionalidades que solo la que aparece citada.
 
@@ -190,6 +190,13 @@ Ventana de Emacs editando este artículo.
 - Otras opciones son: Codium, Notepad++, Kdevelop, VS Code, Antigravity, Cursor...
 
 ### Visor de hexadecimal
+
+Los programas citados en esta clase de *software* se centran principalmente facilitar el examen a nivel de bytes de archivos binarios.
+
+![Captura de pantalla de ImHex.](../images/Retrocomputacion/ImHex.png){ width="1000px" }
+/// caption
+Ventana de Firefox ejecutando *offline* (esto es posible gracias a *Service Workers*[^ref:websv] y WebAssembly[^ref:webasm]) ImHex en su formato web para examinar un compilado `.class` de Java.
+///
 
 
 
@@ -310,6 +317,10 @@ Ventana de Emacs editando este artículo.
 [^ref:vi]: Portal de bienvenida de Neovim, [*hyperextensible Vim-based text editor*](https://neovim.io/) (13/3/2026); Portal de bienvenida de Nvchad, [*Enhance your Neovim workflow*](https://nvchad.com/) (13/3/2026); [*Vim - the ubiquitous text editor*](https://www.vim.org/) (13/3/2026); Artículo de Manuel León en arsys sobre el uso de vim, [Comandos Vim: los atajos imprescindibles para trabajar con él](https://www.arsys.es/blog/comandos-vim) (13/3/2026)
 
 [^ref:jetbrains]: Portal de bienvenida de la familia de editores de JetBrains, [JetBrains](https://www.jetbrains.com/) (13/3/2026)
+
+[^ref:websw]: Artículo de MDN sobre *Service Workers* en el navegador web, [*Service Worker API*](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) (15/3/2026)
+
+[^ref:webasm]: Artículo de MDN sobre WebAssembly en el navegador web, [WebAssembly](https://developer.mozilla.org/en-US/docs/WebAssembly) (15/3/2026)
 
 [^ref:imhex]: Portal de bienvenida de ImHex, [*A modern, featureful Hex Editor for Reverse Engineers and Developers*](https://imhex.werwolv.net/) (13/3/2026)
 
