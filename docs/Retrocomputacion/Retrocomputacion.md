@@ -183,9 +183,9 @@ Ventana de Emacs editando este artículo.
 
 - **(Neo) vi(m)** (y sus variantes) son editores que solo funcionan en texto de terminal. La implementación original (vi) viene integrada por defecto en cualquier intalación de Unix. Hay muchas utilidades entorno a sus variantes en la actualidad por la comunidad. Este es *software* libre y de código abierto. [^ref:vi]
 
-- **Emacs** (y sus variantes) integran un numerosa cantidad funcionalidades y permiten una alta personalización a gusto del usuario por medio extensiones escritas en Elisp (dialecto de LISP [^ref:lpp]). Tiene más años que el propio kernel de Linux y es un editor interoperable entre un modo gráfico de texto (utilizando GTK) y un modo de solo terminal (útil para SSH). Además es *software* libre.[^ref:emacs]
+- **Emacs** (y sus variantes) integran un numerosa cantidad funcionalidades y permiten una alta personalización a gusto del usuario por medio extensiones escritas en Elisp (dialecto de LISP [^ref:lpp]). Tiene más años que el propio kernel de Linux y es un editor interoperable entre un modo gráfico de texto (utilizando GTK) y un modo de solo terminal (útil para SSH). Además es *software* libre. [^ref:emacs]
 
-- La familia de editores **JetBrains** tienen licencias de código abiertas comunitarias (con retricciones) y de pago. Solo funcionan bajo un entorno gráfico completo. Son pesados en cuanto al rendimiento.[^ref:jetbrains]
+- La familia de editores **JetBrains** tienen licencias de código abiertas comunitarias (con retricciones) y de pago. Solo funcionan bajo un entorno gráfico completo. Son pesados en cuanto al rendimiento. [^ref:jetbrains]
 
 - Otras opciones son: Codium, Notepad++, Kdevelop, VS Code, Antigravity, Cursor...
 
@@ -195,7 +195,7 @@ Los programas citados en esta clase de *software* se centran principalmente faci
 
 ![Captura de pantalla de ImHex.](../images/Retrocomputacion/ImHex.png){ width="1000px" }
 /// caption
-Ventana de Firefox ejecutando *offline* (esto es posible gracias a *Service Workers*[^ref:websv] y WebAssembly[^ref:webasm]) ImHex en su formato web para examinar un compilado `.class` de Java.
+Ventana de Firefox ejecutando *offline* (esto es posible gracias a *Service Workers* [^ref:websw] y WebAssembly [^ref:webasm]) ImHex en su formato web para examinar un compilado `.class` de Java.
 ///
 
 
