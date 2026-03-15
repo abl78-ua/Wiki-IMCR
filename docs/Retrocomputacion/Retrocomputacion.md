@@ -97,11 +97,11 @@ Dentro de este procesador existen dos modalidades de operación que habilitan un
 
     - Codificadas en 16 bits.
 	
-	- Son subconjunto (*subset*) de ARM.
+	- Son subconjunto (*subset*) de instrucciones ARM.
 	
 	- No tiene la capacidad de ejecución condicional.
 	
-	- Más eficientes.
+	- Más eficientes (al ocupar menos la codificación).
 
 	- 8 registros para uso general.
 
@@ -170,17 +170,20 @@ Algunos puntos clave sobre este campo [^ref:RE]:
 
 En este artículo, nos familiarizaremos con el *tooling* básico que conscierne al desarrollo en GBA. Es muy importante, que este tipo de prácticas se lleven a cabo en entornos controlados así como desechables en caso de ser infectados. Cabe mayor cautela con *software* malintencionado pues no se le exhíbe mágicamente no escapar del entorno aislado (caso VirtualBox [^ref:vboxcve]) 
 
-Habitualmente para la ingeniería inversa de *software* se gastan las siguientes utilidades.
+Habitualmente para la ingeniería inversa de *software* se gastan las algunas de las siguientes utilidades. Aunque muchos de los programas integran más funcionalidades que solo la que aparece citada.
 
 ### Editor de código
 
 Esta aplicación informática agiliza la edición de código fuente de programas. En la actualidad, muchos permiten la extensión de sus funcionalidades por medio de paquetería externa o *plugins*. Algunos de los cuales:
 
-
-
-- **Emacs** (y sus variantes) integran un numerosa cantidad funcionalidades y permiten una alta personalización a gusto del usuario por medio extensiones escritas en Elisp (dialecto de LISP). Tiene más años que el propio kernel de Linux y es un editor interoperable entre un modo gráfico de texto (utilizando GTK) y un modo de solo terminal (útil para SSH). Además es *software* libre.[^ref:emacs]
+![Captura de pantalla de Emacs.](../images/Retrocomputacion/editor_emacs.png){ width="600px" }
+/// caption
+Ventana de Emacs editando este artículo.
+///
 
 - **(Neo) vi(m)** (y sus variantes) son editores que solo funcionan en texto de terminal. La implementación original (vi) viene integrada por defecto en cualquier intalación de Unix. Hay muchas utilidades entorno a sus variantes en la actualidad por la comunidad. Este es *software* libre y de código abierto. [^ref:vi]
+
+- **Emacs** (y sus variantes) integran un numerosa cantidad funcionalidades y permiten una alta personalización a gusto del usuario por medio extensiones escritas en Elisp (dialecto de LISP [^ref:lpp]). Tiene más años que el propio kernel de Linux y es un editor interoperable entre un modo gráfico de texto (utilizando GTK) y un modo de solo terminal (útil para SSH). Además es *software* libre.[^ref:emacs]
 
 - La familia de editores **JetBrains** tienen licencias de código abiertas comunitarias (con retricciones) y de pago. Solo funcionan bajo un entorno gráfico completo. Son pesados en cuanto al rendimiento.[^ref:jetbrains]
 
@@ -301,6 +304,8 @@ Esta aplicación informática agiliza la edición de código fuente de programas
 [^ref:rizin]: Respositorio git del equipo rizinorg en github, [*Cutter*](https://github.com/rizinorg/cutter) (7/3/2026)
 
 [^ref:emacs]: Portal de bienvenida de GNU Emacs, [*An extensible, customizable, free/libre text editor — and more.*](https://www.gnu.org/software/emacs/) (13/3/2026); Repositorio git de Doom Emacs en github, [https://github.com/doomemacs/doomemacs](13/3/2026); Chuleta de Emacs, [refcard.pdf](https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf) (13/3/2026)
+
+[^ref:lpp]: Apuntes de la asignatura Lenguajes y Paradigmas de Programación del grado de Ingeniería Informática ofertado en la Universidad de Alicante, [Tema 1: Historia y conceptos de los lenguajes de programación](https://domingogallardo.github.io/apuntes-lpp/teoria/tema01-historia-lenguajes-programacion/tema01-historia-lenguajes-programacion.html) (15/3/2026); Seminario de Scheme (dialecto de LISP) de la asignatura Lenguajes y Paradigmas de Programación del grado de Ingeniería Informática ofertado en la Universidad de Alicante, [Seminario 1: Seminario de Scheme](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario1-scheme/seminario1-scheme.html) (15/3/2026)
 
 [^ref:vi]: Portal de bienvenida de Neovim, [*hyperextensible Vim-based text editor*](https://neovim.io/) (13/3/2026); Portal de bienvenida de Nvchad, [*Enhance your Neovim workflow*](https://nvchad.com/) (13/3/2026); [*Vim - the ubiquitous text editor*](https://www.vim.org/) (13/3/2026); Artículo de Manuel León en arsys sobre el uso de vim, [Comandos Vim: los atajos imprescindibles para trabajar con él](https://www.arsys.es/blog/comandos-vim) (13/3/2026)
 
