@@ -274,7 +274,7 @@ Podríamos destacar al menos tres mecanismos [^ref:recursiveRef]:
 
 #### Legalidad de emulación
 
-Los emuladores en la cultura popular tienden a asociarse como *software* ilegítimo. Pero nada lejos de la realidad, la mayoría son de código abierto y no infringen propiedad intelectual alguna siempre. Además de aclarar la no vinculación con marcas [^ref:GBxEmuWiki]. Numerosas sentencias judiciales han determinado que hacer emuladores es legal [^ref:Emucase1] [^ref:Emucase2] pero no siempre es así teóricamente existen indicios de violaciones de los derechos reservados [^ref:Emucase3].
+Los emuladores en la cultura popular tienden a asociarse como *software* ilegítimo. Pero nada lejos de la realidad, la mayoría son de código abierto y no infringen propiedad intelectual alguna siempre. Además de aclarar la no vinculación con marcas [^ref:GBxEmuWiki]. Numerosas sentencias judiciales han determinado que hacer emuladores es legal [^ref:Emucase1] [^ref:Emucase2] pero no siempre es así teóricamente existen si indicios de violaciones de los derechos sobre la propiedad (utilización de información de *leaks* para obtener una copia temprana) [^ref:Emucase3].
 
 Otra cuestión relativa a la emulación de títulos es la obtención de estos mismo títulos: pues debe hacerse desde una copia de la licencia original (sin permiso de distribución) o *software* casero (habitualmente conocido como *homebrew*). [^ref:Emucase4] 
 
