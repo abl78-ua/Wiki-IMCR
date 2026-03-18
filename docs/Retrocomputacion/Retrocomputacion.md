@@ -238,13 +238,19 @@ Listado de algunos decompiladores/desensambladores:
 
 - **dotPeek** enfocada al examen de ensamblados de .NET. [^ref:dotpeek] [^ref:jetbrains]
 
-- También los hay para Java como **procyon** [^ref:proycon] o **cfr** [^ref:cfr].
+- También los hay para Java como **procyon** [^ref:proycon] o **cfr** [^ref:cfr] .
 
 Hay recursos enteros en línea dedicados a la decompilación. [^ref:decmpwiki]
 
 ### Inspectores de memoria
 
+Aunque también son conocidos como visores o escáneres de memoria, consisten en proporcionar en tiempo de real el estado del mapa de memoria. Habitualmente los programas emuladores ya vienen con esta función. El uso de un visor principalmente, se utiliza para alterar partes de la memoria que afecten a la ejecución o que tengan un impacto secundario. Esta función requiere acceso al *kernel* para monitorear todo y cualquier modificación sin cuidado puede propiciar comportamientos erróneos. [^ref:myref]
+
+Por ejemplo, **Cheat Engine** o **GameConqueror** pueden ser utilizados para hacer trampas. [^ref:ce] [^ref:CHEATS]
+
 ### Virtualización y emulación
+
+
 
 ## Herramientas de desarrollo (práctico)
 
@@ -324,7 +330,7 @@ Hay recursos enteros en línea dedicados a la decompilación. [^ref:decmpwiki]
 
 [^ref:gbatek]: Documentación "ASCII" (solo texto) técnica en línea de gbatek, [gbatek](https://mgba-emu.github.io/gbatek/) (7/3/2026)
 
-[^ref:GBA3D]: Vídeo de Guillem Salvadó en YouTube, [Juegos de Game Boy Advance en 3D](https://www.youtube.com/watch?v=9QtnivesDaM) (6/3/2026); Vídeo de Dimitris Giannakis en Youtube, [*How Graphics worked on the Nintendo Game Boy Advance*](https://www.youtube.com/watch?v=mpNWEbZdXNw) (6/3/2026)
+[^ref:GBA3D]: Vídeo de Guillem Salvadó sobre 3D en GBA en YouTube, [Juegos de Game Boy Advance en 3D](https://www.youtube.com/watch?v=9QtnivesDaM) (6/3/2026); Vídeo de Dimitris Giannakis en Youtube, [*How Graphics worked on the Nintendo Game Boy Advance*](https://www.youtube.com/watch?v=mpNWEbZdXNw) (6/3/2026)
 
 [^ref:ARM7]: Documentación de ARMv7TDMI en formato pdf, [*ARM7TDMI (Rev 3) Core Processor (Product Overview)*](https://documentation-service.arm.com/static/5eb15edd9931941038e01527) (5/3/2026); Documentación de ARMv7TDMI en línea, [*ARM7TDMI (Rev 3) Core Processor*](https://developer.arm.com/documentation/dvi0027/b/arm7tdmi) (6/3/2026); Alternativa de documentación de ARMv7TDMI en el repositorio git de Sasank Chilamkurthy en github, [ARM7](https://github.com/chsasank/ARM7/blob/master/docs/ARM-7TDMI-Reference-Manual.pdf) (6/3/2026)
 
@@ -386,7 +392,13 @@ Hay recursos enteros en línea dedicados a la decompilación. [^ref:decmpwiki]
 
 [^ref:proycon]: Repositorio git de procyon en github, [procyon](https://github.com/mstrobel/procyon) (18/3/2026)
 
-[^ref:decmpwiki]: Enciclopedia wiki en línea dedicada a la decompilación, [**Decompiler Directory**](https://decompilation.wiki/decompilers/directory/) (18/3/2026) 
+[^ref:decmpwiki]: Enciclopedia wiki en línea dedicada a la decompilación, [*Decompiler Directory*](https://decompilation.wiki/decompilers/directory/) (18/3/2026) 
+
+[^ref:myref]: Artículo por Starcube Labs sobre realizar ingeniería inversa en títulos de GBA, [*Reverse Engineering a GBA*](https://www.starcubelabs.com/reverse-engineering-gba/) (18/3/2026)
+
+[^ref:ce]: Artículo de Wikipedia sobre Cheat Engine, [Cheat Engine](https://es.wikipedia.org/wiki/Cheat_Engine) (18/3/2026);
+
+[^ref:CHEATS]: Vídeo de Guillem Salvadó sobre trucos manipulando la memoria en YouTube, [¿Cómo funcionan los CHEAT CODES en juegos?](https://www.youtube.com/watch?v=dNS-lMqfKV0) (18/3/2026); Vídeo de Guillem Salvadó sobre manipulación de RAM en Youtube, [Hackeando Super Mario 64](https://youtu.be/voGN9nx-59Q?si=Vs1rQzTVsm-R0XkQ) (18/3/2026)
 
 [^ref:Lovepotion]: Repositorio git del equipo lovebrew en github, [LÖVE Potion](https://github.com/lovebrew/lovepotion) (6/3/2026)
 
