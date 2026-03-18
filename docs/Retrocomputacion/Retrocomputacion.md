@@ -221,7 +221,12 @@ Aplicación de computadora que permite examinar la ejecución paso a paso de un 
 
 !!! note "En práctica de GBA utilizaremos las utilidades que vienen con el kit de desarrollo"
     Utilizaremos una versión customizada de `gdb` de devkitpro para compilar las ROMs de GBA. En la práctica, gastaremos la opción de la depuración remota.
-	
+
+![Captura de pantalla de escritorio con una ventana del `gdb` y la otra del emulador 3DS para depurar un programa *homebrew*.](../images/Retrocomputacion/gdb.png){ width="756px" }
+/// caption
+Escritorio con `gdb` y el emulador 3DS para depurar un programa *homebrew*. En la captura se aprecia que: en la izquierda un cliente `gdb` está conectado a un *stub* de gdb por emulador, hay un punto de ruptura en la línea 275 (imprimir `loading...\n`, bola roja), ejecución actual en la línea 275 (flecha rosa), creación de otros hilos y con la pestaña de registros de ARMv11 por enseñar. En la derecha, un emulador 3DS controlado por el *stub* del depurador.
+///
+
 - **gdb** es un clásico y la opción más estable y estándar de facto en entornos *Unix-like*. [^ref:GDBman]
 
 - **edb** es un depurador usado en la ingeniería inversa. [^ref:edb]
@@ -261,9 +266,17 @@ Aunque también son conocidos como visores o escáneres de memoria, consisten en
 
 Por ejemplo, **Cheat Engine** o **GameConqueror** pueden ser utilizados para hacer trampas. [^ref:ce] [^ref:CHEATS]
 
-### Virtualización y emulación
+### Aislamiento
 
+Es muy aconsejable, cuando hagamos ingeniería inversa hacerlo en entornos aislados o desechables. Pero nunca sobre nuestra máquina si ello implica la ejecución de código malicioso o uno erróneo reconstruido por nosotros. Hay ocaciones en las que es imposible hacer ejecución directamente porque alguno de los componentes del computador del ordenador destino no son compatibles.
 
+Podríamos destacar al menos tres mecanismos [^ref:recursiveRef]:
+
+- La **emulación** posibilita ejecutar programas de arquitecturas *hardware* diferentes a las del equipo original (Por ejemplo: emulación de consolas retro en x86).
+
+- Los **contenedores** simulan un sistema operativo ligero pero con aislamiento de otros programas (Por ejemplo: desplegar en Docker).
+
+- Una **capa de compatibilidad** ejecuta programas de otros sistemas operativos utilizando los mínimo recursos del sistema operativo original (Por ejemplo: ejecutar programas de Windows en Fedora Linux).
 
 ## Herramientas de desarrollo (práctico)
 
@@ -414,6 +427,8 @@ Por ejemplo, **Cheat Engine** o **GameConqueror** pueden ser utilizados para hac
 [^ref:ce]: Artículo de Wikipedia sobre Cheat Engine, [Cheat Engine](https://es.wikipedia.org/wiki/Cheat_Engine) (18/3/2026);
 
 [^ref:CHEATS]: Vídeo de Guillem Salvadó sobre trucos manipulando la memoria en YouTube, [¿Cómo funcionan los CHEAT CODES en juegos?](https://www.youtube.com/watch?v=dNS-lMqfKV0) (18/3/2026); Vídeo de Guillem Salvadó sobre manipulación de RAM en Youtube, [Hackeando Super Mario 64](https://youtu.be/voGN9nx-59Q?si=Vs1rQzTVsm-R0XkQ) (18/3/2026)
+
+[^ref:recursiveRef]: Práctica 1 de Administración de Sistemas Operativos y Redes de los Computadores por Ivan Parkhomchyk Patapchyk en github, [Instalación, implementación y evaluación de sistemas operativos de escritorio](https://github.com/ip61-ua/ASORC/blob/main/practicas/1/document_min.pdf) (18/3/2026) 
 
 [^ref:Lovepotion]: Repositorio git del equipo lovebrew en github, [LÖVE Potion](https://github.com/lovebrew/lovepotion) (6/3/2026)
 
