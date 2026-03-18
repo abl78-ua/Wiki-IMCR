@@ -210,14 +210,23 @@ Para una lista detallada de otros programas que cuadren en esta categoría puede
 
 El compilador no es más ni menos que un programa que toma código fuente de entrada y lo transforma en otra salida (pudiendo producir binarios, otros fuentes...). [^ref:compiler]
 
-!!! note "En práctica de después utilizaremos el que viene con el kit de desarrollo"
+!!! note "En práctica de GBA utilizaremos las utilidades que vienen con el kit de desarrollo"
     Utilizaremos una versión customizada de `gcc` de devkitpro para compilar las ROMs de GBA.
 
 Algunas de las opciones más reconocidas son `gcc`, `clang`, `msvc`, `llvm`. Aunque también cabe considerar otros lenguajes dependiendo del enfoque del área al que se le quiere aplicar la inversa (webassembly, solidity, swift...). [^ref:cppfan]
 
 ### Depurador
 
-Aplicación de computadora a examinar la ejecución paso a paso del programa en directo 
+Aplicación de computadora que permite examinar la ejecución paso a paso de un programa a base de controles sobre este.
+
+!!! note "En práctica de GBA utilizaremos las utilidades que vienen con el kit de desarrollo"
+    Utilizaremos una versión customizada de `gdb` de devkitpro para compilar las ROMs de GBA. En la práctica, gastaremos la opción de la depuración remota.
+	
+- **gdb** es un clásico y la opción más estable y estándar de facto en entornos *Unix-like*. [^ref:GDBman]
+
+- **edb** es un depurador usado en la ingeniería inversa. [^ref:edb]
+
+Es posible que alguno de los siguientes programas que aparezcan en secciones posteriores pueda del mismo modo depurar código o hacerlo de forma manual.
 
 ### Desensamblador, decompilador
 
