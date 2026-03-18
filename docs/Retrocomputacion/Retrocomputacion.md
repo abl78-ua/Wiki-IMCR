@@ -195,7 +195,7 @@ Los programas citados en esta clase de *software* se centran principalmente faci
 
 ![Captura de pantalla de ImHex.](../images/Retrocomputacion/ImHex.png){ width="1000px" }
 /// caption
-Ventana de Firefox ejecutando *offline* (esto es posible gracias a *Service Workers* [^ref:websw] y WebAssembly [^ref:webasm]) ImHex en su formato web para examinar un compilado `.class` de Java.
+Ventana de Firefox ejecutando *offline* (esto es posible gracias a *Service Workers* [^ref:websw] y WebAssembly [^ref:webasm]) ImHex [^ref:imhex] en su formato web para examinar un compilado `.class` de Java.
 ///
 
 - **ImHex** es una navaja suiza multiplaforma de código abierto para este tipo de cuestiones. Puede extenderse su funcionalidad con extensiones, temas, decompiladores... [^ref:imhex] [^ref:moarhex]
@@ -213,9 +213,36 @@ El compilador no es más ni menos que un programa que toma código fuente de ent
 !!! note "En práctica de después utilizaremos el que viene con el kit de desarrollo"
     Utilizaremos una versión customizada de `gcc` de devkitpro para compilar las ROMs de GBA.
 
+### Depurador
+
 ### Desensamblador, decompilador
 
-### Depurador
+Un decompilador es un programa dedicado a relizar la operación inversa de un compilador. Por medio de la aplicación de conocimientos y heirísticas tratan de traducir código máquina a un plausible código fuente de alto nivel al programador. Esto es una técnica que precisa de tener conocimiento exhaustivos del compilador que se ha hecho servir a un programa y encontrar patrones/rutinas comunes en los programas. Un desensamblador, a diferencia de un decompilador, solo traduce el código máquina a ensamblador. Este último la tarea de decodificar cada instrucción bit a bit. Cabe remarcar que debido a la riqueza de lenguajes de programación que experimentamos hoy en día, existen decompiladores especializados en determinados lenguajes de programación (especialmente, los que utilizan un *bytecode* intermedio). [^ref:decowiki]
+
+No obstante, una decompilación ética debe seguir ciertas normativas legales para evitar infringir leyes y propiedades. [^ref:decowiki]
+
+![Captura de pantalla de Dogbolt.](../images/Retrocomputacion/dog.png){ width="2000px" }
+/// caption
+Ventana de Firefox ejecutando Dogbolt [^ref:dogbolt] para decompilar un ejemplo de hola mundo para Linux ARM. No todos los decompiladores decompilan de misma forma. 
+///
+
+A menudo y a parte de proporcionar un código de alto nivel o traducido al ensamblador, estas aplicaciones se suelen complementar con otras utilidades que agilizan la inspección: Detección de tipos, coloreado de código, visualización *strings*, grafo CFG, idenficación de funciones, recocimiento de bibliotecas externas, depuración... [^ref:decmpwiki]
+
+Listado de algunos decompiladores/desensambladores:
+
+- **Ghidra** es uno de los más populares, de código abierto y es desarrollado por la Agencia Nacional de Seguridad de los EE.UU. [^ref:Ghidra]
+
+- **Hexrays / IDA Pro** es un potente decompilador de pago. Cuenta con un gran reconocimiento en el nicho de la ingeniería inversa. [^ref:Hexrays]
+
+- **Cutter / Rizin** es una herramineta reciente de código abierto que integra algunas de las características adicionales. [^ref:rizin]
+
+- **dotPeek** enfocada al examen de ensamblados de .NET. [^ref:dotpeek] [^ref:jetbrains]
+
+- También los hay para Java como **procyon** [^ref:proycon] o **cfr** [^ref:cfr].
+
+Hay recursos enteros en línea dedicados a la decompilación. [^ref:decmpwiki]
+
+### Inspectores de memoria
 
 ### Virtualización y emulación
 
@@ -319,8 +346,6 @@ El compilador no es más ni menos que un programa que toma código fuente de ent
 
 [^ref:vboxcve]: Artículo explícito de vulnerabilidades CVE sobre VirtualBox, [CVE-2025-30712](https://nvd.nist.gov/vuln/detail/CVE-2025-30712) (15/3/2026)
 
-[^ref:rizin]: Respositorio git del equipo rizinorg en github, [*Cutter*](https://github.com/rizinorg/cutter) (7/3/2026)
-
 [^ref:emacs]: Portal de bienvenida de GNU Emacs, [*An extensible, customizable, free/libre text editor — and more.*](https://www.gnu.org/software/emacs/) (13/3/2026); Repositorio git de Doom Emacs en github, [https://github.com/doomemacs/doomemacs](13/3/2026); Chuleta de Emacs, [refcard.pdf](https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf) (13/3/2026)
 
 [^ref:lpp]: Apuntes de la asignatura Lenguajes y Paradigmas de Programación del grado de Ingeniería Informática ofertado en la Universidad de Alicante, [Tema 1: Historia y conceptos de los lenguajes de programación](https://domingogallardo.github.io/apuntes-lpp/teoria/tema01-historia-lenguajes-programacion/tema01-historia-lenguajes-programacion.html) (15/3/2026); Seminario de Scheme (dialecto de LISP) de la asignatura Lenguajes y Paradigmas de Programación del grado de Ingeniería Informática ofertado en la Universidad de Alicante, [Seminario 1: Seminario de Scheme](https://domingogallardo.github.io/apuntes-lpp/seminarios/seminario1-scheme/seminario1-scheme.html) (15/3/2026)
@@ -345,13 +370,27 @@ El compilador no es más ni menos que un programa que toma código fuente de ent
 
 [^ref:edb]: Página de paquetería y herramientas de Kali Linux [Edb-debugger](https://www.kali.org/tools/edb-debugger/) (13/3/2026)
 
-[^ref:Lovepotion]: Repositorio git del equipo lovebrew en github, [LÖVE Potion](https://github.com/lovebrew/lovepotion) (6/3/2026)
+[^ref:decowiki]: Artículo de Wikipedia sobre decompiladores, [Decompilador](https://es.wikipedia.org/wiki/Decompilador) (18/3/2026)
 
-[^ref:GBStudioSite]: Portal de bienvenida de GB Studio Central, [*A quick and easy to use drag and drop retro game creator for your favourite handheld video game system.*](https://www.gbstudio.dev/) (6/3/2026)
+[^ref:dogbolt]: Recompilación de diversos decompiladores en línea, [Decompiler Explorer](https://dogbolt.org/) (18/3/2026)
 
 [^ref:Hexrays]: Portal de bienvanida de hex-rays, [*IDA Pro: A powerful disassembler, decompiler and a versatile debugger. In one tool.*](https://hex-rays.com/ida-pro) (7/3/2026)
 
 [^ref:Ghidra]: Repositorio git oficial de la Agencia de Seguridad Nacional Estadounidense en github, [*Ghidra is a software reverse engineering (SRE) framework*](https://github.com/NationalSecurityAgency/ghidra) (7/3/2026)
+
+[^ref:rizin]: Respositorio git del equipo rizinorg en github, [*Cutter*](https://github.com/rizinorg/cutter) (7/3/2026)
+
+[^ref:dotpeek]: Portal de bienvenida de JetBrains dotPeek, [dotPeek](*https://www.jetbrains.com/decompiler/*) (18/3/2026)
+
+[^ref:cfr]: Repositorio git de cfr en github, [*CFR - Another Java Decompiler \\o/*](https://github.com/leibnitz27/cfr) (18/3/2026)
+
+[^ref:proycon]: Repositorio git de procyon en github, [procyon](https://github.com/mstrobel/procyon) (18/3/2026)
+
+[^ref:decmpwiki]: Enciclopedia wiki en línea dedicada a la decompilación, [**Decompiler Directory**](https://decompilation.wiki/decompilers/directory/) (18/3/2026) 
+
+[^ref:Lovepotion]: Repositorio git del equipo lovebrew en github, [LÖVE Potion](https://github.com/lovebrew/lovepotion) (6/3/2026)
+
+[^ref:GBStudioSite]: Portal de bienvenida de GB Studio Central, [*A quick and easy to use drag and drop retro game creator for your favourite handheld video game system.*](https://www.gbstudio.dev/) (6/3/2026)
 
 [^ref:GBStudioF500]: Noticia en el blog de GB Studio Central por Emi Paternostro, [*Nike Promotes an Air Jordan Release with Cosmic Climb*](https://gbstudiocentral.com/news/nike-promotes-an-air-jordan-release-with-cosmic-climb/) (6/3/2026); Noticia en el blog de GB Studio Central por Emi Paternostro, [*McDonald’s Celebrates Grimace’s Birthday with a GB Studio Game*](https://gbstudiocentral.com/news/mcdonalds-celebrates-grimaces-birthday-with-a-gb-studio-game/) (6/3/2026)
 
