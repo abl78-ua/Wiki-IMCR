@@ -282,11 +282,11 @@ Otra cuestión relativa a la emulación de títulos es la obtención de estos mi
 
 (Qué sdks hay, devkitpro-supuesto instalado, compilar una rom, emulador, depuración remota (¿para qué puede ser útil?, tuto rápido de uso), visor de memoria)
 
-### Práctica 0: Preparación inicial, compilación de hola mundo.
+### Práctica 0: Preparación del entorno inicial. Experimentación. Configuración.
 
-### Práctica 1: Depuración remota conectada al emulador.
+### Práctica 1: Compilación de ROM básica. Ejecución en emulador. Usando el escáner de memoria.
 
-### Práctica 2: Averiguar de qué instrucción se trata.
+### Práctica 2: Depuración remota. Otras utilidades. Nivel de instrucción.
 
 # Referencias
 
