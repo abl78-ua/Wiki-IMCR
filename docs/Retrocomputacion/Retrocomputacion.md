@@ -213,7 +213,11 @@ El compilador no es más ni menos que un programa que toma código fuente de ent
 !!! note "En práctica de después utilizaremos el que viene con el kit de desarrollo"
     Utilizaremos una versión customizada de `gcc` de devkitpro para compilar las ROMs de GBA.
 
+Algunas de las opciones más reconocidas son `gcc`, `clang`, `msvc`, `llvm`. Aunque también cabe considerar otros lenguajes dependiendo del enfoque del área al que se le quiere aplicar la inversa (webassembly, solidity, swift...). [^ref:cppfan]
+
 ### Depurador
+
+Aplicación de computadora a examinar la ejecución paso a paso del programa en directo 
 
 ### Desensamblador, decompilador
 
@@ -238,7 +242,7 @@ Listado de algunos decompiladores/desensambladores:
 
 - **dotPeek** enfocada al examen de ensamblados de .NET. [^ref:dotpeek] [^ref:jetbrains]
 
-- También los hay para Java como **procyon** [^ref:proycon] o **cfr** [^ref:cfr] .
+- También los hay para Java como **procyon** [^ref:proycon] o **cfr** [^ref:cfr].
 
 Hay recursos enteros en línea dedicados a la decompilación. [^ref:decmpwiki]
 
@@ -373,6 +377,8 @@ Por ejemplo, **Cheat Engine** o **GameConqueror** pueden ser utilizados para hac
 [^ref:hexed]: Herramienta en línea para la edición en hexadecimal, [hexed.it](https://hexed.it/) (13/3/2026)
 
 [^ref:compiler]: *Paper* sobre compiladores por Amit Kasar y Mayuri Dangare en researchgate, [*Compiler And Its Phases*](https://www.researchgate.net/publication/354948523_Compiler_And_Its_Phases) (15/3/2026)
+
+[^ref:cppfan]: Documento sobre el estándar (muy) (y mucho) (bastante) (y contemporáneamente) moderno de C++, [*Modern C++ Programming*](https://federico-busato.github.io/Modern-CPP-Programming/htmls/modern-cpp.html) (18/3/2026)
 
 [^ref:edb]: Página de paquetería y herramientas de Kali Linux [Edb-debugger](https://www.kali.org/tools/edb-debugger/) (13/3/2026)
 
