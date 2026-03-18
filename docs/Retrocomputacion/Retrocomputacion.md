@@ -138,13 +138,7 @@ La memoria de la GBA se distribuye de la siguiente manera [^ref:Tonc] [^ref:gbat
 
 #### Vídeo 3D
 
-### Audio (No disponible)
-
 ### Cartuchos
-
-#### Accesorios (quitar si ocupa mucho tiempo)
-
-### Sistemas antipiratería (quitar si ocupa mucho tiempo)
 
 ## Progamación a bajo nivel. Ingeniería inversa.
 
@@ -278,6 +272,12 @@ Podríamos destacar al menos tres mecanismos [^ref:recursiveRef]:
 
 - Una **capa de compatibilidad** ejecuta programas de otros sistemas operativos utilizando los mínimo recursos del sistema operativo original (Por ejemplo: ejecutar programas de Windows en Fedora Linux).
 
+#### Legalidad de emulación
+
+Los emuladores en la cultura popular tienden a asociarse como *software* ilegítimo. Pero nada lejos de la realidad, la mayoría son de código abierto y no infringen propiedad intelectual alguna siempre. Además de aclarar la no vinculación con marcas [^ref:GBxEmuWiki]. Numerosas sentencias judiciales han determinado que hacer emuladores es legal [^ref:Emucase1] [^ref:Emucase2] pero no siempre es así teóricamente existen indicios de violaciones de los derechos reservados [^ref:Emucase3].
+
+Otra cuestión relativa a la emulación de títulos es la obtención de estos mismo títulos: pues debe hacerse desde una copia de la licencia original (sin permiso de distribución) o *software* casero (habitualmente conocido como *homebrew*). [^ref:Emucase4] 
+
 ## Herramientas de desarrollo (práctico)
 
 (Qué sdks hay, devkitpro-supuesto instalado, compilar una rom, emulador, depuración remota (¿para qué puede ser útil?, tuto rápido de uso), visor de memoria)
@@ -287,10 +287,6 @@ Podríamos destacar al menos tres mecanismos [^ref:recursiveRef]:
 ### Práctica 1: Depuración remota conectada al emulador.
 
 ### Práctica 2: Averiguar de qué instrucción se trata.
-
-## Contexto legal, seguridad DRM e ingeniería inversa
-
-(Mencionar casos de emulación) (mencionar límites) (caso Playstation, Sega, Yuzu)
 
 # Referencias
 
