@@ -145,6 +145,17 @@ La GBA reitera alguno de los mecanimos desarrollados en generaciones de videocon
 
 #### Vídeo 2D
 
+![*Tiles* de un *frame* de Sonic Advance 3 para el escenario.](../images/Retrocomputacion/tiles_coppetti.png){ width="240px" }
+<br />
+![*Tiles* de un *frame* de Sonic Advance 3 para el fondo.](../images/Retrocomputacion/fondo_coppetti.png){ width="240px" }
+<br />
+![*Tiles* de un *frame* de Sonic Advance 3 para *sprites*.](../images/Retrocomputacion/sprites_coppetti.png){ width="240px" }
+<br />
+![Fotograma final de Sonic Advance 3.](../images/Retrocomputacion/todo_junto_coppetti.png){ width="240px" }
+/// caption
+Segmentación de bloques de baldosas de un *frame* de Sonic Advance 3 [^ref:CopettiGBA]. (1) *Tiles* del escenario, (2) del fondo, (3) *sprites* para personajes e interfaz del juego y (4) resultado final de combinar capas.
+///
+
 Se compone de los siguientes ítems [^ref:CopettiGBA]:
 
 - ***Tiles*:** Imágenes base de 8x8 píxeles (de 16 o 256 colores). Se agrupan en *charblocks* (bloques de 16 KB) dentro de los 96 KB totales de VRAM.
@@ -165,6 +176,14 @@ La unidad PPU trata su renderizado pero espera de antemano su agrupación en *ch
 	2 capas de fondo, ambas con capacidades afines (rotación y escalado).
 
 #### Vídeo 3D
+
+![Captura de pantalla de una carrera en F-Zero.](../images/Retrocomputacion/fzero3d.gif){ width="240px" }
+![Captura de pantalla del mapamundi de Golden Sun.](../images/Retrocomputacion/goldensun_3d.png){ width="240px" }
+![Captura de pantalla de una carrera en ATV Quad.](../images/Retrocomputacion/atv.png){ width="240px" }
+/// caption
+Títulos de GBA que aprovechan el vídeo en 3D.
+///
+
 
 Los modos de mapa de bits (*Framebuffer*) permiten manipular píxeles individuales, ideal para gráficos 3D rudimentarios o video, pero tienden a un consumo elevado de CPU y limitan la memoria para *sprites* (máximo 64). No utilizan el motor de tiles, delegando el trabajo al procesador. La GBA tiene tres modos dedicados a esta funcionalidad [^ref:gbaplus2doff] [^ref:CopettiGBA]:
 
