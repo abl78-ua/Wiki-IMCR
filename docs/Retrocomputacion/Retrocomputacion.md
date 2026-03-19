@@ -177,7 +177,6 @@ Los modos de mapa de bits (*Framebuffer*) permiten manipular píxeles individual
 === "Modo 5"
 	Dos *framebuffers* a todo color (16 bits) pero a menor resolución (160x128). Permite *page flipping*.
 
-
 ## Progamación a bajo nivel. Ingeniería inversa.
 
 La principal dificultad a la hora de trabajar a bajo nivel es que la tarea en cuestión presenta entre poca o nula documentación oficial que especifique el comportamiento en detalle del programa. Es por esta razón poco transparente por la que mucho del *software* es forzosamente descontinuado u obsoleto [^ref:GNUobslent].
