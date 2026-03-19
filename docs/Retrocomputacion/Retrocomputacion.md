@@ -134,7 +134,18 @@ La memoria de la GBA se distribuye de la siguiente manera [^ref:Tonc] [^ref:gbat
 
 ### Gráficos
 
+La computación gráfica de la consola es mostrada en una pantalla LCD de 240 x 160 píxeles (relación de aspecto 3:2) y a 60 Hz a través de la PPU (*Pysics processing unit*) [^ref:PanDocs]. Sin embargo y aparentemente la consola puede manejar una pantalla de mayor resolución para el *scrolling*. [^ref:gbaplus2doff] 
+
+Como se ha mostrado antes, hay secciones de memoria dedicadas al rederizado de vídeos: VRAM, OAM, PAL RAM. [^ref:Tonc] [^ref:gbatek]
+
+La GBA reitera alguno de los mecanimos desarrollados en generaciones de videoconsolas anteriores como la GB o la SNES. Pudiendo emplearse para títulos "3D" o puramente bidimensionales. [^ref:CopettiGBA]
+
 #### Mosaicos y *sprites*
+
+Los mosaicos, *tiles* o *bitmaps* son azulejos de vídeo que pueden ser reutilizados para el dibijado de vídeo en dos dimensiones. Los de GBA tienen un tamaño de 8 x 8 píxeles y se almacenan en la VRAM. Pudiendo renderizar 16 colores con 4 bpp (para ocupar menos: 32 Bytes) o 256 colores con 8 bpp (ocupando más: 64 Bytes). [^ref:CopettiGBA]
+
+La unidad PPU trata su renderizado pero espera de antemano su agrupación en *charblocks* (regiones contiguas de 16 KB) y afecta a un tipo capa (*sprites* o fondo). Por las limitaciones de la consola puede manejar hasta 6 *charblocks* (4 para el fondo, y dos para *sprites*). [^ref:Tonc] [^ref:gbatek] [^ref:RetromanDirectoGBYT] [^ref:gbaplus2doff] [^ref:PanDocs]
+
 
 #### Vídeo 3D
 
@@ -303,7 +314,9 @@ Otra cuestión relativa a la emulación de títulos es la obtención de estos mi
 *[RISC]: Computador de Conjunto Reducido de Instrucciones, Reduced Instruction Set Computer
 
 *[GDB]: Depurador de GNU, GNU Debugger
- 
+
+*[gdb]: Depurador de GNU, GNU Debugger
+
 *[NOP]: Instrucción a bajo nivel de relleno, que no hace nada, Not Operation
 
 *[JTAG]: Puerto para depuración y pruebas, Joint Test Action Group
@@ -328,7 +341,9 @@ Otra cuestión relativa a la emulación de títulos es la obtención de estos mi
 
 *[SMB]: Sistema propietario de facto para la compartición de carpetas en Windows 
 
-*[GTK]: GIMP Toolkit, conjunto de herramientas para desarrollar interfaces de usuario gráficas muy recurrente en el entorno de escritorio GNOME y XFCE.
+*[GTK]: GIMP Toolkit, conjunto de herramientas para desarrollar interfaces de usuario gráficas muy recurrente en el entorno de escritorio GNOME y XFCE
+
+*[LCD]: categoría de pantalla, *Liquid Crystal Display*
 
 [^ref:GBAwiki]: Artículo de Wikipedia sobre GBA, [Game Boy Advance](https://en.wikipedia.org/wiki/Game_Boy_Advance) (5/3/2026)
 
@@ -351,6 +366,8 @@ Otra cuestión relativa a la emulación de títulos es la obtención de estos mi
 [^ref:Tonc]: Documentación técnica en línea de Tonc, [*Foreword - Tonc*](https://gbadev.net/tonc/) (7/3/2026)
 
 [^ref:gbatek]: Documentación "ASCII" (solo texto) técnica en línea de gbatek, [gbatek](https://mgba-emu.github.io/gbatek/) (7/3/2026)
+
+[^ref:gbaplus2doff]: Vídeo de Jacob Helgason en YouTube, [* Building World Maps for the GBA*](https://www.youtube.com/watch?v=BSkId3Jq2_U) (19/3/2026)
 
 [^ref:GBA3D]: Vídeo de Guillem Salvadó sobre 3D en GBA en YouTube, [Juegos de Game Boy Advance en 3D](https://www.youtube.com/watch?v=9QtnivesDaM) (6/3/2026); Vídeo de Dimitris Giannakis en Youtube, [*How Graphics worked on the Nintendo Game Boy Advance*](https://www.youtube.com/watch?v=mpNWEbZdXNw) (6/3/2026)
 
