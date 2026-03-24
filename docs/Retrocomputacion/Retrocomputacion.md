@@ -332,13 +332,38 @@ Podríamos destacar al menos tres mecanismos [^ref:recursiveRef]:
 
 Los emuladores en la cultura popular tienden a asociarse como *software* ilegítimo. Pero nada lejos de la realidad, la mayoría son de código abierto y no infringen propiedad intelectual alguna siempre. Además de aclarar la no vinculación con marcas [^ref:GBxEmuWiki]. Numerosas sentencias judiciales han determinado que hacer emuladores es legal [^ref:Emucase1] [^ref:Emucase2] pero no siempre es así teóricamente existen si indicios de violaciones de los derechos sobre la propiedad (utilización de información de *leaks* para obtener una copia temprana) [^ref:Emucase3].
 
-Otra cuestión relativa a la emulación de títulos es la obtención de estos mismo títulos: pues debe hacerse desde una copia de la licencia original (sin permiso de distribución) o *software* casero (habitualmente conocido como *homebrew*). [^ref:Emucase4] 
+Otra cuestión relativa a la emulación de títulos es la obtención de estos mismo títulos: pues debe hacerse desde una copia de la licencia original (sin permiso de distribución) o *software* casero (habitualmente conocido como *homebrew**). [^ref:Emucase4] 
 
 ## Herramientas de desarrollo (práctico)
 
-(Qué sdks hay, devkitpro-supuesto instalado, compilar una rom, emulador, depuración remota (¿para qué puede ser útil?, tuto rápido de uso), visor de memoria)
+Antes de empezar con la sesión práctica es menester conocer que utilizaremos un **SDK** desarrollado por la comunidad para compilar nuestros programas *homebrew**.
+
+**¿Por qué utilizar un SDK?** Un SDK es un conjunto de herramientas que nos provee para un fácil desarrollo. Principalmente utilizaremos un compilador y un depurador que esté especializado en trabajar con programas de GBA, pero también nos provee de otras utilidades y de ejemplos. 
+
+**¿Qué SDK vamos a utilizar?** Hay SDKs oficiales de los fabricantes pero estos suelen ser propietarios. Lo cual limita los usos que podamos dar. Sin embargo, la comunidad que envuelve a la consola GBA ha podido desarrollar todo tipo recursos (documentación, vídeos, guías, programas como las utilizadas en este artículo). Por lo que nos decantaremos por opciones de código abierto y siempre que no violen ninguna propiedad. 
+
+Algunos de los ejemplos son: devKitPro[^ref:DevkitProGBA], GB Studio[^ref:GBStudioSite], Löve Potion[^ref:Lovepotion]... Incluso empresas de renombre han aprovechado la madurez de estos proyectos para promociones[^ref:GBStudioF500**. En la práctica utilizaremos devKitPro por su versatilidad.
+
+**Para la sesión práctica, asumiremos que utilizamos un UNIX-*like* y docker.** 
 
 ### Práctica 0: Preparación del entorno inicial. Experimentación. Configuración.
+
+Para facilitar la instalación devKitPro, emplearemos una imagen de docker. Copia el siguiente contenido en un archivo `Dockerfile`.
+
+``` Dockerfile
+FROM devkitpro/devkitarm:latest
+ENV DEVKITPRO=/opt/devkitpro
+ENV DEVKITARM=${DEVKITPRO}/devkitARM
+ENV PATH=${DEVKITARM}/bin:${PATH}
+WORKDIR /project
+CMD ["make"]
+```
+
+Ejecutamos en una *shell* lo siguiente para reconstruir la imagen para tener el SDK localmente.
+
+``` bash
+$ docker build -t gba-toolchain .
+```
 
 ### Práctica 1: Compilación de ROM básica. Ejecución en emulador. Usando el escáner de memoria.
 
