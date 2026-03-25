@@ -1120,6 +1120,7 @@ Ejecuta el `.elf` y trastea.
 
 #### Obteniendo CFG
 
+El objetivo es comprender el flujo de ejecución del programa sin llegar a ejecutarlo, leyendo el código ensamblador generado por el compilador.
 Procedamos con la examinación de la ejecución del programa y visualizarlo como un grafo de complejidad ciclomática.
 
 ``` bash
@@ -1128,7 +1129,31 @@ Procedamos con la examinación de la ejecución del programa y visualizarlo como
 
 Este tipo de visualización nos proporciona información de las bifurcaciones del programas. Además muestra los mnemotécnicos de cada instrucción y símbolo identificado. 
 
+![Captura de pantalla de cutter.](../images/Retrocomputacion/p2-1.png){ width="2000px" }
+![Captura de pantalla de cutter.](../images/Retrocomputacion/p2-2.png){ width="2000px" }
+/// caption
+Ventanas de cutter donde se examina nuestro compilado.
+///
 
+Inicialmente, buscamos la función principal (`main`). En el panel central, la vista de Gráfico traduce el código máquina en bloques visuales. El recuadro rojo (marcadores 3 y 4) revelan que el programa tras detectar que se ha pulsado un botón, realiza una llamada (`bl` - *Branch with Link*) a la subrutina `dbg.check_access`. 
+
+Continuando por esta rutina, el gráfico muestra claramente las bifurcaciones (las flechas verdes y rojas) que corresponden a las sentencias `if / else` de nuestro código. El primer resalte en rojo muestra instrucciones de bits (`lsls` y `bmi`) que evalúan qué botón se pulsó (comparando con `KEY_A`). Si el camino es correcto, la ejecución baja al siguiente bloque (segundo recuadro rojo). Aquí vemos cómo el programa carga una cadena de texto ("*ACCESS GRANTED*") y, justo debajo, busca nuestra variable flotante en la memoria (`ldr r3, [__data_start__]`). A continuación, se invoca una función interna de la librería de ARM (`__aeabi_fcmpeq_from_thumb`) que se encarga de comparar números decimales, culminando en un `cmp r0, 0` (tercer recuadro) que decidirá si dibuja el mensaje de "Float check OK!".
+
+Los comentarios insertados por el depurador son de vital ayuda para el entendimiento de lo que ocurre. 
+
+#### Modificando el binario
+
+En esta ocasión, nuestra motivación consistiré en localizar y en entender cómo se almacenan los datos en el binario crudo, y comprobar el resultado en tiempo real.
+
+![Captura de pantalla de imhex.](../images/Retrocomputacion/p2-3.png){ width="2000px" }
+![Captura de pantalla de imhex.](../images/Retrocomputacion/p2-4.png){ width="2000px" }
+/// caption
+Ventanas de imhex donde se examina nuestro compilado.
+///
+
+Vamos a buscar la ubicación del número 99.99 en flotante simple. Y luego, encontrar la variable *float* y modificarla a `3.14`. Cabe remarcar que la GBA es ***little endian***, porque la correcta interpretación del número de está al revés 
+
+Finalmente desbloqueamos el mensaje oculto `Float check OK!` (le proporcionamos el valor `3.14` que el programa esperaba).
 
 # Referencias
 
