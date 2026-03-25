@@ -460,15 +460,60 @@ A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para u
 	echo "Todo instalado correctamente"
 	```
 
-Una vez es
+=== "Paso 2: Ejecutar"
 
+	Una vez escrito los contenidos del *script*, procedamos con la ejecución del mismo.
+	
+	``` bash
+	chmod +x ./install-tools.sh && ./install-tools.sh
+	```
+	
+=== "Paso 3: Comprobación"
 
-Si no te fias del *script* proporcionado, puedes descargar (y también compilar el código fuente) desde los repositorios oficiales.
+	Este paso es opcional, pero siempre es una buena práctica que el *software* descargado funciona. Dado que lo hemos ejecutado por AppImage prueba a ejecutarlo así:
+	
+	``` bash
+	bin/mgba --appimage-extract-and-run
+	bin/imhex --appimage-extract-and-run
+	bin/cutter --appimage-extract-and-run
+	```
+	
+	Incluso si lo prefieres, puedes abrir el explorador de archivos gráfico (`nemo`, `dolphin`, `nautilus`...) sobre el directorio de los binarios y hacer doble clic para abrir cada programa.
+	
+	Nos deberían aparecer tres ventanas y esto nos confirma su adecuado funcionamiento. ¡Ciérralas ahora!
+	
+??? question "Método alternativo"
+	Si no te fias del *script* proporcionado o ha fallado, puedes descargar (y también compilar el código fuente** desde los repositorios oficiales.
 
+**Copiando ejemplos**
 
+El kit que hemos instalado tiene códigos de ejemplo para probar y compilar. Copiála con el siguiente commando:
 
+=== "Opción 1: Normal"
 
-### Práctica 1: Compilación de ROM básica. Ejecución en emulador. Usando el escáner de memoria.
+	Si al ejecutar este comando tienes errores o no puedes acceder al directorio copiado, prueba con al siguiente opción.
+
+	``` bash
+   	docker run --rm -v "$(pwd):/project" gba-toolchain cp -r /opt/devkitpro/examples/gba ./ejemplos_gba	
+   	```
+
+=== "Opción 2: SELinux (fedora)"
+	
+	Este comando hace lo mismo que el anterior pero le dice al Docker con qué usuario propietario realizar la orden. 
+
+	``` bash
+	docker run --rm -u $(id -u):$(id -g) -v "$(pwd):/project:Z" gba-toolchain cp -r /opt/devkitpro/examples/gba ./ejemplos_gba	
+	```
+
+=== "Opción 3: Local (sin Docker)"
+
+	Simplemente copia los ejemplos de una ruta a otra.
+
+	``` bash
+	cp -r /opt/devkitpro/examples/gba ./ejemplos_gba
+	```
+
+### Práctica 1: Compilación de ROM básica. Ejecución en emulador.
 
 ### Práctica 2: Depuración remota. Otras utilidades. Nivel de instrucción.
 
