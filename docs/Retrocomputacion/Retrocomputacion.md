@@ -926,9 +926,101 @@ Ventanas de mgba ejecutando la ROM que acabamos de compilar junto a otras ventan
 
 3. **Visor de paleta:** Está mostrando los colores disponibles en la memoria de la GBA. A la izquierda está la paleta del fondo y a la derecha la de los objetos. Como es un "*Hello World*" básico, la paleta del fondo es casi toda negra, con un único índice blanco para dibujar las letras, otro cian para el resto.
 
-4. **Inspector de cuadro:** Permite visualizar cómo ha renderizado el fotograma actual capa por capa. Muestra el color de fondo (*backdrop*) negro (alterado por utilizar el cambio de color) y una lista de *sprites* (aunque aquí no se están usando, ya que el texto se dibuja en la capa de fondo).
+4. **Inspector de cuadro:** Permite visualizar cómo ha renderizado el fotograma actual capa por capa. Muestra el color de fondo (*backdrop*) negro (alterado por utilizar el cambio de color) y una lista de *sprites* (aunque aquí no se están usando, ya que el texto se dibuja en la capa de fondo.
 
+#### Alterando la ejecución con el visor de memoria
 
+![Captura de pantalla con mgba corriendo la ROM.](../images/Retrocomputacion/p1-3.png){ width="2000px" }
+/// caption
+Ventanas de mgba ejecutando la ROM compilada junto a otras dos ventanas que nos proporcionan información sobre el vídeo y memoria. Es recorrido por la interfaz de menús del emulador para conseguir el resultado de "vandalizar" la letra "H".
+///
+
+Vamos a vandalizar la letra "H" de nuestra aplicación manipulado directamente la memoria, sigue estos pasos.
+
+1. Abre el visor de *tiles*.
+
+2. Busca el caracter "H" en el panel.
+
+3. Observa su dirección (`0x06000900`)
+
+4. Abre el visor de memoria.
+
+5. Selecciona la VRAM.
+
+6. (Opcional) Escoger alineación de 4 Bytes.
+
+7. Busca o escribe la dirección de memoria (para esto introducir la dirección en el campo "Inspeccionar dirección:").
+
+8. Selecciónala.
+
+9. Cambia a `0` el campo "Entero sin signo".
+
+10. Repite el mismo proceso pero para quitar la línea horizontal de la letra "H".
+
+11. Cambia a `0`
+
+12. Reanuda la ejecución.
+
+**Nota:** Los bits están al revés de cómo se representa un sprite.
+
+??? "¿Qué cambios harías en el código para poder desplazar el texto según la entrada de la cruceta? Inspecciona por tu cuenta las cabeceras de `template.c`"
+	``` c
+	#include <gba_console.h>
+	#include <gba_input.h>
+	#include <gba_interrupt.h>
+	#include <gba_systemcalls.h>
+	#include <gba_video.h>
+	#include <stdio.h>
+	
+	int
+	main (void)
+	{
+	int x = 10, y = 10;
+	int old_x = x, old_y = y;
+	u16 input;
+	
+	irqInit ();
+	irqEnable (IRQ_VBLANK);
+	
+	consoleDemoInit ();
+	iprintf ("\x1b[%d;%dHHello World!", y, x);
+	
+	while (1)
+	{
+		scanKeys ();
+		input = keysHeld ();
+	
+		old_x = x;
+		old_y = y;
+	
+		if (input & KEY_DOWN)
+			++y;
+		if (input & KEY_UP)
+			--y;
+		if (input & KEY_RIGHT)
+			++x;
+		if (input & KEY_LEFT)
+			--x;
+
+	    if (x < 0)
+			x = 0;
+		if (x > 18)
+			x = 18;
+		if (y < 0)
+			y = 0;
+		if (y > 19)
+			y = 19;
+
+        if (x != old_x || y != old_y)
+			{
+				iprintf ("\x1b[%d;%dH            ", old_y, old_x);
+				iprintf ("\x1b[%d;%dHHello World!", y, x);
+			}
+		VBlankIntrWait ();
+  		}
+	}
+	}
+	```
 
 ### Práctica 2: Depuración remota. Otras utilidades. Nivel de instrucción.
 
