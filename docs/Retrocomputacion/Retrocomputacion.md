@@ -344,7 +344,7 @@ Antes de empezar con la sesión práctica es menester conocer que utilizaremos u
 
 Algunos de los ejemplos son: devKitPro[^ref:DevkitProGBA], GB Studio[^ref:GBStudioSite], Löve Potion[^ref:Lovepotion]... Incluso empresas de renombre han aprovechado la madurez de estos proyectos para promociones[^ref:GBStudioF500]. En la práctica utilizaremos devKitPro por su versatilidad.
 
-**Para la sesión práctica, asumiremos que utilizamos un UNIX-*like* y docker.** Pero también se puede hacer desde otros sistemas como Windows y/o optar por una instalación manual en el sistema siguiendo la guía oficial de devKitPro a través del gestor de paquetería de `pacman` (no es necesario) si lo prefieres.
+**Para la sesión práctica, asumiremos que utilizamos un UNIX-*like* y docker.** Pero también se puede hacer desde otros sistemas como Windows y/o optar por una instalación manual en el sistema siguiendo la guía oficial de devKitPro a través del gestor de paquetería de `pacman` (no del AUR) si lo prefieres.
 
 ### Práctica 0: Preparación del entorno inicial. Experimentación. Configuración.
 
@@ -491,7 +491,7 @@ El kit que hemos instalado tiene códigos de ejemplo para probar y compilar. Cop
 
 === "Opción 1: Normal"
 
-	Si al ejecutar este comando tienes errores o no puedes acceder al directorio copiado, prueba con al siguiente opción.
+	Si al ejecutar este comando tienes errores o no puedes acceder al directorio copiado (problemas de permisos), prueba con al siguiente opción.
 
 	``` bash
    	docker run --rm -v "$(pwd):/project" gba-toolchain cp -r /opt/devkitpro/examples/gba ./ejemplos_gba	
@@ -512,6 +512,103 @@ El kit que hemos instalado tiene códigos de ejemplo para probar y compilar. Cop
 	``` bash
 	cp -r /opt/devkitpro/examples/gba ./ejemplos_gba
 	```
+
+Genial ahora tenemos los ejemplos en el directorio `ejemplos_gba`. Estos ejemplos están escritos en **C** siguen una programación bastante diferente con que estamos familiarizados. Cabe recordar esta consola solo cuanta con un sistema BIOS y no un sistema operativo completo.
+
+#### (Opcional) Configurando el editor
+
+Si vamos a utilizar un editor de código, nos beneficiaremos del autocompletado de código. En este sentido necesitaremos el programa `clangd`. Luego configuraremos nuestro editor para utilizar la integración con `clang` y dehabilitar otras (para los usuarios de `vscode` y derivados).
+
+La mayoría detectan a la primera si está `clangd` instalado por su correspondiente integración/extensión en el editor de preferencia. Pero otros no y requieren pasos adicionales como por ejemplo: la configuración de clangd para eglot para los modos de C adjuntada.
+
+``` emacs-lisp
+;;;; * lsp eglotters
+(use-package eglot
+  :hook ((c-mode c++-mode) . eglot-ensure)
+  :bind
+  ("C-c r" . eglot-rename)
+  ("C-c c" . eglot-code-actions)
+  :config
+
+
+  ;;;; ** Languages
+  ;;;; *** C/C++
+  (add-to-list 'eglot-server-programs
+	       '((c++-mode c-mode)
+             . ("clangd"
+				 "--background-index"
+				 "--clang-tidy"
+				 "--header-insertion=iwyu"
+				 "--completion-style=detailed"
+				 "--function-arg-placeholders=0"
+				 "--fallback-style=GNU"))))
+```
+
+No obstante, cuando vayamos a editar seguirán habiendo errores en el código fuente de un programa totalmente válido. Para ello, hemos de configurar el clangd concretamente para que incluya las bibliotecas de devKitPro para su procesado.
+
+`clangd` si está activo siempre acudirá a la raíz de nuestro proyecto e intentará leer un archivo denominado `.clangd`. Configurar este archivo suele ser un dolor de cabeza porque pocas veces se editan y menos cambiarlos. Más el hecho de que estamos combinando herramientas de gnu con las de clang. Por ello debemos tener en cuenta que implicaciones pueda tener:
+
+- No todos los compiladores de c/c++ soportan las mismas características. Ni menos si el estándar de c++ se actualiza constantemente. Pueden haber funciones del lenguaje que no estén disponibles, en otro sí, pero en otro están solo si se hace presenta determinada bandera.
+
+- En acolación, el uso de banderas o parámetros puede hacer que un programa completamente válido y compilable en un compilador deja de serlo para otro por el uso de banderas no reconocidas.
+
+- Por ello, es común asegurarse que el código compila en diferentes compiladores y no solo en uno. [^ref:c++]
+
+Sin embargo, utilizaremos esta combinación de herramientas para conveniencia. Así que declara el siguiente contenido en un archivo llamado `clangd-gba-rules.mk`.
+
+``` makefile
+CLANGD = .clangd
+LOCAL_HEADERS = .headers
+INCLUDE_PATHS_DOCKER = \
+	"-I$(shell pwd)/include" \
+	"-I$(shell pwd)/$(LOCAL_HEADERS)/libgba/include" \
+	"-I$(shell pwd)/$(LOCAL_HEADERS)/arm-none-eabi/include" \
+	"-lgba" \
+	"-lm"
+INCLUDE_PATHS_LOCAL = \
+	"-I$(shell pwd)/include" \
+	"-I/opt/devkitpro/libgba/include" \
+	"-I/opt/devkitpro/devkitARM/arm-none-eabi/include" \
+	"-lgba" \
+	"-lm"
+
+.PHONY: docker local
+
+docker:
+	@mkdir -p $(LOCAL_HEADERS)/libgba
+	@mkdir -p $(LOCAL_HEADERS)/arm-none-eabi
+	@docker run --rm -u $(shell id -u):$(shell id -g) -v "$(shell pwd):/project:Z" gba-toolchain cp -r /opt/devkitpro/libgba/include ./$(LOCAL_HEADERS)/libgba/ || true
+	@docker run --rm -u $(shell id -u):$(shell id -g) -v "$(shell pwd):/project:Z" gba-toolchain cp -r /opt/devkitpro/devkitARM/arm-none-eabi/include ./$(LOCAL_HEADERS)/arm-none-eabi/ || true
+	@echo "CompileFlags:" > $(CLANGD)
+	@echo "  Remove:" >> $(CLANGD)
+	@echo "    - \"-mword-allocations\"" >> $(CLANGD)
+	@echo "    - \"-mword-relocations\"" >> $(CLANGD)
+	@echo "    - \"-fno-diagnostics-show-caret\"" >> $(CLANGD)
+	@echo "  Add:" >> $(CLANGD)
+	@echo "    - \"--target=arm-none-eabi\"" >> $(CLANGD)
+	@echo "    - \"-mcpu=arm7tdmi\"" >> $(CLANGD)
+	@echo "    - \"-mthumb\"" >> $(CLANGD)
+	@for entry in $(INCLUDE_PATHS_DOCKER); do \
+		echo "    - $$entry" >> $(CLANGD); \
+	done
+
+local:
+	@echo "CompileFlags:" > $(CLANGD)
+	@echo "  Remove:" >> $(CLANGD)
+	@echo "    - \"-mword-allocations\"" >> $(CLANGD)
+	@echo "    - \"-mword-relocations\"" >> $(CLANGD)
+	@echo "    - \"-fno-diagnostics-show-caret\"" >> $(CLANGD)
+	@echo "  Add:" >> $(CLANGD)
+	@echo "    - \"--target=arm-none-eabi\"" >> $(CLANGD)
+	@echo "    - \"-mcpu=arm7tdmi\"" >> $(CLANGD)
+	@echo "    - \"-mthumb\"" >> $(CLANGD)
+	@for entry in $(INCLUDE_PATHS_LOCAL); do \
+		echo "    - $$entry" >> $(CLANGD); \
+	done
+```
+
+??? question "¿Sabias que la exensión `.mk`...? "
+	La extensión `.mk` es utilizada también para referirse a *makefiles* en un contexto donde el proyecto es demasiado grande como para contenerlo todo en un Makefile único. Como solución a este problema, se aplica divide y vencerás para segmentar el Makefile en pequeños módulos `.mk`. Esto tiene la ventaja de poder establecer qué módulos poder ejecutar. Esto es muy recurrido para compilar android en un determinado modelo de teléfono que no soporta determinadas características.
 
 ### Práctica 1: Compilación de ROM básica. Ejecución en emulador.
 
@@ -680,3 +777,6 @@ El kit que hemos instalado tiene códigos de ejemplo para probar y compilar. Cop
 [^ref:Emucase3]: Artículo de The Verge sobre sobre el caso Yuzu, [*Nintendo Switch emulator Yuzu will utterly fold and pay $2.4M to settle its lawsuit*](https://www.theverge.com/2024/3/4/24090357/nintendo-yuzu-emulator-lawsuit-settlement) (7/3/2026)
 
 [^ref:Emucase4]: Artículo de McNeelyLaw sobre la legalidad de la emulación, [*https://www.mcneelylaw.com/understanding-the-legal-landscape-of-video-game-emulation/*](https://www.mcneelylaw.com/understanding-the-legal-landscape-of-video-game-emulation/) (7/3/2026)
+
+
+[^ref:c++]: Vídeo de Lazo Velko sobre C++ en YouTube, [*The worst programming language of all time*](https://www.youtube.com/watch?v=7fGB-hjc2Gc) (25/03/2026)
