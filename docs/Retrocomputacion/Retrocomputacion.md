@@ -370,14 +370,14 @@ En esta sección utilizaremos Docker con el que ya muchos estaremos familarizado
 	Ejecutamos en una *shell* lo siguiente para reconstruir la imagen para tener el SDK localmente.
 
 	``` bash
-	$ docker build -t gba-toolchain .
+	docker build -t gba-toolchain .
 	```
 
 === "Paso 3: Comprobación"
 	Para confirmar que se ha instalado correctamente, mostraremos la versión del compilador con el comando típico de `gcc --version`:
 
 	``` bash
-	$ docker run --rm -v "$(pwd):/project" gba-toolchain arm-none-eabi-gcc --version
+	docker run --rm -v "$(pwd):/project" gba-toolchain arm-none-eabi-gcc --version
 	```
 
 	Y debería aparecer una salida como esta:
@@ -499,7 +499,7 @@ El kit que hemos instalado tiene códigos de ejemplo para probar y compilar. Cop
 
 === "Opción 3: Local (sin Docker)"
 	Simplemente copia los ejemplos de una ruta a otra.
-
+ 
 	``` bash
 	cp -r /opt/devkitpro/examples/gba ./ejemplos_gba
 	```
@@ -628,6 +628,32 @@ En este punto ya tenemos configurado todo el entorno para poder seguir las sigui
 ### Práctica 1: Compilación de ROM básica. Ejecución en emulador.
 
 En esta parte compilaremos la ROM más simple de los ejemplos de devKitPro, comprenderemos la importancia del `Makefile`, analizaremos brevemente otros ejemplos y aprovecharemos para analizar todas las opciones de desarrollador que nos ofrece  
+
+#### Compilación de ejemplo
+
+Necesitarás o no copiar todo lo necesario en la ruta nos ubicaremos después. Abre editor de elección en la ruta `ejemplos_gba/template`. Regenera el `.clang` aquí si prefieres tener un autocompletado.
+
+Probablemente verás algo así:
+
+![Captura de pantalla de emacs.](../images/Retrocomputacion/p1-0.png){ width="2000px" }
+/// caption
+Ventana de emacs mostrando el directorio con la carpeta `source` y el archivo `Makefile`. Y mostrando parte del contenido de los ficheros de este directorio.
+///
+
+Abre el `Makefile` y analízalo. Y responde a estas cuestiones:
+
+??? question "¿Qué regla nos genera el binario final?"
+	Recuerda buscamos una ROM con extensión `.gba`
+	
+??? question "¿Podemos utilizar C++? Si es así, ¿Qué regla emplea compilador que toca?"
+	Recuerda que `CXX` se refiere a C++ y `CC` a C.
+	
+??? question "¿El programa genera solo instrucciones Thumb?"
+	Quizás pueda servirte de ayuda ejecutar el siguiente comando
+	
+	``` bash
+	arm-none-eabi-gcc --help=target
+	```
 
 ### Práctica 2: Depuración remota. Otras utilidades. Nivel de instrucción.
 
