@@ -164,7 +164,7 @@ Se compone de los siguientes ítems [^ref:CopettiGBA]:
 
 - ***Sprites*:** Elementos móviles de hasta 64x64 píxeles (o 128x128 si se escalan). Tienen atributos de posición, volteo, tamaño y, crucialmente, pueden aplicar transformaciones afines (rotación y escalado).
 
-La unidad PPU trata su renderizado pero espera de antemano su agrupación en *charblocks* (regiones contiguas de 16 KB) y afecta a un tipo capa (*sprites* o fondo). Por las limitaciones de la consola puede manejar hasta 6 *charblocks* (4 para el fondo, y dos para *sprites*). Contamos con los siguientes modos de vídeo para baldosas: [^ref:Tonc] [^ref:gbatek] [^ref:RetromanDirectoGBYT] [^ref:gbaplus2doff] [^ref:PanDocs]
+La unidad PPU trata su renderizado pero espera de antemano su agrupación en *charblocks* (regiones contiguas de 16 KB) y afecta a un tipo capa (*sprites* o fondo). Por las limitaciones de la consola puede manejar hasta 6 *charblocks* (4 para el fondo, y dos para *sprites*). Contamos con los siguientes modos de vídeo para baldosas: [^ref:Tonc] [^ref:gbatek] [^ref:RetromanDirectoGBYT] [^ref:gbaplus2doff] [^ref:PanDocs] [^ref:GBA3D]
 
 === "Modo 0"
 	4 capas de fondo estáticas (texto), sin rotación ni escalado.
@@ -322,7 +322,7 @@ Es muy aconsejable, cuando hagamos ingeniería inversa hacerlo en entornos aisla
 
 Podríamos destacar al menos tres mecanismos [^ref:recursiveRef]:
 
-- La **emulación** posibilita ejecutar programas de arquitecturas *hardware* diferentes a las del equipo original (Por ejemplo: emulación de consolas retro en x86).
+- La **emulación** posibilita ejecutar programas de arquitecturas *hardware* diferentes a las del equipo original (Por ejemplo: mgba para emulación de consolas retro en x86 [^ref:mGBA]).
 
 - Los **contenedores** simulan un sistema operativo ligero pero con aislamiento de otros programas (Por ejemplo: desplegar en Docker).
 
@@ -342,7 +342,7 @@ Antes de empezar con la sesión práctica es menester conocer que utilizaremos u
 
 **¿Qué SDK vamos a utilizar?** Hay SDKs oficiales de los fabricantes pero estos suelen ser propietarios. Lo cual limita los usos que podamos dar. Sin embargo, la comunidad que envuelve a la consola GBA ha podido desarrollar todo tipo recursos (documentación, vídeos, guías, programas como las utilizadas en este artículo). Por lo que nos decantaremos por opciones de código abierto y siempre que no violen ninguna propiedad. 
 
-Algunos de los ejemplos son: devKitPro[^ref:DevkitProGBA], GB Studio[^ref:GBStudioSite], Löve Potion[^ref:Lovepotion]... Incluso empresas de renombre han aprovechado la madurez de estos proyectos para promociones[^ref:GBStudioF500**. En la práctica utilizaremos devKitPro por su versatilidad.
+Algunos de los ejemplos son: devKitPro[^ref:DevkitProGBA], GB Studio[^ref:GBStudioSite], Löve Potion[^ref:Lovepotion]... Incluso empresas de renombre han aprovechado la madurez de estos proyectos para promociones[^ref:GBStudioF500]. En la práctica utilizaremos devKitPro por su versatilidad.
 
 **Para la sesión práctica, asumiremos que utilizamos un UNIX-*like* y docker.** 
 
