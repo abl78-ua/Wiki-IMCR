@@ -1155,6 +1155,12 @@ Vamos a buscar la ubicación del número 99.99 en flotante simple. Y luego, enco
 
 Finalmente desbloqueamos el mensaje oculto `Float check OK!` (le proporcionamos el valor `3.14` que el programa esperaba).
 
+#### Depuración remota
+
+El proceso de depuración puede llevarse a cabo de forma inalámbrica hoy en día. De hecho es una práctica bastante común. Por ejemplo: depurar Firefox en móvil con la inspección desde la versión de escritorio de Firefox, los programas Java con maven en IntelliJ abren un puerto concreto para esto (5005)...
+
+En nuestro caso, los emuladores proporcionan una opción para habilitar un puerto de red y utilizar el *stub* del gdb. La dupuración de errores puede incluso dehacerse e *hardware* real.
+
 # Referencias
 
 *[GBA]: consola Game Boy Advance
