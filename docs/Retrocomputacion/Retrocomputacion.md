@@ -547,7 +547,7 @@ No obstante, cuando vayamos a editar seguirán habiendo errores en el código fu
 
 Sin embargo, utilizaremos esta combinación de herramientas para conveniencia. Así que declara el siguiente contenido en un archivo llamado `clangd-gba-rules.mk`.
 
-??? question "¿Sabias que la exensión `.mk`...? "
+??? tip "¿Sabias que la exensión `.mk`...? "
 	La extensión `.mk` es utilizada también para referirse a *makefiles* en un contexto donde el proyecto es demasiado grande como para contenerlo todo en un Makefile único. Como solución a este problema, se aplica divide y vencerás para segmentar el Makefile en pequeños módulos `.mk`. Esto tiene la ventaja de poder establecer qué módulos poder ejecutar. Esto es muy recurrido para compilar android en un determinado modelo de teléfono que no soporta determinadas características.
 
 Puedes considerar la modificación de los comandos del docker si no funcionan.
@@ -627,9 +627,9 @@ En este punto ya tenemos configurado todo el entorno para poder seguir las sigui
 
 ### Práctica 1: Compilación de ROM básica. Ejecución en emulador.
 
-En esta parte compilaremos la ROM más simple de los ejemplos de devKitPro, comprenderemos la importancia del `Makefile`, analizaremos brevemente otros ejemplos y aprovecharemos para analizar todas las opciones de desarrollador que nos ofrece  
+En esta parte compilaremos la ROM más simple de los ejemplos de devKitPro, comprenderemos la importancia del `Makefile`, analizaremos brevemente otros ejemplos y aprovecharemos para analizar todas las opciones de desarrollador que nos ofrece.
 
-#### Compilación de ejemplo
+#### Analizando el Makefile
 
 Necesitarás o no copiar todo lo necesario en la ruta nos ubicaremos después. Abre editor de elección en la ruta `ejemplos_gba/template`. Regenera el `.clang` aquí si prefieres tener un autocompletado.
 
@@ -640,6 +640,175 @@ Probablemente verás algo así:
 Ventana de emacs mostrando el directorio con la carpeta `source` y el archivo `Makefile`. Y mostrando parte del contenido de los ficheros de este directorio.
 ///
 
+Este es el contenido completo del `Makefile`:
+
+``` Makefile
+#---------------------------------------------------------------------------------
+.SUFFIXES:
+#---------------------------------------------------------------------------------
+
+ifeq ($(strip $(DEVKITARM)),)
+$(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM")
+endif
+
+include $(DEVKITARM)/gba_rules
+
+#---------------------------------------------------------------------------------
+# TARGET is the name of the output
+# BUILD is the directory where object files & intermediate files will be placed
+# SOURCES is a list of directories containing source code
+# INCLUDES is a list of directories containing extra header files
+# DATA is a list of directories containing binary data
+# GRAPHICS is a list of directories containing files to be processed by grit
+#
+# All directories are specified relative to the project directory where
+# the makefile is found
+#
+#---------------------------------------------------------------------------------
+TARGET		:= $(notdir $(CURDIR))
+BUILD		:= build
+SOURCES		:= source
+INCLUDES	:= include
+DATA		:=
+MUSIC		:=
+
+#---------------------------------------------------------------------------------
+# options for code generation
+#---------------------------------------------------------------------------------
+ARCH	:=	-mthumb -mthumb-interwork
+
+CFLAGS	:=	-g -Wall -O2\
+		-mcpu=arm7tdmi -mtune=arm7tdmi\
+		$(ARCH)
+
+CFLAGS	+=	$(INCLUDE)
+
+CXXFLAGS	:=	$(CFLAGS) -fno-rtti -fno-exceptions
+
+ASFLAGS	:=	-g $(ARCH)
+LDFLAGS	=	-g $(ARCH) -Wl,-Map,$(notdir $*.map)
+
+#---------------------------------------------------------------------------------
+# any extra libraries we wish to link with the project
+#---------------------------------------------------------------------------------
+LIBS	:= -lmm -lgba
+
+
+#---------------------------------------------------------------------------------
+# list of directories containing libraries, this must be the top level containing
+# include and lib
+#---------------------------------------------------------------------------------
+LIBDIRS	:=	$(LIBGBA)
+
+#---------------------------------------------------------------------------------
+# no real need to edit anything past this point unless you need to add additional
+# rules for different file extensions
+#---------------------------------------------------------------------------------
+
+
+ifneq ($(BUILD),$(notdir $(CURDIR)))
+#---------------------------------------------------------------------------------
+
+export OUTPUT	:=	$(CURDIR)/$(TARGET)
+
+export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir)) \
+			$(foreach dir,$(DATA),$(CURDIR)/$(dir)) \
+			$(foreach dir,$(GRAPHICS),$(CURDIR)/$(dir))
+
+export DEPSDIR	:=	$(CURDIR)/$(BUILD)
+
+CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
+CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
+SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
+BINFILES	:=	$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*.*)))
+
+ifneq ($(strip $(MUSIC)),)
+	export AUDIOFILES	:=	$(foreach dir,$(notdir $(wildcard $(MUSIC)/*.*)),$(CURDIR)/$(MUSIC)/$(dir))
+	BINFILES += soundbank.bin
+endif
+
+#---------------------------------------------------------------------------------
+# use CXX for linking C++ projects, CC for standard C
+#---------------------------------------------------------------------------------
+ifeq ($(strip $(CPPFILES)),)
+#---------------------------------------------------------------------------------
+	export LD	:=	$(CC)
+#---------------------------------------------------------------------------------
+else
+#---------------------------------------------------------------------------------
+	export LD	:=	$(CXX)
+#---------------------------------------------------------------------------------
+endif
+#---------------------------------------------------------------------------------
+
+export OFILES_BIN := $(addsuffix .o,$(BINFILES))
+
+export OFILES_SOURCES := $(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
+
+export OFILES := $(OFILES_BIN) $(OFILES_SOURCES)
+
+export HFILES := $(addsuffix .h,$(subst .,_,$(BINFILES)))
+
+export INCLUDE	:=	$(foreach dir,$(INCLUDES),-iquote $(CURDIR)/$(dir)) \
+					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
+					-I$(CURDIR)/$(BUILD)
+
+export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
+
+.PHONY: $(BUILD) clean
+
+#---------------------------------------------------------------------------------
+$(BUILD):
+	@[ -d $@ ] || mkdir -p $@
+	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+
+#---------------------------------------------------------------------------------
+clean:
+	@echo clean ...
+	@rm -fr $(BUILD) $(TARGET).elf $(TARGET).gba
+
+
+#---------------------------------------------------------------------------------
+else
+
+#---------------------------------------------------------------------------------
+# main targets
+#---------------------------------------------------------------------------------
+
+$(OUTPUT).gba	:	$(OUTPUT).elf
+
+$(OUTPUT).elf	:	$(OFILES)
+
+$(OFILES_SOURCES) : $(HFILES)
+
+#---------------------------------------------------------------------------------
+# The bin2o rule should be copied and modified
+# for each extension used in the data directories
+#---------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------
+# rule to build soundbank from music files
+#---------------------------------------------------------------------------------
+soundbank.bin soundbank.h : $(AUDIOFILES)
+#---------------------------------------------------------------------------------
+	@mmutil $^ -osoundbank.bin -hsoundbank.h
+
+#---------------------------------------------------------------------------------
+# This rule links in binary data with the .bin extension
+#---------------------------------------------------------------------------------
+%.bin.o	%_bin.h :	%.bin
+#---------------------------------------------------------------------------------
+	@echo $(notdir $<)
+	@$(bin2o)
+
+
+-include $(DEPSDIR)/*.d
+#---------------------------------------------------------------------------------------
+endif
+#---------------------------------------------------------------------------------------
+
+```
+
 Abre el `Makefile` y analízalo. Y responde a estas cuestiones:
 
 ??? question "¿Qué regla nos genera el binario final?"
@@ -648,12 +817,86 @@ Abre el `Makefile` y analízalo. Y responde a estas cuestiones:
 ??? question "¿Podemos utilizar C++? Si es así, ¿Qué regla emplea compilador que toca?"
 	Recuerda que `CXX` se refiere a C++ y `CC` a C.
 	
-??? question "¿El programa genera solo instrucciones Thumb?"
+??? question "Observa que se emplea la siguiente orden `ARCH := -mthumb -mthumb-interwork`, ¿esto quiere decir que el programa generado  solo contendrá instrucciones Thumb?"
 	Quizás pueda servirte de ayuda ejecutar el siguiente comando
 	
 	``` bash
 	arm-none-eabi-gcc --help=target
 	```
+
+#### Compilando
+
+Estando en el mismo directorio de trabajo, abre el fuente `source/template.c`. Cuyo contenido es:
+
+``` c
+
+#include <gba_console.h>
+#include <gba_video.h>
+#include <gba_interrupt.h>
+#include <gba_systemcalls.h>
+#include <gba_input.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+//---------------------------------------------------------------------------------
+// Program entry point
+//---------------------------------------------------------------------------------
+int main(void) {
+//---------------------------------------------------------------------------------
+
+
+	// the vblank interrupt must be enabled for VBlankIntrWait() to work
+	// since the default dispatcher handles the bios flags no vblank handler
+	// is required
+	irqInit();
+	irqEnable(IRQ_VBLANK);
+
+	consoleDemoInit();
+
+	// ansi escape sequence to set print co-ordinates
+	// /x1b[line;columnH
+	iprintf("\x1b[10;10HHello World!\n");
+
+	while (1) {
+		VBlankIntrWait();
+	}
+}
+```
+
+**¿Qué hace este código?**
+
+- `irqInit()` prepara el despachador de interrupciones en la memoria.
+
+- `irqEnable(IRQ_VBLANK)` dicta que se dibuja a fotograma completo (*Vertical blanking*) (59.73 Hz).
+
+- `consoleDemoInit();` habilita modo 0 y permite el renderizado de texto de prueba.
+
+- `iprintf("\x1b[10;10HHello World!\n");` es el `printf` de toda la vida pero optimizado para utilizar enteros como coordenadas.
+
+- `VBlankIntrWait();` espera hasta tener que renderizar el *frame* siguiente. Ahorrando batería de este modo.
+
+??? tip "¿Sabías que el bucle `while(1)`...?"
+	El bucle `while` está presente en toda aplicación que precise de algún tipo de interacción. Este es un concepto fundamental para evitar que un juego se cierre al instante. Durante este bucle se lleva a cabo un el renderizado. Es importante poner un límite (como el límite de *frames*) para evitar una sobrecarga del procesador y garantizar una experiencia semejante en toda gama de equipos y evitar fallos gráficos o reproducción de cinemáticas desincronizadas.
+
+**Para compilar** escribe en la raíz donde está el `Makefile` lo siguiente en una terminal:
+
+=== "docker"
+	``` bash
+	docker run --rm -u $(id -u):$(id -g) -v "$(pwd):/project:Z" gba-toolchain cp -r /opt/devkitpro/examples/gba make
+	```
+
+=== "local"
+	``` bash
+	make
+	```
+
+![Captura de pantalla de emacs.](../images/Retrocomputacion/p1-1.png){ width="2000px" }
+/// caption
+Ventana de emacs mostrando el directorio `template` (donde se encuentra el archivo `Makefile` y la carpeta `source`). Compilando con `make` y mostrando los ficheros de salida de este directorio.
+///
+
+Idealmente habremos conseguido el cartucho `.gba` ¡Vamos a meterlo en el emulador mgba!
+
 
 ### Práctica 2: Depuración remota. Otras utilidades. Nivel de instrucción.
 
