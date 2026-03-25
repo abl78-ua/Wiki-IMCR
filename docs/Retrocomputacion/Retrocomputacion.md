@@ -6,9 +6,6 @@ title: Game Boy Advance + Introducción a la Ingeniería Inversa
 
 Por *Ivan Parkhomchyk Patapchyk*
 
-!!! danger "Artículo incompleto"
-    Este artículo está en proceso de redacción. Pueden existir secciones incompletas, pocas referencias que sustenten lo que se documenta, faltas gramaticales y ortográficas o ausencia de ejemplos.
-
 !!! note "Enfoque de la redacción"
 	Este artículo se centra en el análisis técnico y hace uso de herramientas con fines educativos. No para infringir la propiedad intelectual ni la distribución de *software* no permitda.
 
@@ -344,7 +341,7 @@ Antes de empezar con la sesión práctica es menester conocer que utilizaremos u
 
 Algunos de los ejemplos son: devKitPro[^ref:DevkitProGBA], GB Studio[^ref:GBStudioSite], Löve Potion[^ref:Lovepotion]... Incluso empresas de renombre han aprovechado la madurez de estos proyectos para promociones[^ref:GBStudioF500]. En la práctica utilizaremos devKitPro por su versatilidad.
 
-**Para la sesión práctica, asumiremos que utilizamos un UNIX-*like* y docker.** Pero también se puede hacer desde otros sistemas como Windows y/o optar por una instalación manual en el sistema siguiendo la guía oficial de devKitPro a través del gestor de paquetería de `pacman` (no es necesario) si lo prefieres.
+**Para la sesión práctica, asumiremos que utilizamos un UNIX-*like* y docker.** Pero también se puede hacer desde otros sistemas como Windows y/o optar por una instalación manual en el sistema siguiendo la guía oficial de devKitPro a través del gestor de paquetería de `pacman` (no del AUR) si lo prefieres.
 
 ### Práctica 0: Preparación del entorno inicial. Experimentación. Configuración.
 
@@ -355,7 +352,6 @@ Esta parte hace enfoque en la preparación del entorno de experimentación. Crea
 En esta sección utilizaremos Docker con el que ya muchos estaremos familarizados para crear una imagen del kit con los ejecutables y bibliotecas necesarias. 
 
 === "Paso 1: `Dockerfile`"
-
 	Para facilitar la instalación devKitPro, emplearemos una imagen de docker. Copia el siguiente contenido en un archivo `Dockerfile`.
 
 	``` Dockerfile
@@ -368,19 +364,17 @@ En esta sección utilizaremos Docker con el que ya muchos estaremos familarizado
 	```
 
 === "Paso 2: Construcción de imagen"
-
 	Ejecutamos en una *shell* lo siguiente para reconstruir la imagen para tener el SDK localmente.
 
 	``` bash
-	$ docker build -t gba-toolchain .
+	docker build -t gba-toolchain .
 	```
 
 === "Paso 3: Comprobación"
-
 	Para confirmar que se ha instalado correctamente, mostraremos la versión del compilador con el comando típico de `gcc --version`:
 
 	``` bash
-	$ docker run --rm -v "$(pwd):/project" gba-toolchain arm-none-eabi-gcc --version
+	docker run --rm -v "$(pwd):/project" gba-toolchain arm-none-eabi-gcc --version
 	```
 
 	Y debería aparecer una salida como esta:
@@ -416,7 +410,6 @@ En esta sección utilizaremos Docker con el que ya muchos estaremos familarizado
 A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para una conviente instalación utilizaremos el formato de aplicación portable AppImage de cada una. Este formato garantiza que cierto *software* pueda ejecutarse independientemente de las bibliotecas del sistema y de permisos de un usuario en el ordenador (no necesitamos elevación de permisos). En contraposición pueden discrepar en el renderizado de interfaces gráficas y pueda requerir la instación de librerías como fuse para su ejecución.
 
 === "Paso 1: `install_tools.sh`"
-
 	Crea el fichero `install_tools.sh` con el siguiente contenido:
 
 	``` bash
@@ -461,7 +454,6 @@ A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para u
 	```
 
 === "Paso 2: Ejecutar"
-
 	Una vez escrito los contenidos del *script*, procedamos con la ejecución del mismo.
 	
 	``` bash
@@ -469,7 +461,6 @@ A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para u
 	```
 	
 === "Paso 3: Comprobación"
-
 	Este paso es opcional, pero siempre es una buena práctica que el *software* descargado funciona. Dado que lo hemos ejecutado por AppImage prueba a ejecutarlo así:
 	
 	``` bash
@@ -482,7 +473,7 @@ A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para u
 	
 	Nos deberían aparecer tres ventanas y esto nos confirma su adecuado funcionamiento. ¡Ciérralas ahora!
 	
-??? question "Método alternativo"
+??? note "Método alternativo"
 	Si no te fias del *script* proporcionado o ha fallado, puedes descargar (y también compilar el código fuente** desde los repositorios oficiales.
 
 **Copiando ejemplos**
@@ -490,15 +481,13 @@ A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para u
 El kit que hemos instalado tiene códigos de ejemplo para probar y compilar. Copiála con el siguiente commando:
 
 === "Opción 1: Normal"
-
-	Si al ejecutar este comando tienes errores o no puedes acceder al directorio copiado, prueba con al siguiente opción.
+	Si al ejecutar este comando tienes errores o no puedes acceder al directorio copiado (problemas de permisos), prueba con al siguiente opción.
 
 	``` bash
    	docker run --rm -v "$(pwd):/project" gba-toolchain cp -r /opt/devkitpro/examples/gba ./ejemplos_gba	
    	```
 
-=== "Opción 2: SELinux (fedora)"
-	
+=== "Opción 2: SELinux (fedora)"	
 	Este comando hace lo mismo que el anterior pero le dice al Docker con qué usuario propietario realizar la orden. 
 
 	``` bash
@@ -506,16 +495,533 @@ El kit que hemos instalado tiene códigos de ejemplo para probar y compilar. Cop
 	```
 
 === "Opción 3: Local (sin Docker)"
-
 	Simplemente copia los ejemplos de una ruta a otra.
-
+ 
 	``` bash
 	cp -r /opt/devkitpro/examples/gba ./ejemplos_gba
 	```
 
+Genial ahora tenemos los ejemplos en el directorio `ejemplos_gba`. Estos ejemplos están escritos en **C** siguen una programación bastante diferente con que estamos familiarizados. Cabe recordar esta consola solo cuanta con un sistema BIOS y no un sistema operativo completo.
+
+#### (Opcional) Configurando el editor
+
+Si vamos a utilizar un editor de código, nos beneficiaremos del autocompletado de código. En este sentido necesitaremos el programa `clangd`. Luego configuraremos nuestro editor para utilizar la integración con `clang` y dehabilitar otras (para los usuarios de `vscode` y derivados).
+
+La mayoría detectan a la primera si está `clangd` instalado por su correspondiente integración/extensión en el editor de preferencia. Pero otros no y requieren pasos adicionales como por ejemplo: la configuración de clangd para eglot para los modos de C adjuntada.
+
+``` emacs-lisp
+;;;; * lsp eglotters
+(use-package eglot
+  :hook ((c-mode c++-mode) . eglot-ensure)
+  :bind
+  ("C-c r" . eglot-rename)
+  ("C-c c" . eglot-code-actions)
+  :config
+
+
+  ;;;; ** Languages
+  ;;;; *** C/C++
+  (add-to-list 'eglot-server-programs
+	       '((c++-mode c-mode)
+             . ("clangd"
+				 "--background-index"
+				 "--clang-tidy"
+				 "--header-insertion=iwyu"
+				 "--completion-style=detailed"
+				 "--function-arg-placeholders=0"
+				 "--fallback-style=GNU"))))
+```
+
+No obstante, cuando vayamos a editar seguirán habiendo errores en el código fuente de un programa totalmente válido. Para ello, hemos de configurar el clangd concretamente para que incluya las bibliotecas de devKitPro para su procesado.
+
+`clangd` si está activo siempre acudirá a la raíz de nuestro proyecto e intentará leer un archivo denominado `.clangd`. Configurar este archivo suele ser un dolor de cabeza porque pocas veces se editan y menos cambiarlos. Más el hecho de que estamos combinando herramientas de gnu con las de clang. Por ello debemos tener en cuenta que implicaciones pueda tener:
+
+- No todos los compiladores de c/c++ soportan las mismas características. Ni menos si el estándar de c++ se actualiza constantemente. Pueden haber funciones del lenguaje que no estén disponibles, en otro sí, pero en otro están solo si se hace presenta determinada bandera.
+
+- En acolación, el uso de banderas o parámetros puede hacer que un programa completamente válido y compilable en un compilador deja de serlo para otro por el uso de banderas no reconocidas.
+
+- Por ello, es común asegurarse que el código compila en diferentes compiladores y no solo en uno. [^ref:c++]
+
+Sin embargo, utilizaremos esta combinación de herramientas para conveniencia. Así que declara el siguiente contenido en un archivo llamado `clangd-gba-rules.mk`.
+
+??? tip "¿Sabias que la exensión `.mk`...? "
+	La extensión `.mk` es utilizada también para referirse a *makefiles* en un contexto donde el proyecto es demasiado grande como para contenerlo todo en un Makefile único. Como solución a este problema, se aplica divide y vencerás para segmentar el Makefile en pequeños módulos `.mk`. Esto tiene la ventaja de poder establecer qué módulos poder ejecutar. Esto es muy recurrido para compilar android en un determinado modelo de teléfono que no soporta determinadas características.
+
+Puedes considerar la modificación de los comandos del docker si no funcionan.
+
+``` makefile
+CLANGD = .clangd
+LOCAL_HEADERS = .headers
+INCLUDE_PATHS_DOCKER = \
+	"-I$(shell pwd)/include" \
+	"-I$(shell pwd)/$(LOCAL_HEADERS)/libgba/include" \
+	"-I$(shell pwd)/$(LOCAL_HEADERS)/arm-none-eabi/include" \
+	"-lgba" \
+	"-lm"
+INCLUDE_PATHS_LOCAL = \
+	"-I$(shell pwd)/include" \
+	"-I/opt/devkitpro/libgba/include" \
+	"-I/opt/devkitpro/devkitARM/arm-none-eabi/include" \
+	"-lgba" \
+	"-lm"
+
+.PHONY: docker local
+
+docker:
+	@mkdir -p $(LOCAL_HEADERS)/libgba
+	@mkdir -p $(LOCAL_HEADERS)/arm-none-eabi
+	@docker run --rm -u $(shell id -u):$(shell id -g) -v "$(shell pwd):/project:Z" gba-toolchain cp -r /opt/devkitpro/libgba/include ./$(LOCAL_HEADERS)/libgba/ || true
+	@docker run --rm -u $(shell id -u):$(shell id -g) -v "$(shell pwd):/project:Z" gba-toolchain cp -r /opt/devkitpro/devkitARM/arm-none-eabi/include ./$(LOCAL_HEADERS)/arm-none-eabi/ || true
+	@echo "CompileFlags:" > $(CLANGD)
+	@echo "  Remove:" >> $(CLANGD)
+	@echo "    - \"-mword-allocations\"" >> $(CLANGD)
+	@echo "    - \"-mword-relocations\"" >> $(CLANGD)
+	@echo "    - \"-fno-diagnostics-show-caret\"" >> $(CLANGD)
+	@echo "  Add:" >> $(CLANGD)
+	@echo "    - \"--target=arm-none-eabi\"" >> $(CLANGD)
+	@echo "    - \"-mcpu=arm7tdmi\"" >> $(CLANGD)
+	@echo "    - \"-mthumb\"" >> $(CLANGD)
+	@for entry in $(INCLUDE_PATHS_DOCKER); do \
+		echo "    - $$entry" >> $(CLANGD); \
+	done
+
+local:
+	@echo "CompileFlags:" > $(CLANGD)
+	@echo "  Remove:" >> $(CLANGD)
+	@echo "    - \"-mword-allocations\"" >> $(CLANGD)
+	@echo "    - \"-mword-relocations\"" >> $(CLANGD)
+	@echo "    - \"-fno-diagnostics-show-caret\"" >> $(CLANGD)
+	@echo "  Add:" >> $(CLANGD)
+	@echo "    - \"--target=arm-none-eabi\"" >> $(CLANGD)
+	@echo "    - \"-mcpu=arm7tdmi\"" >> $(CLANGD)
+	@echo "    - \"-mthumb\"" >> $(CLANGD)
+	@for entry in $(INCLUDE_PATHS_LOCAL); do \
+		echo "    - $$entry" >> $(CLANGD); \
+	done
+```
+
+El Makefile que has escrito hace una cosa bastante fácil de entender en función de lo que necesitamos realizar:
+
+=== "`docker`"
+	En este caso, vamos a aprovecharnos de los archivos de cabecera `.h` solo para hacerle creer a `clangd` su interfaz pública.
+	
+	``` bash
+	make -f clangd-gba-rules.mk docker
+	```
+
+=== "`local`"
+	En este caso, le indicamos a `clangd` la ruta absoluta de donde estén las bibliotecas instaladas.
+	
+	``` bash
+	make -f clangd-gba-rules.mk local
+   	```
+
+Y a continuación revisa que sse haya creado/actualizado el archivo `.clangd` con sus rutas definidas dependiendo el método en el que utilicemos devKitPro. Reinicia el editor o servidor lsp si es necesario que `clangd` detecte los cambios.
+
+#### Finalizando
+
+En este punto ya tenemos configurado todo el entorno para poder seguir las siguientes prácticas. ¡No borres nada para seguirlas!
+
 ### Práctica 1: Compilación de ROM básica. Ejecución en emulador.
 
+En esta parte compilaremos la ROM más simple de los ejemplos de devKitPro, comprenderemos la importancia del `Makefile`, analizaremos brevemente otros ejemplos y aprovecharemos para analizar todas las opciones de desarrollador que nos ofrece.
+
+#### Analizando el Makefile
+
+Necesitarás o no copiar todo lo necesario en la ruta nos ubicaremos después. Abre editor de elección en la ruta `ejemplos_gba/template`. Regenera el `.clang` aquí si prefieres tener un autocompletado.
+
+Probablemente verás algo así:
+
+![Captura de pantalla de emacs.](../images/Retrocomputacion/p1-0.png){ width="2000px" }
+/// caption
+Ventana de emacs mostrando el directorio con la carpeta `source` y el archivo `Makefile`. Y mostrando parte del contenido de los ficheros de este directorio.
+///
+
+Este es el contenido completo del `Makefile`:
+
+``` Makefile
+#---------------------------------------------------------------------------------
+.SUFFIXES:
+#---------------------------------------------------------------------------------
+
+ifeq ($(strip $(DEVKITARM)),)
+$(error "Please set DEVKITARM in your environment. export DEVKITARM=<path to>devkitARM")
+endif
+
+include $(DEVKITARM)/gba_rules
+
+#---------------------------------------------------------------------------------
+# TARGET is the name of the output
+# BUILD is the directory where object files & intermediate files will be placed
+# SOURCES is a list of directories containing source code
+# INCLUDES is a list of directories containing extra header files
+# DATA is a list of directories containing binary data
+# GRAPHICS is a list of directories containing files to be processed by grit
+#
+# All directories are specified relative to the project directory where
+# the makefile is found
+#
+#---------------------------------------------------------------------------------
+TARGET		:= $(notdir $(CURDIR))
+BUILD		:= build
+SOURCES		:= source
+INCLUDES	:= include
+DATA		:=
+MUSIC		:=
+
+#---------------------------------------------------------------------------------
+# options for code generation
+#---------------------------------------------------------------------------------
+ARCH	:=	-mthumb -mthumb-interwork
+
+CFLAGS	:=	-g -Wall -O2\
+		-mcpu=arm7tdmi -mtune=arm7tdmi\
+		$(ARCH)
+
+CFLAGS	+=	$(INCLUDE)
+
+CXXFLAGS	:=	$(CFLAGS) -fno-rtti -fno-exceptions
+
+ASFLAGS	:=	-g $(ARCH)
+LDFLAGS	=	-g $(ARCH) -Wl,-Map,$(notdir $*.map)
+
+#---------------------------------------------------------------------------------
+# any extra libraries we wish to link with the project
+#---------------------------------------------------------------------------------
+LIBS	:= -lmm -lgba
+
+
+#---------------------------------------------------------------------------------
+# list of directories containing libraries, this must be the top level containing
+# include and lib
+#---------------------------------------------------------------------------------
+LIBDIRS	:=	$(LIBGBA)
+
+#---------------------------------------------------------------------------------
+# no real need to edit anything past this point unless you need to add additional
+# rules for different file extensions
+#---------------------------------------------------------------------------------
+
+
+ifneq ($(BUILD),$(notdir $(CURDIR)))
+#---------------------------------------------------------------------------------
+
+export OUTPUT	:=	$(CURDIR)/$(TARGET)
+
+export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir)) \
+			$(foreach dir,$(DATA),$(CURDIR)/$(dir)) \
+			$(foreach dir,$(GRAPHICS),$(CURDIR)/$(dir))
+
+export DEPSDIR	:=	$(CURDIR)/$(BUILD)
+
+CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
+CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
+SFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.s)))
+BINFILES	:=	$(foreach dir,$(DATA),$(notdir $(wildcard $(dir)/*.*)))
+
+ifneq ($(strip $(MUSIC)),)
+	export AUDIOFILES	:=	$(foreach dir,$(notdir $(wildcard $(MUSIC)/*.*)),$(CURDIR)/$(MUSIC)/$(dir))
+	BINFILES += soundbank.bin
+endif
+
+#---------------------------------------------------------------------------------
+# use CXX for linking C++ projects, CC for standard C
+#---------------------------------------------------------------------------------
+ifeq ($(strip $(CPPFILES)),)
+#---------------------------------------------------------------------------------
+	export LD	:=	$(CC)
+#---------------------------------------------------------------------------------
+else
+#---------------------------------------------------------------------------------
+	export LD	:=	$(CXX)
+#---------------------------------------------------------------------------------
+endif
+#---------------------------------------------------------------------------------
+
+export OFILES_BIN := $(addsuffix .o,$(BINFILES))
+
+export OFILES_SOURCES := $(CPPFILES:.cpp=.o) $(CFILES:.c=.o) $(SFILES:.s=.o)
+
+export OFILES := $(OFILES_BIN) $(OFILES_SOURCES)
+
+export HFILES := $(addsuffix .h,$(subst .,_,$(BINFILES)))
+
+export INCLUDE	:=	$(foreach dir,$(INCLUDES),-iquote $(CURDIR)/$(dir)) \
+					$(foreach dir,$(LIBDIRS),-I$(dir)/include) \
+					-I$(CURDIR)/$(BUILD)
+
+export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib)
+
+.PHONY: $(BUILD) clean
+
+#---------------------------------------------------------------------------------
+$(BUILD):
+	@[ -d $@ ] || mkdir -p $@
+	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+
+#---------------------------------------------------------------------------------
+clean:
+	@echo clean ...
+	@rm -fr $(BUILD) $(TARGET).elf $(TARGET).gba
+
+
+#---------------------------------------------------------------------------------
+else
+
+#---------------------------------------------------------------------------------
+# main targets
+#---------------------------------------------------------------------------------
+
+$(OUTPUT).gba	:	$(OUTPUT).elf
+
+$(OUTPUT).elf	:	$(OFILES)
+
+$(OFILES_SOURCES) : $(HFILES)
+
+#---------------------------------------------------------------------------------
+# The bin2o rule should be copied and modified
+# for each extension used in the data directories
+#---------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------
+# rule to build soundbank from music files
+#---------------------------------------------------------------------------------
+soundbank.bin soundbank.h : $(AUDIOFILES)
+#---------------------------------------------------------------------------------
+	@mmutil $^ -osoundbank.bin -hsoundbank.h
+
+#---------------------------------------------------------------------------------
+# This rule links in binary data with the .bin extension
+#---------------------------------------------------------------------------------
+%.bin.o	%_bin.h :	%.bin
+#---------------------------------------------------------------------------------
+	@echo $(notdir $<)
+	@$(bin2o)
+
+
+-include $(DEPSDIR)/*.d
+#---------------------------------------------------------------------------------------
+endif
+#---------------------------------------------------------------------------------------
+
+```
+
+Abre el `Makefile` y analízalo. Y responde a estas cuestiones:
+
+??? question "¿Qué regla nos genera el binario final?"
+	Recuerda buscamos una ROM con extensión `.gba`
+	
+??? question "¿Podemos utilizar C++? Si es así, ¿Qué regla emplea compilador que toca?"
+	Recuerda que `CXX` se refiere a C++ y `CC` a C.
+	
+??? question "Observa que se emplea la siguiente orden `ARCH := -mthumb -mthumb-interwork`, ¿esto quiere decir que el programa generado  solo contendrá instrucciones Thumb?"
+	Quizás pueda servirte de ayuda ejecutar el siguiente comando
+	
+	``` bash
+	arm-none-eabi-gcc --help=target
+	```
+
+#### Compilando
+
+Estando en el mismo directorio de trabajo, abre el fuente `source/template.c`. Cuyo contenido es:
+
+``` c
+
+#include <gba_console.h>
+#include <gba_video.h>
+#include <gba_interrupt.h>
+#include <gba_systemcalls.h>
+#include <gba_input.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+//---------------------------------------------------------------------------------
+// Program entry point
+//---------------------------------------------------------------------------------
+int main(void) {
+//---------------------------------------------------------------------------------
+
+
+	// the vblank interrupt must be enabled for VBlankIntrWait() to work
+	// since the default dispatcher handles the bios flags no vblank handler
+	// is required
+	irqInit();
+	irqEnable(IRQ_VBLANK);
+
+	consoleDemoInit();
+
+	// ansi escape sequence to set print co-ordinates
+	// /x1b[line;columnH
+	iprintf("\x1b[10;10HHello World!\n");
+
+	while (1) {
+		VBlankIntrWait();
+	}
+}
+```
+
+**¿Qué hace este código?**
+
+- `irqInit()` prepara el despachador de interrupciones en la memoria.
+
+- `irqEnable(IRQ_VBLANK)` dicta que se dibuja a fotograma completo (*Vertical blanking*) (59.73 Hz).
+
+- `consoleDemoInit();` habilita modo 0 y permite el renderizado de texto de prueba.
+
+- `iprintf("\x1b[10;10HHello World!\n");` es el `printf` de toda la vida pero optimizado para utilizar enteros como coordenadas.
+
+- `VBlankIntrWait();` espera hasta tener que renderizar el *frame* siguiente. Ahorrando batería de este modo.
+
+??? tip "¿Sabías que el bucle `while(1)`...?"
+	El bucle `while` está presente en toda aplicación que precise de algún tipo de interacción. Este es un concepto fundamental para evitar que un juego se cierre al instante. Durante este bucle se lleva a cabo un el renderizado. Es importante poner un límite (como el límite de *frames*) para evitar una sobrecarga del procesador y garantizar una experiencia semejante en toda gama de equipos y evitar fallos gráficos o reproducción de cinemáticas desincronizadas.
+
+**Para compilar** escribe en la raíz donde está el `Makefile` lo siguiente en una terminal:
+
+=== "docker"
+	``` bash
+	docker run --rm -u $(id -u):$(id -g) -v "$(pwd):/project:Z" gba-toolchain cp -r /opt/devkitpro/examples/gba make
+	```
+
+=== "local"
+	``` bash
+	make
+	```
+
+![Captura de pantalla de emacs.](../images/Retrocomputacion/p1-1.png){ width="2000px" }
+/// caption
+Ventana de emacs mostrando el directorio `template` (donde se encuentra el archivo `Makefile` y la carpeta `source`). Compilando con `make` y mostrando los ficheros de salida de este directorio.
+///
+
+Idealmente habremos conseguido el cartucho `.gba` ¡Vamos a meterlo en el emulador mgba!
+
+#### Ejecutando
+
+Ahora que tenemos `.gba` podemos invocar al emulador para que corra la ROM así:
+
+``` bash
+../../bin/mgba --appimage-extract-and-run project.gba # o template.gba 
+```
+
+Posteriormente desde ha barra de menús activa:
+
+- Herramientas > *Game State Views* > Ver paleta...
+
+- Herramientas > *Game State Views* > Ver *sprites*...
+
+- Herramientas > *Game State Views* > Ver mosaicos...
+
+![Captura de pantalla con mgba corriendo la ROM.](../images/Retrocomputacion/p1-2.png){ width="2000px" }
+/// caption
+Ventanas de mgba ejecutando la ROM que acabamos de compilar junto a otras ventanas que nos proporcionan información sobre el vídeo (*tiles*, *sprites* y paleta). **Nota:** la captura puede generar confusión pero se trata de un sistema operativo GNU/Linux completo y no Windows.
+///
+
+**¿Qué estamos viendo exactamente?**
+
+1. **El emulador mgba** está corriendo la ROM pasada por parámetro. Está ejecutando el archivo compilado con el texto "*Hello World!*" centrado en la pantalla.
+
+2. **Visor de *tiles*:** Aquí se ve de forma gráfica que la GBA no tiene un modo texto. En el panel grande se ve toda la fuente tipográfica (el abecedario, números y símbolos) cargada en la memoria de video (VRAM) como gráficos. Está seleccionado la baldosa número 70, que corresponde a la letra "F".
+
+3. **Visor de paleta:** Está mostrando los colores disponibles en la memoria de la GBA. A la izquierda está la paleta del fondo y a la derecha la de los objetos. Como es un "*Hello World*" básico, la paleta del fondo es casi toda negra, con un único índice blanco para dibujar las letras, otro cian para el resto.
+
+4. **Inspector de cuadro:** Permite visualizar cómo ha renderizado el fotograma actual capa por capa. Muestra el color de fondo (*backdrop*) negro (alterado por utilizar el cambio de color) y una lista de *sprites* (aunque aquí no se están usando, ya que el texto se dibuja en la capa de fondo.
+
+#### Alterando la ejecución con el visor de memoria
+
+![Captura de pantalla con mgba corriendo la ROM.](../images/Retrocomputacion/p1-3.png){ width="2000px" }
+/// caption
+Ventanas de mgba ejecutando la ROM compilada junto a otras dos ventanas que nos proporcionan información sobre el vídeo y memoria. Es recorrido por la interfaz de menús del emulador para conseguir el resultado de "vandalizar" la letra "H".
+///
+
+Vamos a vandalizar la letra "H" de nuestra aplicación manipulado directamente la memoria, sigue estos pasos.
+
+1. Abre el visor de *tiles*.
+
+2. Busca el caracter "H" en el panel.
+
+3. Observa su dirección (`0x06000900`)
+
+4. Abre el visor de memoria.
+
+5. Selecciona la VRAM.
+
+6. (Opcional) Escoger alineación de 4 Bytes.
+
+7. Busca o escribe la dirección de memoria (para esto introducir la dirección en el campo "Inspeccionar dirección:").
+
+8. Selecciónala.
+
+9. Cambia a `0` el campo "Entero sin signo".
+
+10. Repite el mismo proceso pero para quitar la línea horizontal de la letra "H".
+
+11. Cambia a `0`
+
+12. Reanuda la ejecución.
+
+**Nota:** Los bits están al revés de cómo se representa un sprite.
+
+??? "¿Qué cambios harías en el código para poder desplazar el texto según la entrada de la cruceta? Inspecciona por tu cuenta las cabeceras de `template.c`"
+	``` c
+	#include <gba_console.h>
+	#include <gba_input.h>
+	#include <gba_interrupt.h>
+	#include <gba_systemcalls.h>
+	#include <gba_video.h>
+	#include <stdio.h>
+	
+	int
+	main (void)
+	{
+	int x = 10, y = 10;
+	int old_x = x, old_y = y;
+	u16 input;
+	
+	irqInit ();
+	irqEnable (IRQ_VBLANK);
+	
+	consoleDemoInit ();
+	iprintf ("\x1b[%d;%dHHello World!", y, x);
+	
+	while (1)
+	{
+		scanKeys ();
+		input = keysHeld ();
+	
+		old_x = x;
+		old_y = y;
+	
+		if (input & KEY_DOWN)
+			++y;
+		if (input & KEY_UP)
+			--y;
+		if (input & KEY_RIGHT)
+			++x;
+		if (input & KEY_LEFT)
+			--x;
+
+	    if (x < 0)
+			x = 0;
+		if (x > 18)
+			x = 18;
+		if (y < 0)
+			y = 0;
+		if (y > 19)
+			y = 19;
+
+        if (x != old_x || y != old_y)
+			{
+				iprintf ("\x1b[%d;%dH            ", old_y, old_x);
+				iprintf ("\x1b[%d;%dHHello World!", y, x);
+			}
+		VBlankIntrWait ();
+  		}
+	}
+	}
+	```
+
 ### Práctica 2: Depuración remota. Otras utilidades. Nivel de instrucción.
+
+En esta sección: analizaremos el binario producido en la anterior parte, obtendremos su CFG, aplicaremos la teoría estudiada en las materias afines a la Ingeniería de los Computadores y finalmente utilizaremos el depurador gdb para examinar paso por paso la ejecución.
 
 # Referencias
 
@@ -680,3 +1186,5 @@ El kit que hemos instalado tiene códigos de ejemplo para probar y compilar. Cop
 [^ref:Emucase3]: Artículo de The Verge sobre sobre el caso Yuzu, [*Nintendo Switch emulator Yuzu will utterly fold and pay $2.4M to settle its lawsuit*](https://www.theverge.com/2024/3/4/24090357/nintendo-yuzu-emulator-lawsuit-settlement) (7/3/2026)
 
 [^ref:Emucase4]: Artículo de McNeelyLaw sobre la legalidad de la emulación, [*https://www.mcneelylaw.com/understanding-the-legal-landscape-of-video-game-emulation/*](https://www.mcneelylaw.com/understanding-the-legal-landscape-of-video-game-emulation/) (7/3/2026)
+
+[^ref:c++]: Vídeo de Lazo Velko sobre C++ en YouTube, [*The worst programming language of all time*](https://www.youtube.com/watch?v=7fGB-hjc2Gc) (25/03/2026)
