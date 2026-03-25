@@ -617,7 +617,7 @@ El Makefile que has escrito hace una cosa bastante fácil de entender en funció
 	
 	``` bash
 	make -f clangd-gba-rules.mk local
-	```
+   	```
 
 Y a continuación revisa que sse haya creado/actualizado el archivo `.clangd` con sus rutas definidas dependiendo el método en el que utilicemos devKitPro. Reinicia el editor o servidor lsp si es necesario que `clangd` detecte los cambios.
 
@@ -896,6 +896,38 @@ Ventana de emacs mostrando el directorio `template` (donde se encuentra el archi
 ///
 
 Idealmente habremos conseguido el cartucho `.gba` ¡Vamos a meterlo en el emulador mgba!
+
+#### Ejecutando
+
+Ahora que tenemos `.gba` podemos invocar al emulador para que corra la ROM así:
+
+``` bash
+../../bin/mgba --appimage-extract-and-run project.gba # o template.gba 
+```
+
+Posteriormente desde ha barra de menús activa:
+
+- Herramientas > *Game State Views* > Ver paleta...
+
+- Herramientas > *Game State Views* > Ver *sprites*...
+
+- Herramientas > *Game State Views* > Ver mosaicos...
+
+![Captura de pantalla con mgba corriendo la ROM.](../images/Retrocomputacion/p1-2.png){ width="2000px" }
+/// caption
+Ventanas de mgba ejecutando la ROM que acabamos de compilar junto a otras ventanas que nos proporcionan información sobre el vídeo (*tiles*, *sprites* y paleta). **Nota:** la captura puede generar confusión pero se trata de un sistema operativo GNU/Linux completo y no Windows.
+///
+
+**¿Qué estamos viendo exactamente?**
+
+1. **El emulador mgba** está corriendo la ROM pasada por parámetro. Está ejecutando el archivo compilado con el texto "*Hello World!*" centrado en la pantalla.
+
+2. **Visor de *tiles*:** Aquí se ve de forma gráfica que la GBA no tiene un modo texto. En el panel grande se ve toda la fuente tipográfica (el abecedario, números y símbolos) cargada en la memoria de video (VRAM) como gráficos. Está seleccionado la baldosa número 70, que corresponde a la letra "F".
+
+3. **Visor de paleta:** Está mostrando los colores disponibles en la memoria de la GBA. A la izquierda está la paleta del fondo y a la derecha la de los objetos. Como es un "*Hello World*" básico, la paleta del fondo es casi toda negra, con un único índice blanco para dibujar las letras, otro cian para el resto.
+
+4. **Inspector de cuadro:** Permite visualizar cómo ha renderizado el fotograma actual capa por capa. Muestra el color de fondo (*backdrop*) negro (alterado por utilizar el cambio de color) y una lista de *sprites* (aunque aquí no se están usando, ya que el texto se dibuja en la capa de fondo).
+
 
 
 ### Práctica 2: Depuración remota. Otras utilidades. Nivel de instrucción.
