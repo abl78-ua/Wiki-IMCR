@@ -1023,6 +1023,113 @@ Vamos a vandalizar la letra "H" de nuestra aplicación manipulado directamente l
 
 En esta sección: analizaremos el binario producido en la anterior parte, obtendremos su CFG, aplicaremos la teoría estudiada en las materias afines a la Ingeniería de los Computadores y finalmente utilizaremos el depurador gdb para examinar paso por paso la ejecución.
 
+Si bien es cierto que en la realidad cuando queramos hacer ingeniería inversa no conocemos el código fuente, aquí sin embargo sí que lo conocemos para poder generarlo. Asimismo, es muy poco probable encontrar binarios con información de depuración debido a que expone directamente el código fuente. Sin embargo, al ser una práctica introductoria puede ser conveniente dejar este tipo de cuestiones a un lado, y dedicar las utilidades de las herramientas aquí expuestas.
+
+#### Preparando el programa
+
+Vamos a remplazar el código fuente de `template.c` por el siguiente contenido y luego lo compilamos.
+
+``` c
+#include <gba_console.h>
+#include <gba_input.h>
+#include <gba_interrupt.h>
+#include <gba_systemcalls.h>
+#include <gba_video.h>
+#include <stdio.h>
+
+// Usamos volatile para obligar al gcc a guardarlo en la ROM y no optimizarlo
+volatile float secret_float = 99.99f;
+
+// Evitamos que el compilador fusione esta función con el main
+__attribute__ ((noinline)) void
+check_access (u16 keys)
+{
+  if (keys & KEY_A)
+    {
+      iprintf ("\x1b[12;5H-> ACCESS GRANTED <-\n");
+
+      if (secret_float == 3.14f)
+        iprintf ("\x1b[14;5HFloat check OK!   \n");
+    }
+  else if (keys & KEY_B)
+    {
+
+      iprintf ("\x1b[12;5H-> ACCESS DENIED  <-\n");
+      iprintf ("\x1b[14;5H                    \n");
+    }
+}
+
+int
+main (void)
+{
+  irqInit ();
+  irqEnable (IRQ_VBLANK);
+  consoleDemoInit ();
+
+  iprintf ("\x1b[5;5H[ TARGET RE EXERCISE ]");
+  iprintf ("\x1b[8;5HPress A or B button...");
+
+  while (1)
+    {
+      VBlankIntrWait ();
+      scanKeys ();
+      u16 keys_pressed = keysDown ();
+
+      if (keys_pressed)
+        {
+          check_access (keys_pressed);
+        }
+    }
+}
+```
+
+Debida la sencillez del programa, no modificaremos nada del `Makefile` para evitar optimizaciones.
+
+Después de compilar el programa vamos a familiarizarnos con una pequeña herramienta que nos dice el tipo de archivo es un fichero. Esta aplicación es `file` y no se basa únicamente en el nombre de la extensión sino examina el contenido del binario en busca de patrones y números mágicos que delaten el tipo de archivo ante el que nos encontramos. ¡Pruébalo!
+
+``` bash
+file project.gba
+file template.gba
+# XXX.gba: Game Boy Advance ROM image: "XXX" (000000, Rev.00)
+
+file project.elf
+file template.elf
+# XXX.elf: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, with debug_info, not stripped
+```
+
+![Captura de pantalla de emacs utilizando `file`.](../images/Retrocomputacion/p2-0.png){ width="2000px" }
+/// caption
+Ventanas de emacs para examinar archivos con `file`.
+///
+
+También tenemos `ldd` que nos identifica qué dependencias dinámicas utiliza cierto programa.
+
+Fíjate en que el `.elf` pesará más por la información de depuración.
+
+#### Ejecutando el programa original
+
+Procura no consultar el fuente.
+
+Supongamos que nos proporcionan los dos binarios (`.gba` y `.elf`). Hay cierta parte de la ejecución en la que no podemos acceder y tú deber es alterar directamente el binario para poder acceder a esta parte del código. Lo que sabemos del programa es que si oprimimos A, tenemos acceso pero si conocemos la clave también accederemos a la parte secreta. Si pulsamos B sale un mensaje de acceso denegado. 
+
+Ejecuta el `.elf` y trastea.
+
+``` bash
+../../bin/mgba --appimage-extract-and-run template.elf
+```
+
+#### Obteniendo CFG
+
+Procedamos con la examinación de la ejecución del programa y visualizarlo como un grafo de complejidad ciclomática.
+
+``` bash
+../../bin/cutter --appimage-extract-and-run template.elf
+```
+
+Este tipo de visualización nos proporciona información de las bifurcaciones del programas. Además muestra los mnemotécnicos de cada instrucción y símbolo identificado. 
+
+
+
 # Referencias
 
 *[GBA]: consola Game Boy Advance
