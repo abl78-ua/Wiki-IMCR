@@ -355,7 +355,6 @@ Esta parte hace enfoque en la preparación del entorno de experimentación. Crea
 En esta sección utilizaremos Docker con el que ya muchos estaremos familarizados para crear una imagen del kit con los ejecutables y bibliotecas necesarias. 
 
 === "Paso 1: `Dockerfile`"
-
 	Para facilitar la instalación devKitPro, emplearemos una imagen de docker. Copia el siguiente contenido en un archivo `Dockerfile`.
 
 	``` Dockerfile
@@ -368,7 +367,6 @@ En esta sección utilizaremos Docker con el que ya muchos estaremos familarizado
 	```
 
 === "Paso 2: Construcción de imagen"
-
 	Ejecutamos en una *shell* lo siguiente para reconstruir la imagen para tener el SDK localmente.
 
 	``` bash
@@ -376,7 +374,6 @@ En esta sección utilizaremos Docker con el que ya muchos estaremos familarizado
 	```
 
 === "Paso 3: Comprobación"
-
 	Para confirmar que se ha instalado correctamente, mostraremos la versión del compilador con el comando típico de `gcc --version`:
 
 	``` bash
@@ -416,7 +413,6 @@ En esta sección utilizaremos Docker con el que ya muchos estaremos familarizado
 A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para una conviente instalación utilizaremos el formato de aplicación portable AppImage de cada una. Este formato garantiza que cierto *software* pueda ejecutarse independientemente de las bibliotecas del sistema y de permisos de un usuario en el ordenador (no necesitamos elevación de permisos). En contraposición pueden discrepar en el renderizado de interfaces gráficas y pueda requerir la instación de librerías como fuse para su ejecución.
 
 === "Paso 1: `install_tools.sh`"
-
 	Crea el fichero `install_tools.sh` con el siguiente contenido:
 
 	``` bash
@@ -461,7 +457,6 @@ A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para u
 	```
 
 === "Paso 2: Ejecutar"
-
 	Una vez escrito los contenidos del *script*, procedamos con la ejecución del mismo.
 	
 	``` bash
@@ -469,7 +464,6 @@ A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para u
 	```
 	
 === "Paso 3: Comprobación"
-
 	Este paso es opcional, pero siempre es una buena práctica que el *software* descargado funciona. Dado que lo hemos ejecutado por AppImage prueba a ejecutarlo así:
 	
 	``` bash
@@ -482,7 +476,7 @@ A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para u
 	
 	Nos deberían aparecer tres ventanas y esto nos confirma su adecuado funcionamiento. ¡Ciérralas ahora!
 	
-??? question "Método alternativo"
+??? note "Método alternativo"
 	Si no te fias del *script* proporcionado o ha fallado, puedes descargar (y también compilar el código fuente** desde los repositorios oficiales.
 
 **Copiando ejemplos**
@@ -490,15 +484,13 @@ A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para u
 El kit que hemos instalado tiene códigos de ejemplo para probar y compilar. Copiála con el siguiente commando:
 
 === "Opción 1: Normal"
-
 	Si al ejecutar este comando tienes errores o no puedes acceder al directorio copiado (problemas de permisos), prueba con al siguiente opción.
 
 	``` bash
    	docker run --rm -v "$(pwd):/project" gba-toolchain cp -r /opt/devkitpro/examples/gba ./ejemplos_gba	
    	```
 
-=== "Opción 2: SELinux (fedora)"
-	
+=== "Opción 2: SELinux (fedora)"	
 	Este comando hace lo mismo que el anterior pero le dice al Docker con qué usuario propietario realizar la orden. 
 
 	``` bash
@@ -506,7 +498,6 @@ El kit que hemos instalado tiene códigos de ejemplo para probar y compilar. Cop
 	```
 
 === "Opción 3: Local (sin Docker)"
-
 	Simplemente copia los ejemplos de una ruta a otra.
 
 	``` bash
@@ -555,6 +546,11 @@ No obstante, cuando vayamos a editar seguirán habiendo errores en el código fu
 - Por ello, es común asegurarse que el código compila en diferentes compiladores y no solo en uno. [^ref:c++]
 
 Sin embargo, utilizaremos esta combinación de herramientas para conveniencia. Así que declara el siguiente contenido en un archivo llamado `clangd-gba-rules.mk`.
+
+??? question "¿Sabias que la exensión `.mk`...? "
+	La extensión `.mk` es utilizada también para referirse a *makefiles* en un contexto donde el proyecto es demasiado grande como para contenerlo todo en un Makefile único. Como solución a este problema, se aplica divide y vencerás para segmentar el Makefile en pequeños módulos `.mk`. Esto tiene la ventaja de poder establecer qué módulos poder ejecutar. Esto es muy recurrido para compilar android en un determinado modelo de teléfono que no soporta determinadas características.
+
+Puedes considerar la modificación de los comandos del docker si no funcionan.
 
 ``` makefile
 CLANGD = .clangd
@@ -607,12 +603,35 @@ local:
 	done
 ```
 
-??? question "¿Sabias que la exensión `.mk`...? "
-	La extensión `.mk` es utilizada también para referirse a *makefiles* en un contexto donde el proyecto es demasiado grande como para contenerlo todo en un Makefile único. Como solución a este problema, se aplica divide y vencerás para segmentar el Makefile en pequeños módulos `.mk`. Esto tiene la ventaja de poder establecer qué módulos poder ejecutar. Esto es muy recurrido para compilar android en un determinado modelo de teléfono que no soporta determinadas características.
+El Makefile que has escrito hace una cosa bastante fácil de entender en función de lo que necesitamos realizar:
+
+=== "`docker`"
+	En este caso, vamos a aprovecharnos de los archivos de cabecera `.h` solo para hacerle creer a `clangd` su interfaz pública.
+	
+	``` bash
+	make -f clangd-gba-rules.mk docker
+	```
+
+=== "`local`"
+	En este caso, le indicamos a `clangd` la ruta absoluta de donde estén las bibliotecas instaladas.
+	
+	``` bash
+	make -f clangd-gba-rules.mk local
+	```
+
+Y a continuación revisa que sse haya creado/actualizado el archivo `.clangd` con sus rutas definidas dependiendo el método en el que utilicemos devKitPro. Reinicia el editor o servidor lsp si es necesario que `clangd` detecte los cambios.
+
+#### Finalizando
+
+En este punto ya tenemos configurado todo el entorno para poder seguir las siguientes prácticas. ¡No borres nada para seguirlas!
 
 ### Práctica 1: Compilación de ROM básica. Ejecución en emulador.
 
+En esta parte compilaremos la ROM más simple de los ejemplos de devKitPro, comprenderemos la importancia del `Makefile`, analizaremos brevemente otros ejemplos y aprovecharemos para analizar todas las opciones de desarrollador que nos ofrece  
+
 ### Práctica 2: Depuración remota. Otras utilidades. Nivel de instrucción.
+
+En esta sección: analizaremos el binario producido en la anterior parte, obtendremos su CFG, aplicaremos la teoría estudiada en las materias afines a la Ingeniería de los Computadores y finalmente utilizaremos el depurador gdb para examinar paso por paso la ejecución.
 
 # Referencias
 
@@ -777,6 +796,5 @@ local:
 [^ref:Emucase3]: Artículo de The Verge sobre sobre el caso Yuzu, [*Nintendo Switch emulator Yuzu will utterly fold and pay $2.4M to settle its lawsuit*](https://www.theverge.com/2024/3/4/24090357/nintendo-yuzu-emulator-lawsuit-settlement) (7/3/2026)
 
 [^ref:Emucase4]: Artículo de McNeelyLaw sobre la legalidad de la emulación, [*https://www.mcneelylaw.com/understanding-the-legal-landscape-of-video-game-emulation/*](https://www.mcneelylaw.com/understanding-the-legal-landscape-of-video-game-emulation/) (7/3/2026)
-
 
 [^ref:c++]: Vídeo de Lazo Velko sobre C++ en YouTube, [*The worst programming language of all time*](https://www.youtube.com/watch?v=7fGB-hjc2Gc) (25/03/2026)
