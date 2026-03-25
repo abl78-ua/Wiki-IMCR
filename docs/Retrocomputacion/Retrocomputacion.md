@@ -344,26 +344,129 @@ Antes de empezar con la sesión práctica es menester conocer que utilizaremos u
 
 Algunos de los ejemplos son: devKitPro[^ref:DevkitProGBA], GB Studio[^ref:GBStudioSite], Löve Potion[^ref:Lovepotion]... Incluso empresas de renombre han aprovechado la madurez de estos proyectos para promociones[^ref:GBStudioF500]. En la práctica utilizaremos devKitPro por su versatilidad.
 
-**Para la sesión práctica, asumiremos que utilizamos un UNIX-*like* y docker.** 
+**Para la sesión práctica, asumiremos que utilizamos un UNIX-*like* y docker.** Pero también se puede hacer desde otros sistemas como Windows y/o optar por una instalación manual en el sistema siguiendo la guía oficial de devKitPro a través del gestor de paquetería de `pacman` (no es necesario) si lo prefieres.
 
 ### Práctica 0: Preparación del entorno inicial. Experimentación. Configuración.
 
-Para facilitar la instalación devKitPro, emplearemos una imagen de docker. Copia el siguiente contenido en un archivo `Dockerfile`.
+Esta parte hace enfoque en la preparación del entorno de experimentación. Crea un directorio nuevo para todo lo que vayamos a hacer aquí.
 
-``` Dockerfile
-FROM devkitpro/devkitarm:latest
-ENV DEVKITPRO=/opt/devkitpro
-ENV DEVKITARM=${DEVKITPRO}/devkitARM
-ENV PATH=${DEVKITARM}/bin:${PATH}
-WORKDIR /project
-CMD ["make"]
-```
+#### Instalando devKitPro
 
-Ejecutamos en una *shell* lo siguiente para reconstruir la imagen para tener el SDK localmente.
+En esta sección utilizaremos Docker con el que ya muchos estaremos familarizados para crear una imagen del kit con los ejecutables y bibliotecas necesarias. 
 
-``` bash
-$ docker build -t gba-toolchain .
-```
+=== "Paso 1: `Dockerfile`"
+
+	Para facilitar la instalación devKitPro, emplearemos una imagen de docker. Copia el siguiente contenido en un archivo `Dockerfile`.
+
+	``` Dockerfile
+	FROM devkitpro/devkitarm:latest
+	ENV DEVKITPRO=/opt/devkitpro
+	ENV DEVKITARM=${DEVKITPRO}/devkitARM
+	ENV PATH=${DEVKITARM}/bin:${PATH}
+	WORKDIR /project
+	CMD ["make"]
+	```
+
+=== "Paso 2: Construcción de imagen"
+
+	Ejecutamos en una *shell* lo siguiente para reconstruir la imagen para tener el SDK localmente.
+
+	``` bash
+	$ docker build -t gba-toolchain .
+	```
+
+=== "Paso 3: Comprobación"
+
+	Para confirmar que se ha instalado correctamente, mostraremos la versión del compilador con el comando típico de `gcc --version`:
+
+	``` bash
+	$ docker run --rm -v "$(pwd):/project" gba-toolchain arm-none-eabi-gcc --version
+	```
+
+	Y debería aparecer una salida como esta:
+
+	```
+	
+	arm-none-eabi-gcc (devkitARM) 15.2.0
+	Copyright (C) 2025 Free Software Foundation, Inc.
+	This is free software; see the source for copying conditions.  There is NO
+	warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+	```
+
+??? danger "Problemas con Docker"
+
+	Si te ha salido error, consulta el artículo de Docker para probar diferentes soluciones. Prueba algunas de estas soluciones:	
+	
+    - Comprueba tu conexión a Internet.
+    
+	- Comprueba que tu disco no esté lleno.
+    
+	- No sigas este tutorial si estás utilizando Docker dentro de una máquina virtual.
+    
+	- Instala el SDK localmente. (Tiene ventajas)
+    
+	- Reinicia el ordenador.
+    
+	- Actualiza **drivers**.
+    
+	- Evita utilizar máquinas virtuales mientras emplear Docker.
+
+#### Instalando *tooling*
+
+A continuación procederemos a bajarnos **ImHex**, **cutter** y **mgba**. Para una conviente instalación utilizaremos el formato de aplicación portable AppImage de cada una. Este formato garantiza que cierto *software* pueda ejecutarse independientemente de las bibliotecas del sistema y de permisos de un usuario en el ordenador (no necesitamos elevación de permisos). En contraposición pueden discrepar en el renderizado de interfaces gráficas y pueda requerir la instación de librerías como fuse para su ejecución.
+
+=== "Paso 1: `install_tools.sh`"
+
+	Crea el fichero `install_tools.sh` con el siguiente contenido:
+
+	``` bash
+	#!/bin/bash
+	
+	BIN_DIR="$(pwd)/bin"
+	
+	echo "Creando directorio $BIN_DIR..."
+	mkdir -p "$BIN_DIR"
+	
+	descargar_appimage() {
+		local repo=$1
+		local patron_busqueda=$2
+		local nombre_final=$3
+	
+		echo -e "   [*] Buscando $nombre_final ($repo)..."
+	
+		local download_url=$(curl -sL "https://api.github.com/repos/$repo/releases/latest" \
+			| grep "browser_download_url" \
+			| grep -i "$patron_busqueda" \
+			| head -n 1 \
+			| cut -d '"' -f 4)
+	
+		if [ -z "$download_url" ]; then
+			echo "   [E] No hay AppImage válido para $nombre_final."
+			return 1
+		fi
+	
+		echo "   [-] Descargando $download_url"
+	
+		curl -L --progress-bar "$download_url" -o "$BIN_DIR/$nombre_final"
+		chmod +x "$BIN_DIR/$nombre_final"
+		
+		echo "   [+] $nombre_final instalado correctamente."
+	}
+	
+	descargar_appimage "mgba-emu/mgba" "appimage-x64.appimage" "mgba"
+	descargar_appimage "WerWolv/ImHex" "x86_64.AppImage" "imhex"
+	descargar_appimage "rizinorg/cutter" "Linux-x86_64.AppImage" "cutter"
+	
+	echo "Todo instalado correctamente"
+	```
+
+Una vez es
+
+
+Si no te fias del *script* proporcionado, puedes descargar (y también compilar el código fuente) desde los repositorios oficiales.
+
+
+
 
 ### Práctica 1: Compilación de ROM básica. Ejecución en emulador. Usando el escáner de memoria.
 
