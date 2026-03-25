@@ -6,9 +6,6 @@ title: Game Boy Advance + Introducción a la Ingeniería Inversa
 
 Por *Ivan Parkhomchyk Patapchyk*
 
-!!! danger "Artículo incompleto"
-    Este artículo está en proceso de redacción. Pueden existir secciones incompletas, pocas referencias que sustenten lo que se documenta, faltas gramaticales y ortográficas o ausencia de ejemplos.
-
 !!! note "Enfoque de la redacción"
 	Este artículo se centra en el análisis técnico y hace uso de herramientas con fines educativos. No para infringir la propiedad intelectual ni la distribución de *software* no permitda.
 
