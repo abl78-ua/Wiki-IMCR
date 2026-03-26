@@ -1137,7 +1137,7 @@ Ventanas de cutter donde se examina nuestro compilado.
 
 Inicialmente, buscamos la función principal (`main`). En el panel central, la vista de Gráfico traduce el código máquina en bloques visuales. El recuadro rojo (marcadores 3 y 4) revelan que el programa tras detectar que se ha pulsado un botón, realiza una llamada (`bl` - *Branch with Link*) a la subrutina `dbg.check_access`. 
 
-Continuando por esta rutina, el gráfico muestra claramente las bifurcaciones (las flechas verdes y rojas) que corresponden a las sentencias `if / else` de nuestro código. El primer resalte en rojo muestra instrucciones de bits (`lsls` y `bmi`) que evalúan qué botón se pulsó (comparando con `KEY_A`). Si el camino es correcto, la ejecución baja al siguiente bloque (segundo recuadro rojo). Aquí vemos cómo el programa carga una cadena de texto ("*ACCESS GRANTED*") y, justo debajo, busca nuestra variable flotante en la memoria (`ldr r3, [__data_start__]`). A continuación, se invoca una función interna de la librería de ARM (`__aeabi_fcmpeq_from_thumb`) que se encarga de comparar números decimales, culminando en un `cmp r0, 0` (tercer recuadro) que decidirá si dibuja el mensaje de "Float check OK!".
+Continuando por esta rutina, el gráfico muestra claramente las bifurcaciones (las flechas verdes y rojas) que corresponden a las sentencias `if / else` de nuestro código. El primer resalte en rojo muestra instrucciones de bits (`lsls` y `bmi`) que evalúan qué botón se pulsó (comparando con `KEY_A`). Si el camino es correcto, la ejecución baja al siguiente bloque (segundo recuadro rojo). Aquí vemos cómo el programa carga una cadena de texto ("*ACCESS GRANTED*") y, justo debajo, busca nuestra variable flotante en la memoria (`ldr r3, [__data_start__]`). A continuación, se invoca una función interna de la librería de ARM (`__aeabi_fcmpeq_from_thumb`) que se encarga de comparar números decimales, culminando en un `cmp r0, 0` (tercer recuadro) que decidirá si dibuja el mensaje de `Float check OK!`.
 
 Los comentarios insertados por el depurador son de vital ayuda para el entendimiento de lo que ocurre. 
 
@@ -1159,7 +1159,7 @@ Finalmente desbloqueamos el mensaje oculto `Float check OK!` (le proporcionamos 
 
 El proceso de depuración puede llevarse a cabo de forma inalámbrica hoy en día. De hecho es una práctica bastante común. Por ejemplo: depurar Firefox en móvil con la inspección desde la versión de escritorio de Firefox, los programas Java con maven en IntelliJ abren un puerto concreto para esto (5005)...
 
-En nuestro caso, los emuladores proporcionan una opción para habilitar un puerto de red y utilizar el *stub* del gdb. La dupuración de errores puede incluso dehacerse e *hardware* real.
+En nuestro caso, los emuladores proporcionan una opción para habilitar un puerto de red y utilizar el *stub* del gdb. Esta es una interfaz y un protocolo completo para la envío de comandos del depurador y recepción de estos. Esta práctica es común en *hardware* real también.
 
 # Referencias
 
