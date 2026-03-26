@@ -1023,6 +1023,144 @@ Vamos a vandalizar la letra "H" de nuestra aplicación manipulado directamente l
 
 En esta sección: analizaremos el binario producido en la anterior parte, obtendremos su CFG, aplicaremos la teoría estudiada en las materias afines a la Ingeniería de los Computadores y finalmente utilizaremos el depurador gdb para examinar paso por paso la ejecución.
 
+Si bien es cierto que en la realidad cuando queramos hacer ingeniería inversa no conocemos el código fuente, aquí sin embargo sí que lo conocemos para poder generarlo. Asimismo, es muy poco probable encontrar binarios con información de depuración debido a que expone directamente el código fuente. Sin embargo, al ser una práctica introductoria puede ser conveniente dejar este tipo de cuestiones a un lado, y dedicar las utilidades de las herramientas aquí expuestas.
+
+#### Preparando el programa
+
+Vamos a remplazar el código fuente de `template.c` por el siguiente contenido y luego lo compilamos.
+
+``` c
+#include <gba_console.h>
+#include <gba_input.h>
+#include <gba_interrupt.h>
+#include <gba_systemcalls.h>
+#include <gba_video.h>
+#include <stdio.h>
+
+// Usamos volatile para obligar al gcc a guardarlo en la ROM y no optimizarlo
+volatile float secret_float = 99.99f;
+
+// Evitamos que el compilador fusione esta función con el main
+__attribute__ ((noinline)) void
+check_access (u16 keys)
+{
+  if (keys & KEY_A)
+    {
+      iprintf ("\x1b[12;5H-> ACCESS GRANTED <-\n");
+
+      if (secret_float == 3.14f)
+        iprintf ("\x1b[14;5HFloat check OK!   \n");
+    }
+  else if (keys & KEY_B)
+    {
+
+      iprintf ("\x1b[12;5H-> ACCESS DENIED  <-\n");
+      iprintf ("\x1b[14;5H                    \n");
+    }
+}
+
+int
+main (void)
+{
+  irqInit ();
+  irqEnable (IRQ_VBLANK);
+  consoleDemoInit ();
+
+  iprintf ("\x1b[5;5H[ TARGET RE EXERCISE ]");
+  iprintf ("\x1b[8;5HPress A or B button...");
+
+  while (1)
+    {
+      VBlankIntrWait ();
+      scanKeys ();
+      u16 keys_pressed = keysDown ();
+
+      if (keys_pressed)
+        {
+          check_access (keys_pressed);
+        }
+    }
+}
+```
+
+Debida la sencillez del programa, no modificaremos nada del `Makefile` para evitar optimizaciones.
+
+Después de compilar el programa vamos a familiarizarnos con una pequeña herramienta que nos dice el tipo de archivo es un fichero. Esta aplicación es `file` y no se basa únicamente en el nombre de la extensión sino examina el contenido del binario en busca de patrones y números mágicos que delaten el tipo de archivo ante el que nos encontramos. ¡Pruébalo!
+
+``` bash
+file project.gba
+file template.gba
+# XXX.gba: Game Boy Advance ROM image: "XXX" (000000, Rev.00)
+
+file project.elf
+file template.elf
+# XXX.elf: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, with debug_info, not stripped
+```
+
+![Captura de pantalla de emacs utilizando `file`.](../images/Retrocomputacion/p2-0.png){ width="2000px" }
+/// caption
+Ventanas de emacs para examinar archivos con `file`.
+///
+
+También tenemos `ldd` que nos identifica qué dependencias dinámicas utiliza cierto programa.
+
+Fíjate en que el `.elf` pesará más por la información de depuración.
+
+#### Ejecutando el programa original
+
+Procura no consultar el fuente.
+
+Supongamos que nos proporcionan los dos binarios (`.gba` y `.elf`). Hay cierta parte de la ejecución en la que no podemos acceder y tú deber es alterar directamente el binario para poder acceder a esta parte del código. Lo que sabemos del programa es que si oprimimos A, tenemos acceso pero si conocemos la clave también accederemos a la parte secreta. Si pulsamos B sale un mensaje de acceso denegado. 
+
+Ejecuta el `.elf` y trastea.
+
+``` bash
+../../bin/mgba --appimage-extract-and-run template.elf
+```
+
+#### Obteniendo CFG
+
+El objetivo es comprender el flujo de ejecución del programa sin llegar a ejecutarlo, leyendo el código ensamblador generado por el compilador.
+Procedamos con la examinación de la ejecución del programa y visualizarlo como un grafo de complejidad ciclomática.
+
+``` bash
+../../bin/cutter --appimage-extract-and-run template.elf
+```
+
+Este tipo de visualización nos proporciona información de las bifurcaciones del programas. Además muestra los mnemotécnicos de cada instrucción y símbolo identificado. 
+
+![Captura de pantalla de cutter.](../images/Retrocomputacion/p2-1.png){ width="2000px" }
+![Captura de pantalla de cutter.](../images/Retrocomputacion/p2-2.png){ width="2000px" }
+/// caption
+Ventanas de cutter donde se examina nuestro compilado.
+///
+
+Inicialmente, buscamos la función principal (`main`). En el panel central, la vista de Gráfico traduce el código máquina en bloques visuales. El recuadro rojo (marcadores 3 y 4) revelan que el programa tras detectar que se ha pulsado un botón, realiza una llamada (`bl` - *Branch with Link*) a la subrutina `dbg.check_access`. 
+
+Continuando por esta rutina, el gráfico muestra claramente las bifurcaciones (las flechas verdes y rojas) que corresponden a las sentencias `if / else` de nuestro código. El primer resalte en rojo muestra instrucciones de bits (`lsls` y `bmi`) que evalúan qué botón se pulsó (comparando con `KEY_A`). Si el camino es correcto, la ejecución baja al siguiente bloque (segundo recuadro rojo). Aquí vemos cómo el programa carga una cadena de texto ("*ACCESS GRANTED*") y, justo debajo, busca nuestra variable flotante en la memoria (`ldr r3, [__data_start__]`). A continuación, se invoca una función interna de la librería de ARM (`__aeabi_fcmpeq_from_thumb`) que se encarga de comparar números decimales, culminando en un `cmp r0, 0` (tercer recuadro) que decidirá si dibuja el mensaje de `Float check OK!`.
+
+Los comentarios insertados por el depurador son de vital ayuda para el entendimiento de lo que ocurre. 
+
+#### Modificando el binario
+
+En esta ocasión, nuestra motivación consistiré en localizar y en entender cómo se almacenan los datos en el binario crudo, y comprobar el resultado en tiempo real.
+
+![Captura de pantalla de imhex.](../images/Retrocomputacion/p2-3.png){ width="2000px" }
+![Captura de pantalla de imhex.](../images/Retrocomputacion/p2-4.png){ width="2000px" }
+/// caption
+Ventanas de imhex donde se examina nuestro compilado.
+///
+
+Vamos a buscar la ubicación del número 99.99 en flotante simple. Y luego, encontrar la variable *float* y modificarla a `3.14`. Cabe remarcar que la GBA es ***little endian***, porque la correcta interpretación del número de está al revés 
+
+Finalmente desbloqueamos el mensaje oculto `Float check OK!` (le proporcionamos el valor `3.14` que el programa esperaba).
+
+#### Depuración remota
+
+El proceso de depuración puede llevarse a cabo de forma inalámbrica hoy en día. De hecho es una práctica bastante común. Por ejemplo: depurar Firefox en móvil con la inspección desde la versión de escritorio de Firefox, los programas Java con maven en IntelliJ abren un puerto concreto para esto (5005)...
+
+En nuestro caso, los emuladores proporcionan una opción para habilitar un puerto de red y utilizar el *stub* del gdb. Esta es una interfaz y un protocolo completo para la envío de comandos del depurador y recepción de estos. Esta práctica es común en *hardware* real también.
+
 # Referencias
 
 *[GBA]: consola Game Boy Advance
