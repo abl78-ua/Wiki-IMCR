@@ -145,11 +145,19 @@ El RAG es una arquitectura que permite a un Modelo de Lenguaje (LLM), como GPT-4
 
 # Referencias
 [Pinecone vector-similarity](https://www.pinecone.io/learn/vector-similarity/)
+
 [Proyector de embeddings](https://projector.tensorflow.org/)
+
 [Info embeddings](https://cohere.com/blog/embeddings)
+
 [Video HNSW](https://www.youtube.com/watch?v=QvKMwLjdK-s)
+
 [info HNSW](https://www.pinecone.io/learn/series/faiss/hnsw/)
+
 [info busqueda híbrida](https://weaviate.io/blog/hybrid-search-explained)
+
 [info RAG](https://blogs.nvidia.com/blog/what-is-retrieval-augmented-generation/)
+
 [infp PQ](https://www.pinecone.io/learn/series/faiss/product-quantization/)
+
 [video PQ](https://www.youtube.com/watch?v=BMYBwbkbVec&t=11s)
