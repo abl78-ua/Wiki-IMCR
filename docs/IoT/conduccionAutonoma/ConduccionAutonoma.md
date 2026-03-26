@@ -1,6 +1,7 @@
 # Conducción autonóma
 ![Vehículo autónomo](../../images/ConduccionAutonoma/coche_autonomo.jpg)
 
+Por *Aida Villalba Ferrández*
 
 # 1.Introducción
 ## 1.¿Qué es la conducción autónoma y cómo funciona?
