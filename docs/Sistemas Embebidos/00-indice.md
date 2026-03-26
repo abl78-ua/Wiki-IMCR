@@ -1,5 +1,5 @@
 ---
-title: Sistemas Embebidos\: Panorama Actual, Uso y Mantenimiento
+title: Indice
 ---
 # Sistemas Embebidos: Panorama Actual, Uso y Mantenimiento
 
@@ -16,10 +16,3 @@ Bienvenido a la guía completa sobre el estado actual de los sistemas embebidos,
 
 ---
 *Documentación creada para la asignatura de Ingeniería de Mantenimiento de Computadores y Redes (IMCR). curso 2025-26*
-
-```mermaid
-graph LR
-    A[Código C/C++] --> B(PlatformIO Core)
-    B -->|Librerías| C{Toolchain}
-    C -->|Compilación| D[.bin / Firmware]
-    D -->|Flasheo| E[ESP32]

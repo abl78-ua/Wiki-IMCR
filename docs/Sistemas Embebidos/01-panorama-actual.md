@@ -1,7 +1,9 @@
 ---
-title: Panorama Actual de los Sistemas Embebidos
+title: "1. Panorama Actual de los Sistemas Embebidos"
 ---
 # 1. Panorama Actual de los Sistemas Embebidos
+
+Por _Juan Antonio Bonillo García_
 
 A la hora de hacer proyectos que involucren sensores, actuadores o cualquier tipo de hardware, suele ser necesario, si no imprescindible, utilizar un microcontrolador.
 
