@@ -1231,7 +1231,7 @@ En nuestro caso, los emuladores proporcionan una opción para habilitar un puert
 
 [^ref:gbatek]: Documentación "ASCII" (solo texto) técnica en línea de gbatek, [gbatek](https://mgba-emu.github.io/gbatek/) (7/3/2026)
 
-[^ref:gbaplus2doff]: Vídeo de Jacob Helgason en YouTube, [* Building World Maps for the GBA*](https://www.youtube.com/watch?v=BSkId3Jq2_U) (19/3/2026)
+[^ref:gbaplus2doff]: Vídeo de Jacob Helgason en YouTube, [*Building World Maps for the GBA*](https://www.youtube.com/watch?v=BSkId3Jq2_U) (19/3/2026)
 
 [^ref:GBA3D]: Vídeo de Guillem Salvadó sobre 3D en GBA en YouTube, [Juegos de Game Boy Advance en 3D](https://www.youtube.com/watch?v=9QtnivesDaM) (6/3/2026); Vídeo de Dimitris Giannakis en Youtube, [*How Graphics worked on the Nintendo Game Boy Advance*](https://www.youtube.com/watch?v=mpNWEbZdXNw) (6/3/2026)
 
