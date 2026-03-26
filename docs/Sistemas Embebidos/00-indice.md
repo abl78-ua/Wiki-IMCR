@@ -1,7 +1,9 @@
 ---
-title: Sistemas Embebidos: Panorama Actual, Uso y Mantenimiento
+title: Sistemas Embebidos\: Panorama Actual, Uso y Mantenimiento
 ---
 # Sistemas Embebidos: Panorama Actual, Uso y Mantenimiento
+
+Por _Juan Antonio Bonillo García_
 
 Bienvenido a la guía completa sobre el estado actual de los sistemas embebidos, con un enfoque práctico en hardware (ESP32), entornos profesionales (PlatformIO) y su mantenimiento en producción.
 
@@ -13,4 +15,11 @@ Bienvenido a la guía completa sobre el estado actual de los sistemas embebidos,
 4. [El Enfoque IMCR: Mantenimiento y Fiabilidad](./04-mantenimiento-fiabilidad.md)
 
 ---
-*Documentación creada para la asignatura de Ingeniería de Mantenimiento de Computadores y Redes (IMCR).*
+*Documentación creada para la asignatura de Ingeniería de Mantenimiento de Computadores y Redes (IMCR). curso 2025-26*
+
+```mermaid
+graph LR
+    A[Código C/C++] --> B(PlatformIO Core)
+    B -->|Librerías| C{Toolchain}
+    C -->|Compilación| D[.bin / Firmware]
+    D -->|Flasheo| E[ESP32]

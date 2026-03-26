@@ -1,3 +1,6 @@
+---
+title: Mantenimiento y fiabilidad
+---
 # 4. El Enfoque IMCR: Mantenimiento en Producción
 
 *(Escribe un párrafo introductorio: una vez que el ESP32 está programado y desplegado (ej. en el techo de una nave industrial), el mantenimiento presencial es costoso. Debemos diseñar pensando en la tolerancia a fallos).*
