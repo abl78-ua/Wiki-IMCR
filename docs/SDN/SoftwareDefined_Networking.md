@@ -21,8 +21,11 @@ La comunicación entre estas capas se realiza mediante interfaces especializadas
 ***Northbound Interface*** : Conecta las aplicaciones con el controlador, permitiendo que los desarrolladores programen comportamientos de red de alto nivel mediante APIs, como interfaces RESTful.
 ***Southbound Interface***: Facilita la comunicación entre el controlador y los dispositivos de hardware. El protocolo más extendido para este fin es **OpenFlow**, que estandariza cómo el controlador debe enviar las instrucciones de manejo de paquetes a los conmutadores.
 
+![SDN Architecture](../images/SDN/SDN-Arch.png)
+
 ### SDN frente a las redes tradicionales
 La transición hacia SDN supone un cambio radical en la forma en que se concibe la infraestructura de red, como se resume en la siguiente comparativa.
+
 
 | **Criterio**        | **Software Defined Networking (SDN)** | **Networking Tradicional**                 |
 |---------------------|---------------------------------------|--------------------------------------------|
@@ -32,7 +35,6 @@ La transición hacia SDN supone un cambio radical en la forma en que se concibe 
 | **Protocolos**      | Estándares abiertos (ej. OpenFlow)    | Específicos de los fabricantes             |
 | **Configuración**   | Centralizada y basada en políticas    | Individual nodo por nodo                   |
 | **Escalabilidad**   | Flexible y fácil de escalar           | Arquitectura estática difícil de modificar |
-
 
 
 Esta transición elimina la dependencia de fabricantes específicos (*vendor lock-in*), ya que los administradores pueden usar un solo protocolo para comunicarse con hardware de distintos proveedores a través de un controlador abierto. Además, reduce costes operativos y de hardware, ya que los dispositivos de reenvío requieren menos inteligencia propia y el mantenimiento se simplifica mediante la gestión centralizada.
@@ -66,6 +68,8 @@ SDN actúa a menudo como un *overlay*, lo que significa que puede ejecutar redes
 ### SD-WAN
 
 Un ejemplo claro de su aplicación es la SD-WAN (Red de Área Amplia Definida por Software). Mientras que una WAN tradicional depende de circuitos físicos rígidos como MPLS, una SD-WAN permite a una empresa con múltiples sedes gestionar el tráfico de forma centralizada a través de diversos tipos de conectividad (VPN, MPLS, internet), priorizando aplicaciones críticas automáticamente según el estado de la red.
+
+![SD-WAN_vs_WAN](../images/SDN/traditional-wan-vs-sd-wan.jpg)
 
 ### NFV
 
@@ -132,7 +136,7 @@ Para implementar y gestionar una infraestructura SDN, existe un ecosistema de te
 
 ## Conclusiones y tendencias futuras
 
-En la actualidad, SDN representa el estándar para redes flexibles, escalables y orientadas a la nube. La capacidad de gestionar la red como un recurso elástico ha transformado la infraestructura en algo mucho más parecido a los recursos de cómputo actuales. De cara al futuro, se anticipa una integración cada vez mayor con la Inteligencia Artificial, permitiendo que los controladores SDN tomen decisiones aún más inteligentes y automatizadas sobre el flujo de datos y la seguridad, consolidando la visión de centros de datos totalmente definidos por software (SDDC).
+En la actualidad, SDN representa el estándar para redes flexibles, escalables y orientadas a la nube. La capacidad de gestionar la red como un recurso elástico ha transformado la infraestructura en algo mucho más parecido a los recursos de cómputo actuales. De cara al futuro, se anticipa una integración cada vez mayor con la Inteligencia Artificial, permitiendo que los controladores SDN tomen decisiones aún más inteligentes y automatizadas sobre el flujo de datos y la seguridad, consolidando la visión de centros de datos totalmente definidos por software (SDDC). Asimismo, SDN se proyecta como una tecnología clave para habilitar la gestión eficiente y centralizada de servicios urbanos en Smart Cities, facilitando la adaptación dinámica a las demandas de la ciudad y mejorando la resiliencia y seguridad de sus infraestructuras.
 
 ## Referencias
 
