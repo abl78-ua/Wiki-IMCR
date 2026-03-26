@@ -3,15 +3,15 @@
 
 Por *Aida Villalba Ferrández*
 
-# 1.Introducción
-## 1.¿Qué es la conducción autónoma y cómo funciona?
+# 1. Introducción
+## 1. ¿Qué es la conducción autónoma y cómo funciona?
 La conducción autónoma es la capacidad de un vehículo para percibir y analizar su entorno, tomar decisiones siguiendo las reglas programadas y ejecutar maniobras con la mínima 	intervención humana posible.
 
 Mediante cámaras, radares y otros sensores, el vehículo capta lo que ocurre a su alrededor. A continuación la información capturada es procesada por una unidad de control que calcula 	la mejor maniobra y la 	aplica a la dirección, los frenos o la aceleración.
 
 ![Funcionamiento basico](../../images/ConduccionAutonoma/conduccion_autonoma_flujo.png)
 
-## 2.Historia y evolución
+## 2. Historia y evolución
 La teorías para desarrollar vehículos autónomos comenzaron a desarrollarse a mediados del siglo XX. Estas teorías se basaban en el uso de sensores que permitieran al vehículo percibir 	su entorno y tomar decisiones en base a lo que observaba.
 
 En la década de 1980, se llevaron a cabo los primeros experimentos significativos, con prototipos que utilizaban cámaras y radares para detectar obstáculos y seguir caminos.
@@ -19,7 +19,7 @@ En la década de 1980, se llevaron a cabo los primeros experimentos significativ
 Posteriormente, la llegada de la inteligencia artificial permitió a los vehículos procesar grandes cantidades de datos en tiempo real,lo que disminuyó el tiempo de reacción.
 
 A partir de 2010, la incorporación de sensores LIDAR y cámaras de alta resolución ha mejorado significativamente la percepción del entorno por parte de los vehículos.
-## 3.Niveles de autonomía
+## 3. Niveles de autonomía
 Existen un total de 6 niveles de autonomía clasificados del 0 al 5,siendo el 0 el más dependiente de intervención humana y el 5 el más autónomo.
 
 1.**Nivel 0**:No existe ningún tipo de automatización en el vehículo. Pertenecen a este nivel los coches fabricados antes de la década de los 90.
@@ -49,8 +49,8 @@ En caso de condiciones meteorológicas adversas,el vehículo tiene establecidos 
 
 6.**Nivel 5**:Automatización total.Son vehículos sin volante, ni pedales porque ellos mismos se controlan sin necesidad de que una persona actúe en ningún momento.
 
-# 2.Sensores utilizados
-## 1.Lidar
+# 2. Sensores utilizados
+## 1. Lidar
 Es una tecnología de teledetección que utiliza rayos láser para medir distancias y movimientos precisos en tiempo real.
 
 **Usos:**
@@ -77,30 +77,32 @@ El sensor emite un pulso de luz láser (generalmente infrarrojo) que viaja a la 
 -Coste elevado
 
 **Rango de detección**: Suele situarse entre 30 y 200 metros,aunque algunos pueden superar los 300 metros.
-## 2.Radar
+## 2. Radar
 Se basa en la transmisión y reflexión de ondas electromagnéticas. Cuando se emite la onda esta se refleja en la superficie impactada y regresa de vuelta al sensor, lo que permite medir con exactitud distancias, niveles de llenado o posiciones.
 
 Este tipo de sensor es especialmente resistente a condiciones climáticas extremas como lluvia,temperaturas extremas,nieve, polvo o bajos niveles de luz.Además,son mucho más rápidos que muchos otros tipos de sensores.
 
-## 3.Cámaras y visión artificial
+## 3. Cámaras y visión artificial
 * **Función:**  Su principal función es identificar señales de tráfico, peatones y otros vehículos mediante la captura de imágenes 2D y el posterior procesamiento a través de algoritmos de ***Deep Learning***.
 * **Ventajas:** Los algoritmos de IA no solo son capaces de procesar las imágenes capturadas sino que también pueden predecir el tráfico de las carreteras basándose en datos reales.
 * **Limitaciones:** El mayor problema es que pueden sufrir problemas cuando se exponen a contraluces extremos, deslumbramientos, o en condiciones de lluvia intensa o marcas viales poco visibles.
 
 En comparación con el sensor LIDAR, este también puede sufrir en condiciones climatológicas extremas, sin embargo es capaz de obtener mapas 3D,mientras que las cámaras solo pueden proporcionar imágenes 2D.
+
 * **Principales modelos de IA usados:** Los niveles de automatización 1 y 2  usan modelos basados en reglas,los niveles 3 y 4 emplean ***Deep Learning*** y aprendizaje por refuerzo.Por último el nivel más avanzado, el 5,se basan en aprendizaje multiagente (las acciones de un agente cambian las condiciones para los demás) e IA explicable (justifica las decisiones que toma).
 
-## 4.Ultrasonidos
+## 4. Ultrasonidos
 Es un sensor que sirve para detectar la distancia de un objeto a través de ondas de sonido con frecuencias por encima de los 20Khz.
 
 Su funcionamiento es muy similar al del resto de sensores utilizados para calcular distancia:emite una señal de sonido hacia algún lugar en concreto y espera a que esta señal rebote en algún objeto y vuelva al sensor. Para saber a que distancia se encuentra el objeto el sensor mide el tiempo transcurrido desde que se emitió la señal hasta que regresó y a través de cálculos matemáticos traduce este tiempo en distancia.
 
 ![Sensor lidar](../../images/ConduccionAutonoma/sensor_ultrasonido.jpg)
 
-## 5.GPS y localización
+## 5. GPS y localización
 Es un dispositivo electrónico que recibe señales de los satélites del Sistema de Posicionamiento Global (GPS) y las utiliza para calcular su propia ubicación tridimensional (latitud, longitud y altitud), así como su velocidad y la hora.
 
-**Funcionamiento**:
+**Funcionamiento**:  
+
 1.El sensor GPS recibe señales de varios satélites GPS visibles.
 
 2.A partir de las señales recibidas de los diferentes satélites calcula la distancia a cada uno de ellos y posteriormente triangula la posición del receptor.
@@ -108,12 +110,12 @@ Es un dispositivo electrónico que recibe señales de los satélites del Sistema
 3.Aplicando algoritmos matemáticos obtiene las coordenadas (latitud, longitud y altitud).
 
 4.También es posible calcular la velocidad y hora a través de las mismas señales recibidas.
-# 3.Procesamiento con IA
+# 3. Procesamiento con IA
 En el contexto de la conducción autonóma,se utilizan algoritmos de ***Machine Learning y Deep Learning*** para procesar la información recopilada por cada uno de los sensores del vehículo y tomar decisiones en tiempo real.
 Este procesamiento nos permite obtener el **ángulo de giro** así como la **velocidad a aplicar**.
 
 Además,también permite al vehículo saber si esta o no **dentro del carril**,un analisis que puede complicarse cuando dos carriles se encuentran muy cercanos o no se distingue bien la línea separatoria entre ellos. 
-## 1.Redes neuronales
+## 1. Redes neuronales
 ### 1.1 Elección de datasets
 Dadas las dificultades reales que pueden surgir durante el proceso de conducción, la red debe ser entrenada con un conjunto diverso de datos de entrada que incluya:  
 
@@ -147,7 +149,7 @@ Son la base de los algoritmos del sistema de percepción.Dichos algoritmos se en
 Una vez analizadas las posibles situaciones futuras, el sistema de planificación decide cuál es la mejor manera de moverse de forma segura y envía órdenes a los sistemas de control del vehículo (dirección, motor, cambio, frenos, señalización…) para que circule.   
 Este sistema también elige en qué carril debe circular el vehículo, a qué velocidad, cuándo debe girar, acelerar o frenar o en qué momento debe detenerse.
 
-## 2.Procesamiento de imágenes en tiempo real
+## 2. Procesamiento de imágenes en tiempo real
 Obviamente en el contexto de la conducción autonóma se busca la mínima latencia,ya que unos segundos de más pueden resultar en un accidente grave.
 Para conseguir esto,es necesario utilizar tarjetas gráficas dedicadas,como las GPUs de NVIDIA.
 Este procesamiento consta de 2 fases principales y una opcional:
@@ -163,11 +165,11 @@ Este procesamiento consta de 2 fases principales y una opcional:
 * **Apollo**:Baidu, de codigo abierto
 * **OpenCV**:Solo para el preprocesamiento
 
-## 3.Mapas HD
+## 3. Mapas HD
 **Incluyen**:Características básicas de la carretera (intersecciones y señales de tráfico) + detalles de la superficie de la carretera ( bordes, cambios de elevación,líneas de carril y otros elementos dinámicos).  
 **Mapa convencional vs Mapa HD**:El mapa convencional proporciona una visión general de la red vial, mientras que el mapa HD está diseñado para proporcionar datos de precisión centimétrica, lo que permite a los vehículos conocer su posición exacta con una exactitud de pocos centímetros.Además,esta técnica de mapeo proporciona actualización de los mapas en tiempo real.Para ello se basan tanto en la información recibida de los sensores como de la obtenida con comunicaciones **V2I**.
 
-# 4.Comunicaciones
+# 4. Comunicaciones
 Las tecnologías V2X combinan la comunicación dedicada de corto alcance (DSRC) y la tecnología C-V2X.  
 **DSRC**:
 
@@ -181,10 +183,11 @@ Las tecnologías V2X combinan la comunicación dedicada de corto alcance (DSRC) 
 * Utiliza 5G para una mayor cobertura y un mayor ancho de banda. 
 * Funciona con las redes móviles actuales.
 * Recomendado para obtener datos rápidos como mapas HD
-## 1.V2V(Vehículo a vehículo)
+## 1. V2V(Vehículo a vehículo)
 Se trata de un sistema inteligente que permite a los vehículos intercambiar información de forma inalámbrica en tiempo real sobre su posición, velocidad y dirección.
 
 **Tecnologías integradas**:
+
  * Advertencia de colisión frontal
  * Detección electrónica de freno de emergencia
  * Advertencia de no adelantamiento
@@ -194,7 +197,7 @@ Se trata de un sistema inteligente que permite a los vehículos intercambiar inf
 
  **Limitaciones**:Requiere de la coordinación de todos los vehículos en la carretera.
 
-## 2.V2I(Vehículo a infraestructura)
+## 2. V2I(Vehículo a infraestructura)
 Es un sistema de comunicación entre los coches y la infraestructura que los rodea (señales de tráfico, semáforos e incluso la propia red de carreteras).  
 Permite conocer en tiempo real y de forma exacta el estado e incidencia del tráfico y la ubicación y dirección de los vehículos que circulan por las vías.  
 Requiere de ***unidades de Carretera (RSUs)*** y ***unidades a Bordo (OBUs)***.
@@ -202,8 +205,8 @@ Requiere de ***unidades de Carretera (RSUs)*** y ***unidades a Bordo (OBUs)***.
 * **RSUs**:colocadas estratégicamente a lo largo de las carreteras, actúan como la interfaz principal entre los vehículos y la infraestructura de transporte, retransmitiendo información sobre condiciones de tráfico, zonas en obras y más.
 * **OBUs:** Instaladas en vehículos, reciben datos de las RSUs y otros elementos de la infraestructura, permitiendo a los vehículos tomar decisiones informadas basadas en las condiciones de tráfico y el estado de la carretera en tiempo real.
 
-# 5.Seguridad y fiabilidad 
-## 1.Casos de fallos
+# 5. Seguridad y fiabilidad 
+## 1. Casos de fallos
 * **Fallos en la clasificación de objetos**: Uber, (2018,Arizona)  
 El sistema detectó un objeto e intentó clasificarlo por 3 veces, de forma que cuando llegó a la clasificación correcta ya no habia tiempo para frenar y el fallo fue mortal.
 * **Fallos al interpretar la señalización:**
@@ -212,7 +215,7 @@ Frente a lineas de carril poco claras o semáforos apagados debido a fallos elé
 * **Fallos humanos (exceso de confianza):** (Seatle,2024)
 Un Tesla en modo FSD atropelló a un motociclista mientras el conductor miraba su móvil.
 
-## 2.Redundancia de sistemas
+## 2. Redundancia de sistemas
  Dada la imposibilidad de asegurar el funcionamiento sin fallos, es necesario desarrollar varios niveles de redundancia en todos los sistemas de control del vehículo críticos para la seguridad,es decir evitar el punto de fallo único (SPOF).
  Los sistemas redundantes deben cumplir lo siguiente:
  * Deben tener fuentes de alimentación separadas
@@ -221,7 +224,7 @@ Un Tesla en modo FSD atropelló a un motociclista mientras el conductor miraba s
  * Cuando un sistema falla, el vehículo no se detiene en seco: entra en un modo degradado planificado.
  * No solo los sensores y actuadores deben duplicarse, también los buses de datos.
 
-# 6.Empresas y estado actual
+# 6. Empresas y estado actual
 En Estados Unidos ya circulan algunos vehículos de nivel 4 en áreas restringuidas y para servicios concretos,como taxis.  
 China por su parte esta probando el funcionamiento de ese mismo nivel en zonas con tráfico denso,obteniendo de momento resultados positivos.  
 En Europa, el avance es más lento y de momento el máximo nivel de autonomía de coches en circulación es el 2,es decir,con coches algunas asistencias,pero donde el conductor todavía juega un papel esencial y debe estar muy atento.  
